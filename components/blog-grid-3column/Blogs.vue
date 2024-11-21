@@ -30,7 +30,7 @@
                     <i class="ti-arrow-top-right"></i>
                   </span>
                 </span>
-                <span class="text">Read more</span>
+                <span class="text">{{ $t('readmore') }}</span>
               </a>
             </div>
           </div>
@@ -63,7 +63,7 @@
                     <i class="ti-arrow-top-right"></i>
                   </span>
                 </span>
-                <span class="text">Read more</span>
+                <span class="text">{{ $t('readmore') }}</span>
               </a>
             </div>
           </div>
@@ -96,7 +96,7 @@
                     <i class="ti-arrow-top-right"></i>
                   </span>
                 </span>
-                <span class="text">Read more</span>
+                <span class="text">{{ $t('readmore') }}</span>
               </a>
             </div>
           </div>
@@ -129,7 +129,7 @@
                     <i class="ti-arrow-top-right"></i>
                   </span>
                 </span>
-                <span class="text">Read more</span>
+                <span class="text">{{ $t('readmore') }}</span>
               </a>
             </div>
           </div>
@@ -162,7 +162,7 @@
                     <i class="ti-arrow-top-right"></i>
                   </span>
                 </span>
-                <span class="text">Read more</span>
+                <span class="text">{{ $t('readmore') }}</span>
               </a>
             </div>
           </div>
@@ -195,7 +195,7 @@
                     <i class="ti-arrow-top-right"></i>
                   </span>
                 </span>
-                <span class="text">Read more</span>
+                <span class="text">{{ $t('readmore') }}</span>
               </a>
             </div>
           </div>

@@ -10,16 +10,19 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@nuxtjs/i18n": "^9.0.0-rc.2",
     "element-plus": "^2.8.8",
     "imagesloaded": "^5.0.0",
     "isotope-layout": "^3.0.6",
     "matches-selector": "^1.2.0",
     "nuxt": "^3.10.1",
     "swiper": "^8.4.7",
+    "typescript": "^5.6.3",
     "vue": "^3.4.15",
     "vue-router": "^4.2.5"
   },
   "devDependencies": {
+    "sass": "^1.81.0",
     "sass-embedded": "^1.81.0"
   }
 }

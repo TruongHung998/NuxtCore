@@ -74,4 +74,16 @@ export default defineNuxtConfig({
 
   // Register the Element Plus plugin
   plugins: ["~/plugins/element-plus.ts"],
+
+  // i18n configuration
+  modules: ["@nuxtjs/i18n"],
+  i18n: {
+    locales: [
+      { code: "en", name: "English", iso: "en-US", file: "en.json" },
+      { code: "vi", name: "Vietnamese", iso: "vi-VN", file: "vi.json" },
+    ],
+    defaultLocale: "en",
+    langDir: "locales/"
+  },
+  css: ["~/public/assets/scss/global.scss"],
 });

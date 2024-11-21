@@ -6,43 +6,34 @@
   <Navbar />
   <div id="smooth-wrapper">
     <div id="smooth-content">
-      <main>
+      <main class="main-bg o-hidden">
         <Header />
-        <Demos />
-        <Pages />
-        <Show />
-        <Marq />
-        <!-- <Testimonials /> -->
+        <Blogs />
       </main>
       <Footer />
     </div>
   </div>
 </template>
+
 <script setup>
-import Lines from '@/components/common/Lines';
-import ProgressScroll from '@/components/common/ProgressScroll';
-import Cursor from '@/components/common/cusor';
-import LoadingScreen from '@/components/common/loader';
-import Demos from '@/components/landing/Demos';
-import Footer from '@/components/landing/Footer';
-import Header from '@/components/landing/Header';
-import Marq from '@/components/landing/Marq';
-import Navbar from '@/components/landing/Navbar';
-import Pages from '@/components/landing/Pages';
-import Show from '@/components/landing/Show';
-import Testimonials from '@/components/landing/Testimonials';
-import { onMounted } from 'vue';
+import Blogs from "@/components/blog-grid-3column/Blogs";
+import Header from "@/components/blog-grid-3column/Header";
+import Footer from "@/components/common/Footer";
+import Lines from "@/components/common/Lines";
+import Navbar from "@/components/common/Navbar";
+import ProgressScroll from "@/components/common/ProgressScroll";
+import Cursor from "@/components/common/cusor";
+import LoadingScreen from "@/components/common/loader";
 
 useHead({
-  link: [{ rel: 'stylesheet', href: '/landing-preview/css/preview-style.css' }],
-  // script: [{ src: '/assets/js/smoother-script.js', defer: true }],
+  script: [{ src: "/assets/js/smoother-script.js", defer: true }],
 });
-// onMounted(() => {
-//   gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
-//   ScrollTrigger.normalizeScroll(true);
-//   ScrollSmoother.create({
-//     smooth: 2,
-//     effects: true,
-//   });
-// });
+onMounted(() => {
+  gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+  ScrollTrigger.normalizeScroll(true);
+  ScrollSmoother.create({
+    smooth: 2,
+    effects: true,
+  });
+});
 </script>

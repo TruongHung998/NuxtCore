@@ -51,14 +51,30 @@
         </ul>
       </div>
 
-      <div class="contact-button"></div>
+      <div class="contact-button">
+        <el-dropdown placement="bottom-start">
+          <el-button class="text-upper-case"> {{ $t("language") }}</el-button>
+          <template #dropdown>
+            <el-dropdown-menu>
+              <el-dropdown-item @click="changeLanguage('vi')"
+                >Tiếng Việt</el-dropdown-item
+              >
+              <el-dropdown-item @click="changeLanguage('en')"
+                >English</el-dropdown-item
+              >
+            </el-dropdown-menu>
+          </template>
+        </el-dropdown>
+      </div>
     </div>
   </nav>
 </template>
 
 <script setup>
 import { onMounted, onUnmounted } from "vue";
-import { ref } from "vue";
+import { useI18n } from "vue-i18n";
+
+const { locale } = useI18n();
 
 function handleScroll() {
   const bodyScroll = window.scrollY;
@@ -76,6 +92,10 @@ function handleDropdownMouseLeave(event) {
   event.currentTarget.querySelector(".dropdown-menu").classList.remove("show");
 }
 
+function changeLanguage(lang) {
+  locale.value = lang;
+}
+
 onMounted(() => {
   window.addEventListener("scroll", handleScroll);
 });
@@ -84,8 +104,18 @@ onUnmounted(() => {
   window.removeEventListener("scroll", handleScroll);
 });
 </script>
-<style lang="scss" scoped>
-.tulen-text {
-  font-family: "Anonymus Pro", sans-serif;
+
+<style scoped>
+.contact-button button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.contact-button button:hover {
+  background-color: #0056b3;
 }
 </style>
