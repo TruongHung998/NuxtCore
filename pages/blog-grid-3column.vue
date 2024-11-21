@@ -24,15 +24,15 @@ import Navbar from '@/components/common/Navbar';
 import Header from '@/components/blog-grid-3column/Header';
 import Blogs from '@/components/blog-grid-3column/Blogs';
 
-// useHead({
-//   script: [{ src: '/assets/js/smoother-script.js', defer: true }],
-// });
-// onMounted(() => {
-//   gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
-//   ScrollTrigger.normalizeScroll(true);
-//   ScrollSmoother.create({
-//     smooth: 2,
-//     effects: true,
-//   });
-// });
+useHead({
+  script: [{ src: '/assets/js/smoother-script.js', defer: true }],
+});
+onMounted(() => {
+  gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+  ScrollTrigger.normalizeScroll(true);
+  ScrollSmoother.create({
+    smooth: 2,
+    effects: true,
+  });
+});
 </script>

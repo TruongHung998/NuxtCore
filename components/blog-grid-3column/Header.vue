@@ -18,9 +18,12 @@
   </header>
 </template>
 <script setup>
-import loadBackgroudImages from '@/common/loadBackgroudImages';
+import loadBackgroudImages from "@/common/loadBackgroudImages";
 
 onMounted(() => {
   loadBackgroudImages();
 });
 </script>
+<style lang="scss" scoped>
+@import "styles.scss";
+</style>

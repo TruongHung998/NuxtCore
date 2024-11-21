@@ -6,13 +6,11 @@
     <div class="loader-wrap-heading">
       <span>
         <h2 class="load-text">
-          <span>L</span>
-          <span>o</span>
-          <span>a</span>
-          <span>d</span>
-          <span>i</span>
-          <span>n</span>
-          <span>g</span>
+          <span>Đang</span>
+          <span>tải</span>
+          <span>&nbsp</span>
+          <span>chờ</span>
+          <span>chút</span>
         </h2>
       </span>
     </div>
