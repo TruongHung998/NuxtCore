@@ -2,15 +2,14 @@ version: "3"
 
 services:
   nuxt:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: nuxt
     restart: always
     env_file: .env
-    command: "yarn run start"
     networks:
       - flat-network
-    ports:
-      - "3000:3000"
 
   nginx:
     image: nginx:1.17

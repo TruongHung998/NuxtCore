@@ -1,12 +1,23 @@
+# Use the official Node.js image as the base image
 FROM node:18
 
-ENV APP_ROOT /src
+# Set the working directory inside the container
+WORKDIR /usr/src/app
 
-RUN mkdir ${APP_ROOT}
-WORKDIR ${APP_ROOT}
-ADD . ${APP_ROOT}
+# Copy package.json and package-lock.json (if available)
+COPY package*.json ./
 
-RUN yarn install
-RUN yarn run build
+# Install dependencies
+RUN npm install
 
-ENV HOST 0.0.0.0
+# Copy the rest of the application source code
+COPY . .
+
+# Build the Nuxt 3 application
+RUN npm run build
+
+# Expose the port the app runs on
+EXPOSE 3000
+
+# Start the Nuxt 3 application
+CMD [ "npm", "start" ]
