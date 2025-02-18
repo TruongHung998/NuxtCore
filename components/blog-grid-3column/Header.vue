@@ -8,9 +8,33 @@
       <div class="row">
         <div class="col-12">
           <div class="text-center">
-            <h1 class="text-u ls1 fz-80">
-              Blog <span class="fw-200"> Grid 3</span>
-            </h1>
+            <div class="header-wrap">
+              <div>
+                <div class="header-title">
+                  Hi, I'm <a style="text-decoration: underline">Hung Truong</a
+                  ><span>,</span>
+                </div>
+                <div class="header-title">Software engineer<span>.</span></div>
+                <div class="header-title">
+                  Find me on
+                  <a
+                    style="text-decoration: underline"
+                    href="http://github.com/truongHung998/"
+                    target="_blank"
+                    >Github</a
+                  ><span>.</span>
+                </div>
+              </div>
+              <div>
+                <div class="header-content">
+                  I am a Software Developer with 4 years of experience in
+                  software development, specializing in React Native and modern
+                  web technologies such as React.js, Vue.js, and Node.js. I have
+                  worked on large-scale projects, from mobile application
+                  development to building complex web systems.
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

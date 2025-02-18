@@ -1,8 +1,12 @@
 <template>
   <nav class="navbar navbar-expand-lg bord blur">
     <div class="container o-hidden">
-      <a class="logo icon-img-100" href="#">
-        <span class="tulen-text">Tulen Garcia</span>
+      <a class="logo icon-img-100" href="/">
+        <span class="tulen-text"
+          >Tulen Garcia <br />
+          a.k.a <br />
+          Hung Truong</span
+        >
       </a>
 
       <button
@@ -24,7 +28,7 @@
         id="navbarSupportedContent"
       >
         <ul class="navbar-nav">
-          <li
+          <!-- <li
             @mousemove="handleDropdownMouseMove"
             @mouseleave="handleDropdownMouseLeave"
             class="nav-item dropdown"
@@ -42,17 +46,31 @@
             <div class="dropdown-menu">
               <a class="dropdown-item" href="/blog-classic">API Ecomerce</a>
             </div>
+          </li> -->
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/" target="_blank">
+              <span class="rolling-text">Github</span>
+            </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/page-contact">
-              <span class="rolling-text">Github</span>
+            <a
+              class="nav-link"
+              href="https://www.linkedin.com/in/hung-truong-3231b3209/"
+              target="_blank"
+            >
+              <span class="rolling-text">Linkedin</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://www.facebook.com/">
+              <span class="rolling-text">Facebook</span>
             </a>
           </li>
         </ul>
       </div>
 
       <div class="contact-button">
-        <el-dropdown placement="bottom-start">
+        <!-- <el-dropdown placement="bottom-start">
           <el-button class="text-upper-case"> {{ $t("language") }}</el-button>
           <template #dropdown>
             <el-dropdown-menu>
@@ -64,7 +82,7 @@
               >
             </el-dropdown-menu>
           </template>
-        </el-dropdown>
+        </el-dropdown> -->
       </div>
     </div>
   </nav>
@@ -106,6 +124,9 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
+.tulen-text {
+  font-size: 12px;
+}
 .contact-button button {
   background-color: #007bff;
   color: white;

@@ -1,29 +1,14 @@
 <template>
-  <section class="blog section-padding">
+  <section
+    class="blog section-padding"
+    style="padding-top: 2rem; padding-bottom: 1rem"
+  >
     <div class="container">
       <div class="row xlg-marg">
         <div class="col-lg-8">
           <div class="main-post">
             <div class="item pb-60">
               <article>
-                <div class="text">
-                  <p>
-                    <span class="spec-letter">Q</span> new report said earlier
-                    this week that Apple is working on a brand new laptop. Apple
-                    plans to release a 15-inch MacBook Air in 2023, a first for
-                    the Air series. A trusted Apple insider with a proven track
-                    record confirmed that Apple is working on the larger MacBook
-                    Air.
-                  </p>
-                </div>
-                <div class="text">
-                  <p>
-                    However, Apple might not include it in the Air series when
-                    it launches it. As for the notebook’s release date, the
-                    15-inch MacBook isn’t coming soon. It’ll get a late 2023
-                    release at best, according to the new claims.
-                  </p>
-                </div>
                 <div class="title mt-30">
                   <h4>What sizes do MacBook Airs come in?</h4>
                 </div>
@@ -36,27 +21,23 @@
                   </p>
                 </div>
               </article>
-
-              <div class="post-qoute mt-50">
-                <h6 class="fz-20">
-                  <span class="l-block">
-                    And the day came when the risk to remain tight in a bud was
-                    more painful than the risk it took to blossom.
-                  </span>
-                  <span class="sub-title mt-20 mb-0"> - UiCamp</span>
-                </h6>
-              </div>
-
               <div class="mb-50 mt-50">
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="iner-img sm-mb30">
-                      <img src="/assets/imgs/blog/blog1.jpg" alt="" />
+                      <img
+                        src="https://cdn.e-plus.vn/48a234396a694c33922bde29171069ab.jpeg"
+                        alt=""
+                      />
                     </div>
                   </div>
                   <div class="col-sm-6">
                     <div class="iner-img">
-                      <img src="/assets/imgs/blog/blog2.jpg" alt="" />
+                      <img
+                        style="object-fit: contain; background-color: #fff"
+                        src="https://cdn.e-plus.vn/c462ec7dae144d8c9ae922d41efe2ac7.png"
+                        alt=""
+                      />
                     </div>
                   </div>
                 </div>
@@ -112,165 +93,21 @@
                 </p>
               </div>
             </div>
-            <div class="info-area flex pt-50 bord-thin-top">
-              <div>
-                <div class="tags flex">
-                  <div class="valign">
-                    <span>Tags :</span>
-                  </div>
-                  <div>
-                    <a href="/blog-classic">Tech</a>
-                    <a href="/blog-classic">UiCamp</a>
-                  </div>
-                </div>
-              </div>
-              <div class="ml-auto">
-                <div class="share-icon flex">
-                  <div class="valign">
-                    <span>Share :</span>
-                  </div>
-                  <div>
-                    <a href="https://www.facebook.com/">
-                      <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="https://www.twitter.com/">
-                      <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="https://www.youtube.com/">
-                      <i class="fab fa-youtube"></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="author-area mt-50 bord-thin-bottom">
-              <div class="flex">
-                <div class="author-img mr-30">
-                  <div class="img">
-                    <img
-                      src="/assets/imgs/blog/author.png"
-                      alt=""
-                      class="circle-img"
-                    />
-                  </div>
-                </div>
-                <div class="cont valign">
-                  <div class="full-width">
-                    <h6 class="fw-600 mb-10">Chris Smith</h6>
-                    <p>
-                      Nulla eleifend, lectus eu gravida facilisis, ipsum metus
-                      faucibus eros, vitae vulputate nibh libero ac metus.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="comments-from mt-80">
-            <div class="mb-60">
-              <h3>Leave a comment</h3>
-            </div>
-            <form id="contact-form" method="post" action="contact.php">
-              <div class="messages"></div>
-
-              <div class="controls row">
-                <div class="col-lg-6">
-                  <div class="form-group mb-30">
-                    <input
-                      id="form_name"
-                      type="text"
-                      name="name"
-                      placeholder="Name"
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div class="col-lg-6">
-                  <div class="form-group mb-30">
-                    <input
-                      id="form_email"
-                      type="email"
-                      name="email"
-                      placeholder="Email"
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div class="col-12">
-                  <div class="form-group">
-                    <textarea
-                      id="form_message"
-                      name="message"
-                      placeholder="Message"
-                      rows="4"
-                      required
-                    ></textarea>
-                  </div>
-                  <div class="text-center">
-                    <div class="mt-30">
-                      <button type="submit">
-                        <span class="text">Post Comment</span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </form>
+            <div class="info-area flex pt-50 bord-thin-top"></div>
           </div>
         </div>
         <div class="col-lg-4">
           <div class="sidebar">
-            <div class="widget">
-              <h6 class="title-widget">Search Here</h6>
-              <div class="search-box">
-                <input type="text" name="search-post" placeholder="Search" />
-                <span class="icon pe-7s-search"></span>
-              </div>
-            </div>
-            <div class="widget catogry">
-              <h6 class="title-widget">Categories</h6>
-              <ul class="rest">
-                <li>
-                  <span>
-                    <a href="/blog-grid-sidebar">Business</a>
-                  </span>
-                  <span class="ml-auto">33</span>
-                </li>
-                <li>
-                  <span>
-                    <a href="/blog-grid-sidebar">Lifestyle</a>
-                  </span>
-                  <span class="ml-auto">05</span>
-                </li>
-                <li>
-                  <span>
-                    <a href="/blog-grid-sidebar">Creative</a>
-                  </span>
-                  <span class="ml-auto">28</span>
-                </li>
-                <li>
-                  <span>
-                    <a href="/blog-grid-sidebar">WordPress</a>
-                  </span>
-                  <span class="ml-auto">17</span>
-                </li>
-                <li>
-                  <span>
-                    <a href="/blog-grid-sidebar">Design</a>
-                  </span>
-                  <span class="ml-auto">45</span>
-                </li>
-              </ul>
-            </div>
-            <div class="widget last-post-thum">
-              <h6 class="title-widget">latest Posts</h6>
+            <div class="widget last-post-thum" style="margin-top: 0rem">
+              <h6 class="title-widget">Orther Projects</h6>
               <div class="item d-flex align-items-center">
                 <div>
                   <div class="img">
                     <a href="/blog-grid-sidebar">
-                      <img src="/assets/imgs/blog/c1.jpg" alt="" />
+                      <img
+                        src="https://cdn.e-plus.vn/48a234396a694c33922bde29171069ab.jpeg"
+                        alt=""
+                      />
                       <span class="date">
                         <span>
                           14 / <br />
@@ -295,7 +132,10 @@
                 <div>
                   <div class="img">
                     <a href="/blog-grid-sidebar">
-                      <img src="/assets/imgs/blog/c2.jpg" alt="" />
+                      <img
+                        src="https://cdn.e-plus.vn/1ad243846a6f432d96387ebe4ed1c0e8.jpg"
+                        alt=""
+                      />
                       <span class="date">
                         <span>
                           14 / <br />
@@ -320,7 +160,10 @@
                 <div>
                   <div class="img">
                     <a href="/blog-grid-sidebar">
-                      <img src="/assets/imgs/blog/c3.jpg" alt="" />
+                      <img
+                        src="https://cdn.e-plus.vn/e6baf6fb998e46a18bf14ceb3ebd2978.png"
+                        alt=""
+                      />
                       <span class="date">
                         <span>
                           14 / <br />
@@ -340,16 +183,6 @@
                     </a>
                   </h6>
                 </div>
-              </div>
-            </div>
-            <div class="widget tags">
-              <h6 class="title-widget">Tags</h6>
-              <div>
-                <a href="/blog-grid-sidebar">Creative</a>
-                <a href="/blog-grid-sidebar">Design</a>
-                <a href="/blog-grid-sidebar">Dark & Light</a>
-                <a href="/blog-grid-sidebar">Minimal</a>
-                <a href="/blog-grid-sidebar">Infolio</a>
               </div>
             </div>
           </div>

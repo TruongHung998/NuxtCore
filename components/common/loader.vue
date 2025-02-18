@@ -6,11 +6,9 @@
     <div class="loader-wrap-heading">
       <span>
         <h2 class="load-text">
-          <span>Đang</span>
-          <span>tải</span>
+          <span>Loading</span>
           <span>&nbsp</span>
-          <span>chờ</span>
-          <span>chút</span>
+          <span>...</span>
         </h2>
       </span>
     </div>
