@@ -5,15 +5,12 @@
         <div class="col-lg-11">
           <div class="caption">
             <div class="sub-title fz-12">
-              <a href="#0">
-                <span>Design , </span>
-              </a>
-              <a href="#0">
-                <span>Development</span>
+              <a>
+                <span>{{ titleLabel.title }}</span>
               </a>
             </div>
             <h1 class="fz-55 mt-30">
-              Network of wormholes colonies extraordinary claims require.
+              {{ titleLabel.subtitle }}
             </h1>
           </div>
         </div>
@@ -22,8 +19,13 @@
   </div>
 </template>
 <script setup>
-import loadBackgroudImages from '@/common/loadBackgroudImages';
-
+import loadBackgroudImages from "@/common/loadBackgroudImages";
+defineProps({
+  titleLabel: {
+    type: Object,
+    required: true,
+  },
+});
 onMounted(() => {
   loadBackgroudImages();
 });
