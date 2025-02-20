@@ -13,7 +13,7 @@
             <div class="cont pt-40">
               <h4 class="fz-30">Web - App VNVC</h4>
               <a
-                href="/blog-details"
+                href="/project/vnvc"
                 class="butn-crev d-flex align-items-center mt-40"
               >
                 <span class="hover-this">

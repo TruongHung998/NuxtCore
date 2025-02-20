@@ -58,9 +58,11 @@
 </template>
 
 <script setup>
-import data from '../../data/portfolios/works1.json';
-import { Swiper, SwiperSlide } from 'swiper/vue';
-import { Navigation, Pagination } from 'swiper';
+import { ref } from "vue";
+import data from "../../data/portfolios/works1.json";
+import { Swiper, SwiperSlide } from "swiper/vue";
+import { Navigation, Pagination } from "swiper";
+
 const swiperOptions = {
   modules: [Navigation, Pagination],
   slidesPerView: 1,
@@ -69,12 +71,12 @@ const swiperOptions = {
   centeredSlides: false,
   spaceBetween: 30,
   navigation: {
-    nextEl: '.testimonials .swiper-button-next',
-    prevEl: '.testimonials .swiper-button-prev',
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
   },
   pagination: {
-    el: '.swiper-pagination',
-    type: 'progressbar',
+    el: ".swiper-pagination",
+    type: "progressbar",
   },
 };
 </script>
