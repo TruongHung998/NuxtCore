@@ -25,7 +25,7 @@
                 <h4 class="mb-15">Main Features</h4>
                 <ul class="rest">
                   <li>
-                    <strong>1,5+ milion user</strong>
+                    <strong>1,5+ million user</strong>
                   </li>
                   <li>
                     <strong>1000+ orders/day </strong>
@@ -159,10 +159,10 @@
                 </div>
                 <div class="cont">
                   <span class="tag">
-                    <a href="/blog-grid-sidebar">Web - App</a>
+                    <a href="/project/vnvc">Web - App</a>
                   </span>
                   <h6>
-                    <a href="/blog-grid-sidebar">VNVC </a>
+                    <a href="/project/vnvc">VNVC </a>
                   </h6>
                 </div>
               </div>
@@ -180,10 +180,10 @@
                 </div>
                 <div class="cont">
                   <span class="tag">
-                    <a href="/blog-grid-sidebar">Web - App</a>
+                    <a href="/project/tamanh">Web - App</a>
                   </span>
                   <h6>
-                    <a href="/blog-grid-sidebar">
+                    <a href="/project/tamanh">
                       Web - App Tam Anh Hospital
                     </a>
                   </h6>
@@ -203,10 +203,10 @@
                 </div>
                 <div class="cont">
                   <span class="tag">
-                    <a href="/blog-grid-sidebar">Web</a>
+                    <a href="/project/ecogreen">Web</a>
                   </span>
                   <h6>
-                    <a href="/blog-grid-sidebar"> Ecogreen </a>
+                    <a href="/project/ecogreen"> Ecogreen </a>
                   </h6>
                 </div>
               </div>

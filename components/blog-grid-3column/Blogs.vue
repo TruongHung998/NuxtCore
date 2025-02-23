@@ -265,8 +265,8 @@ const listTech = [
   {
     title: "ReactJs",
     descriptions: [
-      "Tool: Xcode, Android Studio, VSCode",
-      "Tech: Firebase, SignalR",
+      "Tool: VSCode",
+      "Tech: Firebase, SignalR, Boostrap, Tailwind, GSAP, Swiper, ElementUI, AntDesign",
     ],
     image:
       "https://s3-sgn09.fptcloud.com/codelearnstorage/Upload/Blog/react-js-co-ban-phan-1-63738082145.3856.jpg",
@@ -274,8 +274,8 @@ const listTech = [
   {
     title: "VueJs",
     descriptions: [
-      "Tool: Xcode, Android Studio, VSCode",
-      "Tech: Firebase, SignalR",
+      "Tool: VSCode",
+      "Tech: Firebase, SignalR, Boostrap, Tailwind, GSAP, Swiper, ElementUI, AntDesign",
     ],
     image:
       "https://careers.techvify.com.vn/wp-content/uploads/2022/07/vuejs-la-gi-2.jpg",
@@ -283,8 +283,8 @@ const listTech = [
   {
     title: "NodeJs",
     descriptions: [
-      "Tool: Xcode, Android Studio, VSCode",
-      "Tech: Firebase, SignalR",
+      "Tool: VSCode, Docker, OrbStack",
+      "Tech: NestJs, ExpressJs, MiniO, Redis, Elastic search",
     ],
     image: "https://www.mindrops.com/images/nodejs-image.webp",
   },
