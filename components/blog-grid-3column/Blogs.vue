@@ -38,7 +38,7 @@
             <div class="cont pt-40">
               <h4 class="fz-30">Web - App Tam Anh</h4>
               <a
-                href="/blog-details"
+                href="/project/tamanh"
                 class="butn-crev d-flex align-items-center mt-40"
               >
                 <span class="hover-this">

@@ -9,6 +9,7 @@
       <main class="main-bg o-hidden">
         <Header :titleLabel="titleLabel" />
         <BlogVNVC v-if="slug === 'vnvc'" />
+        <BlogTamAnh v-if="slug === 'tamanh'" />
       </main>
       <Footer />
     </div>
@@ -24,6 +25,7 @@ import Navbar from "@/components/common/Navbar";
 import Header from "@/components/blog-details/Header";
 import Blog from "@/components/blog-details/Blog";
 import BlogVNVC from "@/components/blog-details/BlogVNVC";
+import BlogTamAnh from "@/components/blog-details/BlogTamAnh";
 
 const route = useRoute();
 
@@ -38,10 +40,10 @@ const titleLabel = computed(() => {
         title: "App - Website",
         subtitle: "VNVC",
       };
-    case "vietnamworks":
+    case "tamanh":
       return {
-        title: "Vietnamworks",
-        subtitle: "Vietnamworks",
+        title: "App - Website",
+        subtitle: "Tam Anh Hospital",
       };
     default:
       return {
