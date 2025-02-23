@@ -29,6 +29,7 @@ import BlogTamAnh from "@/components/blog-details/BlogTamAnh";
 
 const route = useRoute();
 
+
 const slug = computed(() => {
   return route.params.id;
 });
