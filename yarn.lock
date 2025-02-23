@@ -1447,6 +1447,11 @@
     hookable "^5.5.3"
     unhead "1.11.11"
 
+"@vercel/analytics@^1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@vercel/analytics/-/analytics-1.5.0.tgz#073f93694897414b21a8495e2619bbf64447dcaa"
+  integrity sha512-MYsBzfPki4gthY5HnYN7jgInhAZ7Ac1cYDoRWFomwGHWEX7odTEzbtg9kf/QSo7XEsEAqlQugA6gJ2WS2DEa3g==
+
 "@vercel/nft@^0.27.5":
   version "0.27.6"
   resolved "https://registry.yarnpkg.com/@vercel/nft/-/nft-0.27.6.tgz#4fffb7ad4ffdb70698213cfd67596be5e9cdfb6c"
