@@ -76,7 +76,10 @@
                     <strong>Mobile:</strong> React native, Socket.io, Firebase,
                     Log rocket, SignalR, GG Map Api, etc
                   </li>
-                  <li><strong>Front End:</strong> Nuxt Js, Socket.io, MicrofrontEnd</li>
+                  <li>
+                    <strong>Front End:</strong> Nuxt Js, Socket.io,
+                    MicrofrontEnd
+                  </li>
                   <li>
                     <strong>Back End:</strong> Nest Js, .Net, Redis, Elastic
                     search, etc
@@ -153,27 +156,42 @@
               <div class="item d-flex align-items-center">
                 <div>
                   <div class="img">
-                    <a href="/blog-grid-sidebar">
+                    <a href="/project/vnvc">
                       <img
                         src="https://cdn.e-plus.vn/48a234396a694c33922bde29171069ab.jpeg"
                         alt=""
                       />
-                      <span class="date">
-                        <span>
-                          14 / <br />
-                          sep
-                        </span>
-                      </span>
                     </a>
                   </div>
                 </div>
                 <div class="cont">
                   <span class="tag">
-                    <a href="/blog-grid-sidebar">Web</a>
+                    <a href="/blog-grid-sidebar">Web - App</a>
+                  </span>
+                  <h6>
+                    <a href="/blog-grid-sidebar">VNVC </a>
+                  </h6>
+                </div>
+              </div>
+              <div class="item d-flex align-items-center">
+                <div>
+                  <div class="img">
+                    <a href="/project/tamanh">
+                      <img
+                        src="https://cdn.e-plus.vn/c462ec7dae144d8c9ae922d41efe2ac7.png"
+                        alt=""
+                        style="object-fit: contain; background-color: #fff"
+                      />
+                    </a>
+                  </div>
+                </div>
+                <div class="cont">
+                  <span class="tag">
+                    <a href="/blog-grid-sidebar">Web - App</a>
                   </span>
                   <h6>
                     <a href="/blog-grid-sidebar">
-                      ways to quickly increase traffic to your website
+                      Web - App Tam Anh Hospital
                     </a>
                   </h6>
                 </div>
@@ -181,17 +199,12 @@
               <div class="item d-flex align-items-center">
                 <div>
                   <div class="img">
-                    <a href="/blog-grid-sidebar">
+                    <a href="/project/ecogreen">
                       <img
                         src="https://cdn.e-plus.vn/1ad243846a6f432d96387ebe4ed1c0e8.jpg"
                         alt=""
+                        style="object-fit: contain; background-color: #fff"
                       />
-                      <span class="date">
-                        <span>
-                          14 / <br />
-                          sep
-                        </span>
-                      </span>
                     </a>
                   </div>
                 </div>
@@ -200,37 +213,7 @@
                     <a href="/blog-grid-sidebar">Web</a>
                   </span>
                   <h6>
-                    <a href="/blog-grid-sidebar">
-                      breaking the rules: using sqlite to demo web
-                    </a>
-                  </h6>
-                </div>
-              </div>
-              <div class="item d-flex align-items-center">
-                <div>
-                  <div class="img">
-                    <a href="/blog-grid-sidebar">
-                      <img
-                        src="https://cdn.e-plus.vn/e6baf6fb998e46a18bf14ceb3ebd2978.png"
-                        alt=""
-                      />
-                      <span class="date">
-                        <span>
-                          14 / <br />
-                          sep
-                        </span>
-                      </span>
-                    </a>
-                  </div>
-                </div>
-                <div class="cont">
-                  <span class="tag">
-                    <a href="/blog-grid-sidebar">Web</a>
-                  </span>
-                  <h6>
-                    <a href="/blog-grid-sidebar">
-                      building better ui designs with layout grids
-                    </a>
+                    <a href="/blog-grid-sidebar"> Ecogreen </a>
                   </h6>
                 </div>
               </div>

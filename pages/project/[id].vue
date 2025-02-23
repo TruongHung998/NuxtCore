@@ -10,6 +10,10 @@
         <Header :titleLabel="titleLabel" />
         <BlogVNVC v-if="slug === 'vnvc'" />
         <BlogTamAnh v-if="slug === 'tamanh'" />
+        <BlogEco v-if="slug === 'ecogreen'" />
+        <BlogDevelop
+          v-if="slug === 'pwa' || slug === 'zalominiapp' || slug === 'rmic'"
+        />
       </main>
       <Footer />
     </div>
@@ -26,9 +30,10 @@ import Header from "@/components/blog-details/Header";
 import Blog from "@/components/blog-details/Blog";
 import BlogVNVC from "@/components/blog-details/BlogVNVC";
 import BlogTamAnh from "@/components/blog-details/BlogTamAnh";
+import BlogEco from "@/components/blog-details/BlogEco";
+import BlogDevelop from "@/components/blog-details/BlogDevelop";
 
 const route = useRoute();
-
 
 const slug = computed(() => {
   return route.params.id;
@@ -45,6 +50,26 @@ const titleLabel = computed(() => {
       return {
         title: "App - Website",
         subtitle: "Tam Anh Hospital",
+      };
+    case "ecogreen":
+      return {
+        title: "Website",
+        subtitle: "Ecogreen",
+      };
+    case "pwa":
+      return {
+        title: "Web PWA",
+        subtitle: "PWA Ecommerce Web",
+      };
+    case "zalominiapp":
+      return {
+        title: "Zalo mini app",
+        subtitle: "Zalo mini app",
+      };
+    case "rmic":
+      return {
+        title: "Web",
+        subtitle: "Web resource management",
       };
     default:
       return {

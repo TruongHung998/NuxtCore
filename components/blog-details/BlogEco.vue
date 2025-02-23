@@ -14,10 +14,9 @@
                 </div>
                 <div class="text mt-20">
                   <p>
-                    The <strong>VNVC App</strong> is the official vaccination
-                    information portal of the VNVC Vaccination System, offering
-                    various useful features to help users manage and track their
-                    vaccination records conveniently.
+                    The website <strong>Ecogreen</strong> offers various useful
+                    features that make it easy for users to shop and take care
+                    of their health:
                   </p>
                 </div>
               </article>
@@ -25,43 +24,52 @@
                 <h4 class="mb-15">Main Features</h4>
                 <ul class="rest">
                   <li>
-                    <strong>1,5+ milion user</strong>
+                    <strong>500+ bookings/day</strong>
                   </li>
                   <li>
-                    <strong>1000+ orders/day </strong>
+                    <strong>Online Shopping: </strong> Users can purchase
+                    high-quality, genuine health care products from Eco Pharma,
+                    such as Angela Gold, Alipas Platinum, Jex Max, Lic, Hewel,
+                    OTiV, Wit, and FAZ.
                   </li>
                   <li>
-                    <strong>Easy Account Registration:</strong> Users can
-                    quickly create an account to access VNVC services.
+                    <strong>Loyalty Points & Rewards Program: </strong>
+                    Customers can accumulate points by entering the unique code
+                    found on the "Anti-counterfeit & Reward Points Label" and
+                    redeem them for attractive gifts. Points can be collected
+                    via SMS or directly on the website.
                   </li>
                   <li>
-                    <strong>Online Vaccine Booking:</strong> Allows users to
-                    purchase vaccines easily and conveniently through the app.
+                    <strong>Promotions & Discounts: </strong> The website
+                    frequently updates special promotions and exclusive deals,
+                    ensuring customers don't miss out on great shopping
+                    opportunities.
                   </li>
                   <li>
-                    <strong> Vaccination History Tracking: </strong> Manage and
-                    look up vaccination records for yourself and your family
-                    members.
+                    <strong>Expert Consultation:</strong> Users can receive free
+                    and dedicated health consultations from experts to choose
+                    the right products for their needs.
                   </li>
                   <li>
-                    <strong>Reward Points & Accumulation:</strong> View and
-                    manage reward points that can be redeemed for VNVC services.
+                    <strong>News & events:</strong> Updates on hospital
+                    activities, promotions, community events, and online
+                    consultations.
                   </li>
                   <li>
-                    <strong>Recommended Vaccines:</strong> The app suggests
-                    suitable vaccines for children and adults based on age and
-                    epidemiological conditions.
+                    <strong>Pharmacy Network: </strong> Provides information on
+                    affiliated pharmacies, making it easy for customers to
+                    locate and purchase products in-store.
                   </li>
                   <li>
-                    <strong> Vaccination Journal: </strong> Save important
-                    milestones and information throughout your vaccination
-                    journey with VNVC.
+                    <strong>Ordering & Shipping Policies: </strong> Detailed
+                    information on terms of use, privacy policy, purchasing, and
+                    delivery policies is clearly outlined to ensure customer
+                    rights and satisfaction.
                   </li>
                   <li>
-                    <strong>News & Promotions Updates:</strong> Stay informed
-                    about the latest disease outbreaks, vaccine updates, health
-                    care tips from experts, and exclusive promotions for loyal
-                    customers.
+                    <strong>Frequently Asked Questions (FAQ):</strong> Answers
+                    common customer queries about products and services,
+                    enhancing the overall shopping experience.
                   </li>
                 </ul>
               </div>
@@ -69,10 +77,9 @@
                 <h4 class="mb-15">Technology</h4>
                 <ul class="rest">
                   <li>
-                    <strong>Mobile:</strong> React native, Socket.io, Firebase,
-                    Log rocket, SignalR, GG Map Api, etc
+                    <strong>Front End:</strong> Nuxt Js, Socket.io,
+                    MicrofrontEnd, Boostrap
                   </li>
-                  <li><strong>Front End:</strong> Nuxt Js, Socket.io</li>
                   <li>
                     <strong>Back End:</strong> Nest Js, .Net, Redis, Elastic
                     search, etc
@@ -224,25 +231,16 @@ import { Navigation, Pagination, Autoplay } from "swiper";
 
 const data = [
   {
-    img: "https://cdn.e-plus.vn/4e90393be6e94924b07b9fb9033e61dc.png",
+    img: "https://cdn.e-plus.vn/94ee3ca467c8458b9cc34ae9689624e9.png",
   },
   {
-    img: "https://cdn.e-plus.vn/001339d5bb9946edbca0afd98337a0ab.png",
+    img: "https://cdn.e-plus.vn/6a4516f5d7284ae0b8ad3f830ecd14cc.png",
   },
   {
-    img: "https://cdn.e-plus.vn/b6e26f25735c436b9379cd30641b17a1.png",
+    img: "https://cdn.e-plus.vn/6a80f5387b7242f388f8d425bc396e0f.png",
   },
   {
-    img: "https://cdn.e-plus.vn/893041fec43940acb5afb78bc5bf8858.png",
-  },
-  {
-    img: "https://cdn.e-plus.vn/1d7fd759d91b4460bb6c0fd1642a667e.png",
-  },
-  {
-    img: "https://cdn.e-plus.vn/5e490a49b49a443c9091647af30e8697.png",
-  },
-  {
-    img: "https://cdn.e-plus.vn/9d25245e89fc42009ae18f2eb9b984aa.png",
+    img: "https://cdn.e-plus.vn/9220e03372fd4cd4b11bda55e1ab0d9a.png",
   },
 ];
 

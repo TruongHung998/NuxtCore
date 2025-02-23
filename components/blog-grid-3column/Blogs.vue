@@ -112,7 +112,7 @@
               />
             </div>
             <div class="cont pt-40">
-              <h4 class="fz-30">Web - App Tam Anh</h4>
+              <h4 class="fz-30">Web - App Tam Anh Hospital</h4>
               <a
                 href="/project/tamanh"
                 class="butn-crev d-flex align-items-center mt-40"
@@ -139,7 +139,7 @@
             <div class="cont pt-40">
               <h4 class="fz-30">Web Ecogreen</h4>
               <a
-                href="/blog-details"
+                href="/project/ecogreen"
                 class="butn-crev d-flex align-items-center mt-40"
               >
                 <span class="hover-this">
@@ -164,7 +164,7 @@
             <div class="cont pt-40">
               <h4 class="fz-30">PWA website</h4>
               <a
-                @click="onProjectMaintain"
+                href="project/pwa"
                 class="butn-crev d-flex align-items-center mt-40"
               >
                 <span class="hover-this">
@@ -189,7 +189,7 @@
             <div class="cont pt-40">
               <h4 class="fz-30">Zalo mini app</h4>
               <a
-                href="/blog-details"
+                href="project/zalominapp"
                 class="butn-crev d-flex align-items-center mt-40"
               >
                 <span class="hover-this">
@@ -214,7 +214,7 @@
             <div class="cont pt-40">
               <h4 class="fz-30">Web resource management</h4>
               <a
-                href="/blog-details"
+                href="project/rmic"
                 class="butn-crev d-flex align-items-center mt-40"
               >
                 <span class="hover-this">
@@ -289,7 +289,4 @@ const listTech = [
     image: "https://www.mindrops.com/images/nodejs-image.webp",
   },
 ];
-const onProjectMaintain = () => {
-  console.log('isRun')
-}
 </script>
