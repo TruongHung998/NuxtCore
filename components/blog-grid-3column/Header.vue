@@ -27,7 +27,7 @@
               </div>
               <div>
                 <div class="header-content">
-                  I am a Software Developer with 4 years of experience in
+                  I am a Software Engineer with 4 years of experience in
                   software development, specializing in React Native and modern
                   web technologies such as React.js, Vue.js, and Node.js. I have
                   worked on large-scale projects, from mobile application
