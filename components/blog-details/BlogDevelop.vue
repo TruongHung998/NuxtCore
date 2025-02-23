@@ -101,6 +101,7 @@ import { ref } from "vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Navigation, Pagination, Autoplay } from "swiper";
 
+
 const data = [
   {
     img: "https://cdn.e-plus.vn/94ee3ca467c8458b9cc34ae9689624e9.png",
