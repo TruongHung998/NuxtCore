@@ -22,6 +22,29 @@
                 </div>
               </article>
               <div class="unorder-list mb-30 mt-4">
+                <h4 class="mb-15">Link Project</h4>
+                <ul class="rest">
+                  <li>
+                    <strong>Link IOS: </strong>
+                    <a style="color: cyan"> Not officially released yet </a>
+                  </li>
+                  <li>
+                    <strong>Link Android: </strong>
+                    <a style="color: cyan"> Not officially released yet </a>
+                  </li>
+                  <li>
+                    <strong>Link Website: </strong>
+                    <a
+                      style="color: cyan"
+                      href="https://tamanhhospital.vn/"
+                      target="_blank"
+                    >
+                      Web
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="unorder-list mb-30 mt-4">
                 <h4 class="mb-15">Main Features</h4>
                 <ul class="rest">
                   <li>
