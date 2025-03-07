@@ -5,7 +5,6 @@
         <h1>404</h1>
         <p>The page you are looking for doesn’t exist</p>
         <a
-          href="/home-main"
           class="butn butn-md butn-bg main-colorbg radius-30 mt-30"
         >
           <span class="text">Back to Home</span>
