@@ -49,7 +49,7 @@ const blogData = ref(null);
 onMounted(async () => {
   try {
     const response = await axios.get(
-      `https://public-cms.onrender.com/api/articles?filters[slug]=${slug.value}&populate=*`,
+      `http://14.225.204.82:1337/api/articles?filters[slug]=${slug.value}&populate=*`,
       {
         headers: {
           "Content-Type": "application/json",

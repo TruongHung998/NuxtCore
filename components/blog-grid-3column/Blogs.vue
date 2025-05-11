@@ -211,7 +211,7 @@ const isLoading = ref(false);
 const fetchBlogs = async () => {
   try {
     const response = await axios.get(
-      `https://public-cms.onrender.com/api/articles?pagination[page]=${currentPage.value}&pagination[pageSize]=${itemsPerPage.value}`,
+      `http://14.225.204.82:1337/api/articles?pagination[page]=${currentPage.value}&pagination[pageSize]=${itemsPerPage.value}`,
       {
         headers: {
           "Content-Type": "application/json",

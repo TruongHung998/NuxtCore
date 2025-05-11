@@ -10,13 +10,13 @@
             <div class="item pb-60">
               <article>
                 <div class="title mt-30">
-                  <h4> {{ blog.description || 'Đang tải...' }}</h4>
+                  <h4>{{ blog.description || "Đang tải..." }}</h4>
                 </div>
               </article>
             </div>
 
             <div class="info-area flex pt-50 bord-thin-top"></div>
-            <div v-html="blog.blocks[0].body"></div>
+            <div v-html="markedHtml" style="white-space: break-spaces"></div>
           </div>
         </div>
         <div class="col-lg-4">
@@ -96,6 +96,7 @@
 import { ref, defineProps } from "vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Navigation, Pagination, Autoplay } from "swiper";
+import { marked } from "marked";
 
 const props = defineProps({
   blog: {
@@ -119,7 +120,12 @@ const data = [
   },
 ];
 console.log(props.blog, "blogDevelop");
-
+const markedHtml = marked(props.blog.blocks[0].body, {
+  gfm: true,
+  breaks: true,
+  headerIds: false,
+  mangle: false,
+});
 const swiperOptions = {
   modules: [Navigation, Pagination, Autoplay],
   slidesPerView: 1,
@@ -136,3 +142,34 @@ const swiperOptions = {
   },
 };
 </script>
+<style>
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 16px;
+  text-align: left;
+  background-color: #2b2b2b;
+  color: #e0e0e0;
+}
+
+table th,
+table td {
+  padding: 12px 15px;
+  border: 1px solid #444;
+}
+
+table th {
+  background-color: #3c3c3c;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+table tr:nth-child(even) {
+  background-color: #333333;
+}
+
+table tr:hover {
+  background-color: #444444;
+}
+</style>
