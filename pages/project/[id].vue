@@ -8,18 +8,15 @@
     <div id="smooth-content">
       <main class="main-bg o-hidden">
         <Header :titleLabel="titleLabel" />
-        <BlogVNVC v-if="slug === 'vnvc'" />
-        <BlogTamAnh v-if="slug === 'tamanh'" />
-        <BlogEco v-if="slug === 'ecogreen'" />
-        <BlogDevelop
-          v-if="slug === 'pwa' || slug === 'zalominiapp' || slug === 'rmic'"
-        />
+        <BlogDevelop v-if="blogData" :blog="blogData" />
       </main>
       <Footer />
     </div>
   </div>
 </template>
 <script setup>
+import { ref, onMounted } from "vue";
+import axios from "axios";
 import Lines from "@/components/common/Lines";
 import ProgressScroll from "@/components/common/ProgressScroll";
 import Cursor from "@/components/common/cusor";
@@ -40,45 +37,32 @@ const slug = computed(() => {
 });
 
 const titleLabel = computed(() => {
-  switch (route.params.id) {
-    case "vnvc":
-      return {
-        title: "App - Website",
-        subtitle: "VNVC",
-      };
-    case "tamanh":
-      return {
-        title: "App - Website",
-        subtitle: "Tam Anh Hospital",
-      };
-    case "ecogreen":
-      return {
-        title: "Website",
-        subtitle: "Ecogreen",
-      };
-    case "pwa":
-      return {
-        title: "Web PWA",
-        subtitle: "PWA Ecommerce Web",
-      };
-    case "zalominiapp":
-      return {
-        title: "Zalo mini app",
-        subtitle: "Zalo mini app",
-      };
-    case "rmic":
-      return {
-        title: "Web",
-        subtitle: "Web resource management",
-      };
-    default:
-      return {
-        title: "VNVC",
-        subtitle: "VNVC",
-      };
+  return {
+    title: blogData.value?.title || 'Đang tải...',
+    subtitle: blogData.value?.description || 'Đang tải...',
   }
 });
 console.log(slug.value, "slug123");
+
+const blogData = ref(null);
+
+onMounted(async () => {
+  try {
+    const response = await axios.get(
+      `https://public-cms.onrender.com/api/articles?filters[slug]=${slug.value}&populate=*`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer e2fb542445502f15e84956b8230c9675e0bc9c0ad9be548fbdf6372a9bad394661b5e974db0cae9f3cc52bda6a6f74446d17e58ee5e95a1f0157c5aa5953af61d86e74c68b82a19b847516d58e5ca6fbb0632114ffd57df3912dad85477d97e4c55f5940ea0576e06defa737fbe6b2e864d2470ffc1d0f8a99fb04fa6cffeb66`,
+        },
+      }
+    );
+    blogData.value = response.data.data[0];
+    console.log(blogData.value, "blogData");
+  } catch (error) {
+    console.error("Error fetching blog data:", error);
+  }
+});
 
 // useHead({
 //   script: [{ src: '/assets/js/smoother-script.js', defer: true }],

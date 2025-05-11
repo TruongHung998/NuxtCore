@@ -4,13 +4,8 @@
       <div class="row">
         <div class="col-lg-11">
           <div class="caption">
-            <div class="sub-title fz-12">
-              <a>
-                <span>{{ titleLabel?.title }}</span>
-              </a>
-            </div>
             <h1 class="fz-55 mt-30">
-              {{ titleLabel?.subtitle }}
+              {{ titleLabel?.title || 'Đang tải...' }}
             </h1>
           </div>
         </div>

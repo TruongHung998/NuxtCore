@@ -10,15 +10,13 @@
             <div class="item pb-60">
               <article>
                 <div class="title mt-30">
-                  <h4>General</h4>
-                </div>
-                <div class="text mt-20">
-                  <p>Project's Developing</p>
+                  <h4> {{ blog.description || 'Đang tải...' }}</h4>
                 </div>
               </article>
             </div>
 
             <div class="info-area flex pt-50 bord-thin-top"></div>
+            <div v-html="blog.blocks[0].body"></div>
           </div>
         </div>
         <div class="col-lg-4">
@@ -95,9 +93,16 @@
   </section>
 </template>
 <script setup>
-import { ref } from "vue";
+import { ref, defineProps } from "vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Navigation, Pagination, Autoplay } from "swiper";
+
+const props = defineProps({
+  blog: {
+    type: Object,
+    required: true,
+  },
+});
 
 const data = [
   {
@@ -113,6 +118,7 @@ const data = [
     img: "https://cdn.e-plus.vn/9220e03372fd4cd4b11bda55e1ab0d9a.png",
   },
 ];
+console.log(props.blog, "blogDevelop");
 
 const swiperOptions = {
   modules: [Navigation, Pagination, Autoplay],

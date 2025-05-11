@@ -78,143 +78,24 @@
     </section>
     <div class="container">
       <div class="row">
-        <div class="col-md-6 col-lg-4">
+        <div v-for="blog in blogs" :key="blog.id" class="col-md-6 col-lg-4">
           <div class="item mb-50">
-            <div class="img fit-img">
+            <div class="img fit-img align-items-center justify-center d-flex">
               <img
-                src="https://cdn.e-plus.vn/48a234396a694c33922bde29171069ab.jpeg"
+                :src="
+                  blog.cover
+                    ? blog.cover
+                    : 'https://static-00.iconduck.com/assets.00/notion-icon-2048x2048-bi8b4fm1.png'
+                "
                 alt=""
+                style="width: 50%; height: 50%; object-fit: contain"
               />
             </div>
             <div class="cont pt-40">
-              <h4 class="fz-30">Web - App VNVC</h4>
+              <h4 class="fz-30">{{ blog.title }}</h4>
+              <p>{{ blog.description }}</p>
               <a
-                href="/project/vnvc"
-                class="butn-crev d-flex align-items-center mt-40"
-              >
-                <span class="hover-this">
-                  <span class="circle hover-anim">
-                    <i class="ti-arrow-top-right"></i>
-                  </span>
-                </span>
-                <span class="text">{{ $t("readmore") }}</span>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4">
-          <div class="item mb-50">
-            <div class="img fit-img">
-              <img
-                style="object-fit: contain; background-color: #fff"
-                src="https://cdn.e-plus.vn/c462ec7dae144d8c9ae922d41efe2ac7.png"
-                alt=""
-              />
-            </div>
-            <div class="cont pt-40">
-              <h4 class="fz-30">Web - App Tam Anh Hospital</h4>
-              <a
-                href="/project/tamanh"
-                class="butn-crev d-flex align-items-center mt-40"
-              >
-                <span class="hover-this">
-                  <span class="circle hover-anim">
-                    <i class="ti-arrow-top-right"></i>
-                  </span>
-                </span>
-                <span class="text">{{ $t("readmore") }}</span>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4">
-          <div class="item mb-50">
-            <div class="img fit-img">
-              <img
-                style="object-fit: contain; background-color: #fff"
-                src="https://cdn.e-plus.vn/1ad243846a6f432d96387ebe4ed1c0e8.jpg"
-                alt=""
-              />
-            </div>
-            <div class="cont pt-40">
-              <h4 class="fz-30">Web Ecogreen</h4>
-              <a
-                href="/project/ecogreen"
-                class="butn-crev d-flex align-items-center mt-40"
-              >
-                <span class="hover-this">
-                  <span class="circle hover-anim">
-                    <i class="ti-arrow-top-right"></i>
-                  </span>
-                </span>
-                <span class="text">{{ $t("readmore") }}</span>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4">
-          <div class="item md-mb50">
-            <div class="img fit-img">
-              <img
-                src="https://cdn.e-plus.vn/5efda627ae53400b91e2a81181ff642b.png"
-                alt=""
-                style="object-fit: contain; background-color: #fff"
-              />
-            </div>
-            <div class="cont pt-40">
-              <h4 class="fz-30">PWA website</h4>
-              <a
-                href="project/pwa"
-                class="butn-crev d-flex align-items-center mt-40"
-              >
-                <span class="hover-this">
-                  <span class="circle hover-anim">
-                    <i class="ti-arrow-top-right"></i>
-                  </span>
-                </span>
-                <span class="text">{{ $t("readmore") }}</span>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4">
-          <div class="item sm-mb50">
-            <div class="img fit-img">
-              <img
-                src="https://cdn.e-plus.vn/c462ec7dae144d8c9ae922d41efe2ac7.png"
-                alt=""
-                style="object-fit: contain; background-color: #fff"
-              />
-            </div>
-            <div class="cont pt-40">
-              <h4 class="fz-30">Zalo mini app</h4>
-              <a
-                href="project/zalominapp"
-                class="butn-crev d-flex align-items-center mt-40"
-              >
-                <span class="hover-this">
-                  <span class="circle hover-anim">
-                    <i class="ti-arrow-top-right"></i>
-                  </span>
-                </span>
-                <span class="text">{{ $t("readmore") }}</span>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4">
-          <div class="item">
-            <div class="img fit-img">
-              <img
-                src="https://cdn.e-plus.vn/e6baf6fb998e46a18bf14ceb3ebd2978.png"
-                alt=""
-                style="object-fit: contain; background-color: #fff"
-              />
-            </div>
-            <div class="cont pt-40">
-              <h4 class="fz-30">Web resource management</h4>
-              <a
-                href="project/rmic"
+                :href="`/project/${blog.slug}`"
                 class="butn-crev d-flex align-items-center mt-40"
               >
                 <span class="hover-this">
@@ -228,12 +109,39 @@
           </div>
         </div>
       </div>
+      <div class="pagination">
+        <button
+          v-if="currentPage > 1"
+          @click="changePage(currentPage - 1)"
+          class="prev"
+        >
+          &laquo; Previous
+        </button>
+        <button
+          v-for="page in totalPages"
+          :key="page"
+          :class="{ active: page === currentPage }"
+          @click="changePage(page)"
+        >
+          {{ page }}
+        </button>
+        <button
+          v-if="currentPage < totalPages"
+          @click="changePage(currentPage + 1)"
+          class="next"
+        >
+          Next &raquo;
+        </button>
+      </div>
     </div>
   </section>
 </template>
 <script setup>
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Navigation, Pagination, Autoplay } from "swiper";
+import { ref, onMounted, computed } from "vue";
+import axios from "axios";
+
 const swiperOptions = {
   modules: [Navigation, Pagination, Autoplay],
   slidesPerView: "auto",
@@ -289,4 +197,74 @@ const listTech = [
     image: "https://www.mindrops.com/images/nodejs-image.webp",
   },
 ];
+
+const blogs = ref([]);
+const currentPage = ref(1);
+const itemsPerPage = ref(6);
+const totalPages = ref(0);
+
+const fetchBlogs = async () => {
+  try {
+    const response = await axios.get(
+      `https://public-cms.onrender.com/api/articles?pagination[page]=${currentPage.value}&pagination[pageSize]=${itemsPerPage.value}`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer e2fb542445502f15e84956b8230c9675e0bc9c0ad9be548fbdf6372a9bad394661b5e974db0cae9f3cc52bda6a6f74446d17e58ee5e95a1f0157c5aa5953af61d86e74c68b82a19b847516d58e5ca6fbb0632114ffd57df3912dad85477d97e4c55f5940ea0576e06defa737fbe6b2e864d2470ffc1d0f8a99fb04fa6cffeb66`,
+        },
+      }
+    );
+    blogs.value = response.data.data;
+    totalPages.value = response.data.totalPages;
+  } catch (error) {
+    console.error("Error fetching blogs:", error);
+  }
+};
+
+const changePage = (page) => {
+  if (page >= 1 && page <= totalPages.value) {
+    currentPage.value = page;
+    fetchBlogs();
+  }
+};
+
+onMounted(() => {
+  fetchBlogs();
+});
 </script>
+
+<style scoped>
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.pagination button {
+  padding: 10px 15px;
+  border: none;
+  background-color: #f0f0f0;
+  color: #333;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.pagination button:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.pagination button.active {
+  background-color: #007bff;
+  color: #fff;
+  font-weight: bold;
+}
+
+.pagination button.prev,
+.pagination button.next {
+  font-size: 14px;
+}
+</style>
