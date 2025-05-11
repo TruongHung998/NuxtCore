@@ -1,5 +1,8 @@
 <template>
   <section class="blog-main blog section-padding" style="padding-top: 0">
+    <div v-if="isLoading" class="loading-overlay">
+      <div class="spinner"></div>
+    </div>
     <section
       style="padding-top: 1rem; padding-bottom: 2rem"
       class="testim-modern section-padding sub-bg bord-top-grd bord-bottom-grd"
@@ -88,7 +91,8 @@
                     : 'https://static-00.iconduck.com/assets.00/notion-icon-2048x2048-bi8b4fm1.png'
                 "
                 alt=""
-                style="width: 50%; height: 50%; object-fit: contain"
+                class="align-items-center justify-center d-flex"
+                style="width: 70%; height: 70%; object-fit: contain"
               />
             </div>
             <div class="cont pt-40">
@@ -202,6 +206,7 @@ const blogs = ref([]);
 const currentPage = ref(1);
 const itemsPerPage = ref(6);
 const totalPages = ref(0);
+const isLoading = ref(false);
 
 const fetchBlogs = async () => {
   try {
@@ -215,16 +220,18 @@ const fetchBlogs = async () => {
       }
     );
     blogs.value = response.data.data;
-    totalPages.value = response.data.totalPages;
+    totalPages.value = response.data.meta.pagination.pageCount;
   } catch (error) {
     console.error("Error fetching blogs:", error);
   }
 };
 
-const changePage = (page) => {
+const changePage = async (page) => {
   if (page >= 1 && page <= totalPages.value) {
+    isLoading.value = true;
     currentPage.value = page;
-    fetchBlogs();
+    await fetchBlogs();
+    isLoading.value = false;
   }
 };
 
@@ -249,22 +256,63 @@ onMounted(() => {
   color: #333;
   cursor: pointer;
   border-radius: 5px;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 .pagination button:hover {
   background-color: #007bff;
   color: #fff;
+  transform: scale(1.1);
 }
 
 .pagination button.active {
   background-color: #007bff;
   color: #fff;
   font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .pagination button.prev,
 .pagination button.next {
   font-size: 14px;
+  font-weight: bold;
+  background-color: #e0e0e0;
+}
+
+.pagination button.prev:hover,
+.pagination button.next:hover {
+  background-color: #0056b3;
+  color: #fff;
+}
+
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Changed to semi-black */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #007bff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 </style>
