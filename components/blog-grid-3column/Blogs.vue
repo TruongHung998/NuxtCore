@@ -64,8 +64,8 @@
                 <div class="info">
                   <div class="d-flex align-items-center">
                     <div>
-                      <div class="img fit-img">
-                        <img :src="tech.image" alt="" />
+                      <div class="img" style="display: flex; align-items: center; justify-content: center; width: 60px; height: 60px">
+                        <img :src="tech.image" alt="" style="object-fit: contain" />
                       </div>
                     </div>
                     <div class="ml-20">
@@ -81,37 +81,71 @@
     </section>
     <div class="container">
       <div class="row">
-        <div v-for="blog in blogs" :key="blog.id" class="col-md-6 col-lg-4">
-          <div class="item mb-50">
-            <div class="img fit-img align-items-center justify-center d-flex">
+        <template v-if="isLoading">
+          <div v-for="n in 6" :key="n" class="col-md-6 col-lg-4">
+            <div class="item mb-50">
+              <div
+                class="img fit-img align-items-center justify-center d-flex skeleton-box"
+                style="width: 70%; height: 180px"
+              ></div>
+              <div class="cont pt-40">
+                <h4
+                  class="fz-30 skeleton-box"
+                  style="width: 70%; height: 32px"
+                ></h4>
+                <p class="skeleton-box" style="width: 100%; height: 18px"></p>
+                <div
+                  class="butn-crev d-flex align-items-center mt-40 skeleton-box"
+                  style="width: 40%; height: 32px"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </template>
+        <template v-else>
+            <div
+            v-for="blog in blogs"
+            :key="blog.id"
+            class="col-md-6 col-lg-4 blog-item-click"
+            @click="$router.push(`/blog/${blog.slug}`)"
+            style="cursor: pointer"
+            >
+            <div class="item mb-50">
+              <div class="img fit-img align-items-center justify-center d-flex">
               <img
                 :src="
-                  blog.cover
-                    ? blog.cover
-                    : 'https://static-00.iconduck.com/assets.00/notion-icon-2048x2048-bi8b4fm1.png'
+                blog.cover
+                  ? blog.cover
+                  : 'https://static-00.iconduck.com/assets.00/notion-icon-2048x2048-bi8b4fm1.png'
                 "
                 alt=""
                 class="align-items-center justify-center d-flex"
-                style="width: 70%; height: 70%; object-fit: contain"
+                style="
+                width: 70%;
+                height: 70%;
+                object-fit: contain !important;
+                "
               />
-            </div>
-            <div class="cont pt-40">
+              </div>
+              <div class="cont pt-40">
               <h4 class="fz-30">{{ blog.title }}</h4>
               <p>{{ blog.description }}</p>
               <a
-                :href="`/project/${blog.slug}`"
+                :href="`/blog/${blog.slug}`"
                 class="butn-crev d-flex align-items-center mt-40"
+                @click.stop.prevent="$router.push(`/blog/${blog.slug}`)"
               >
                 <span class="hover-this">
-                  <span class="circle hover-anim">
-                    <i class="ti-arrow-top-right"></i>
-                  </span>
+                <span class="circle hover-anim">
+                  <i class="ti-arrow-top-right"></i>
+                </span>
                 </span>
                 <span class="text">{{ $t("readmore") }}</span>
               </a>
+              </div>
             </div>
-          </div>
-        </div>
+            </div>
+        </template>
       </div>
       <div class="pagination">
         <button
@@ -164,43 +198,49 @@ const swiperOptions = {
     delay: 2000,
   },
 };
-
 const listTech = [
   {
-    title: "React native",
+    title: "React Native",
     descriptions: [
-      "Tool: Xcode, Android Studio, VSCode",
-      "Tech: Firebase, SignalR",
+      "Used Firebase for authentication, real-time database, and cloud messaging.",
+      "Integrated SignalR for live chat, notifications, and real-time updates.",
     ],
-    image: "https://images.viblo.asia/f1f7004c-cd83-4a78-8d99-27f0247e872a.png",
+    image: "https://reactnative.dev/img/header_logo.svg",
   },
   {
-    title: "ReactJs",
+    title: "ReactJS",
     descriptions: [
-      "Tool: VSCode",
-      "Tech: Firebase, SignalR, Boostrap, Tailwind, GSAP, Swiper, ElementUI, AntDesign",
+      "Styled with Tailwind CSS and component libraries like Ant Design and Element UI.",
+      "Enhanced UX with GSAP animations, Swiper sliders, and real-time updates via SignalR.",
     ],
-    image:
-      "https://s3-sgn09.fptcloud.com/codelearnstorage/Upload/Blog/react-js-co-ban-phan-1-63738082145.3856.jpg",
+    image: "https://reactnative.dev/img/header_logo.svg",
   },
   {
-    title: "VueJs",
+    title: "VueJS",
     descriptions: [
-      "Tool: VSCode",
-      "Tech: Firebase, SignalR, Boostrap, Tailwind, GSAP, Swiper, ElementUI, AntDesign",
+      "Built responsive UIs using Bootstrap, Tailwind CSS, and Element UI.",
+      "Added interactivity with GSAP, Swiper, and real-time features using Firebase & SignalR.",
     ],
-    image:
-      "https://careers.techvify.com.vn/wp-content/uploads/2022/07/vuejs-la-gi-2.jpg",
+    image: "https://vuejs.org/images/logo.png",
   },
   {
-    title: "NodeJs",
+    title: "NodeJS",
     descriptions: [
-      "Tool: VSCode, Docker, OrbStack",
-      "Tech: NestJs, ExpressJs, MiniO, Redis, Elastic search",
+      "Developed APIs with NestJS and ExpressJS, following clean architecture patterns.",
+      "Used Redis for caching, MinIO for file storage, and Elasticsearch for search.",
     ],
-    image: "https://www.mindrops.com/images/nodejs-image.webp",
+    image: "https://nodejs.org/static/images/logo.svg",
+  },
+  {
+    title: "Ionic",
+    descriptions: [
+      "Built cross-platform apps with Angular, integrated Firebase for backend services.",
+      "Used Capacitor and Cordova to access native device features like camera and push notifications.",
+    ],
+    image: "https://ionicframework.com/img/meta/ionic-framework-og.png",
   },
 ];
+
 
 const blogs = ref([]);
 const currentPage = ref(1);
@@ -314,5 +354,92 @@ onMounted(() => {
   100% {
     transform: rotate(360deg);
   }
+}
+
+.skeleton-box {
+  background: linear-gradient(90deg, #e0e0e0 25%, #f5f5f5 50%, #e0e0e0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.2s infinite linear;
+  border-radius: 6px;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.rotate-text {
+  display: inline-block;
+  position: relative;
+  animation: rotateColorWave 2.5s infinite cubic-bezier(0.4, 0, 0.2, 1);
+  background: linear-gradient(90deg, #00eaff, #007bff, #ff00cc, #00eaff);
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+@keyframes rotateColorWave {
+  0% {
+    filter: none;
+    transform: scale(1) rotate(0deg);
+    background-position: 0% 50%;
+  }
+  20% {
+    filter: brightness(1.1) drop-shadow(0 0 6px #00eaffcc);
+    transform: scale(1.04) rotate(-2deg);
+    background-position: 50% 50%;
+  }
+  40% {
+    filter: none;
+    transform: scale(0.98) rotate(2deg);
+    background-position: 100% 50%;
+  }
+  60% {
+    filter: brightness(1.1) drop-shadow(0 0 8px #ff00cc99);
+    transform: scale(1.03) rotate(-1deg);
+    background-position: 50% 50%;
+  }
+  80% {
+    filter: none;
+    transform: scale(1.01) rotate(1deg);
+    background-position: 0% 50%;
+  }
+  100% {
+    filter: none;
+    transform: scale(1) rotate(0deg);
+    background-position: 0% 50%;
+  }
+}
+.cont h4.fz-30,
+.cont p {
+  transition: transform 0.22s, text-shadow 0.22s;
+}
+.item:hover .cont h4.fz-30 {
+  transform: scale(1.025) rotate(-1deg);
+  text-shadow: 0 1px 4px #00eaff33, 0 0px 1px #fff;
+}
+.item:hover .cont p {
+  transform: scale(1.01) rotate(0.5deg);
+  text-shadow: 0 1px 3px #007bff22;
+}
+.img.fit-img {
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s;
+}
+.item:hover .img.fit-img {
+  transform: scale(1.07) translateY(-4px);
+  z-index: 2;
+}
+.butn-crev {
+  transition: transform 0.22s, box-shadow 0.22s;
+}
+.butn-crev:hover, .butn-crev:focus {
+  transform: scale(1.06) translateY(-2px) rotate(-1deg);
+  z-index: 2;
 }
 </style>

@@ -5,25 +5,22 @@
         <div class="col-lg-4">
           <div class="column md-mb50">
             <h6 class="sub-title mb-30">Contact</h6>
-            <h6 class="p-color fw-400">
-              HCM City, Viet Nam
-            </h6>
+            <h6 class="p-color fw-400">HCM City, Viet Nam</h6>
             <h6 class="mt-30 mb-15">
-              <a href="#0">truonghung239810@gmail.com</a>
+              <a href="#0">Email: truonghung239810@gmail.com</a>
             </h6>
             <a href="#0" class="underline">
-              <span class="fz-22 main-color">0799397569</span>
+              <span class="fz-22 main-color"
+                ><b>Tel / Zalo:</b> (+84)799397569</span
+              >
             </a>
           </div>
         </div>
-        <div class="col-lg-2">
-        </div>
+        <div class="col-lg-2"></div>
       </div>
       <div class="pt-30 pb-30 mt-80 bord-thin-top">
         <div class="text-center">
-          <p class="fz-14">
-            © Tulen Garcia
-          </p>
+          <p class="fz-14">© Tulen Garcia</p>
         </div>
       </div>
     </div>

@@ -2,11 +2,7 @@
   <nav class="navbar navbar-expand-lg bord blur">
     <div class="container o-hidden">
       <a class="logo icon-img-100" href="/">
-        <span class="tulen-text"
-          >Tulen Garcia <br />
-          a.k.a <br />
-          Hung Truong</span
-        >
+        <span class="tulen-text">Hung Truong</span>
       </a>
 
       <button
@@ -126,7 +122,28 @@ onUnmounted(() => {
 <style scoped>
 .tulen-text {
   font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  background: linear-gradient(270deg, #007bff, #00c3ff, #ff6b6b, #f7b42c, #007bff);
+  background-size: 1000% 1000%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: tulen-gradient 6s ease-in-out infinite, tulen-scale 2s ease-in-out infinite;
+  display: inline-block;
 }
+
+@keyframes tulen-gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes tulen-scale {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15) rotate(-2deg); }
+}
+
 .contact-button button {
   background-color: #007bff;
   color: white;

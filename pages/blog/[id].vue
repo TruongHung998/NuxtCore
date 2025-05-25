@@ -15,20 +15,16 @@
   </div>
 </template>
 <script setup>
-import { ref, onMounted } from "vue";
-import axios from "axios";
+import BlogDevelop from "@/components/blog-details/BlogDevelop";
+import Header from "@/components/blog-details/Header";
+import Footer from "@/components/common/Footer";
 import Lines from "@/components/common/Lines";
+import Navbar from "@/components/common/Navbar";
 import ProgressScroll from "@/components/common/ProgressScroll";
 import Cursor from "@/components/common/cusor";
 import LoadingScreen from "@/components/common/loader";
-import Footer from "@/components/common/Footer";
-import Navbar from "@/components/common/Navbar";
-import Header from "@/components/blog-details/Header";
-import Blog from "@/components/blog-details/Blog";
-import BlogVNVC from "@/components/blog-details/BlogVNVC";
-import BlogTamAnh from "@/components/blog-details/BlogTamAnh";
-import BlogEco from "@/components/blog-details/BlogEco";
-import BlogDevelop from "@/components/blog-details/BlogDevelop";
+import axios from "axios";
+import { onMounted, ref } from "vue";
 
 const route = useRoute();
 
