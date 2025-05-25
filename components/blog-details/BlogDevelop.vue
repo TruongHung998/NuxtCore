@@ -9,8 +9,20 @@
           <div class="main-post">
             <div class="item pb-60">
               <article>
-                <div class="title mt-30">
-                  <h4>{{ blog.description || "Đang tải..." }}</h4>
+                <div class="title mt-30 blog-animation">
+                  <template v-if="!blog || !blog.description">
+                    <div
+                      class="skeleton-box"
+                      style="width: 80%; height: 32px; margin-bottom: 8px"
+                    ></div>
+                    <div
+                      class="skeleton-box"
+                      style="width: 60%; height: 18px"
+                    ></div>
+                  </template>
+                  <template v-else>
+                    <h4>{{ blog.description }}</h4>
+                  </template>
                 </div>
               </article>
             </div>

@@ -64,8 +64,21 @@
                 <div class="info">
                   <div class="d-flex align-items-center">
                     <div>
-                      <div class="img" style="display: flex; align-items: center; justify-content: center; width: 60px; height: 60px">
-                        <img :src="tech.image" alt="" style="object-fit: contain" />
+                      <div
+                        class="img"
+                        style="
+                          display: flex;
+                          align-items: center;
+                          justify-content: center;
+                          width: 60px;
+                          height: 60px;
+                        "
+                      >
+                        <img
+                          :src="tech.image"
+                          alt=""
+                          style="object-fit: contain"
+                        />
                       </div>
                     </div>
                     <div class="ml-20">
@@ -103,48 +116,48 @@
           </div>
         </template>
         <template v-else>
-            <div
+          <div
             v-for="blog in blogs"
             :key="blog.id"
             class="col-md-6 col-lg-4 blog-item-click"
             @click="$router.push(`/blog/${blog.slug}`)"
             style="cursor: pointer"
-            >
+          >
             <div class="item mb-50">
               <div class="img fit-img align-items-center justify-center d-flex">
-              <img
-                :src="
-                blog.cover
-                  ? blog.cover
-                  : 'https://static-00.iconduck.com/assets.00/notion-icon-2048x2048-bi8b4fm1.png'
-                "
-                alt=""
-                class="align-items-center justify-center d-flex"
-                style="
-                width: 70%;
-                height: 70%;
-                object-fit: contain !important;
-                "
-              />
+                <img
+                  :src="
+                    blog.cover
+                      ? blog.cover
+                      : 'https://static-00.iconduck.com/assets.00/notion-icon-2048x2048-bi8b4fm1.png'
+                  "
+                  alt=""
+                  class="align-items-center justify-center d-flex"
+                  style="
+                    width: 70%;
+                    height: 70%;
+                    object-fit: contain !important;
+                  "
+                />
               </div>
               <div class="cont pt-40">
-              <h4 class="fz-30">{{ blog.title }}</h4>
-              <p>{{ blog.description }}</p>
-              <a
-                :href="`/blog/${blog.slug}`"
-                class="butn-crev d-flex align-items-center mt-40"
-                @click.stop.prevent="$router.push(`/blog/${blog.slug}`)"
-              >
-                <span class="hover-this">
-                <span class="circle hover-anim">
-                  <i class="ti-arrow-top-right"></i>
-                </span>
-                </span>
-                <span class="text">{{ $t("readmore") }}</span>
-              </a>
+                <h4 class="fz-30">{{ blog.title }}</h4>
+                <p>{{ blog.description }}</p>
+                <a
+                  :href="`/blog/${blog.slug}`"
+                  class="butn-crev d-flex align-items-center mt-40"
+                  @click.stop.prevent="$router.push(`/blog/${blog.slug}`)"
+                >
+                  <span class="hover-this">
+                    <span class="circle hover-anim">
+                      <i class="ti-arrow-top-right"></i>
+                    </span>
+                  </span>
+                  <span class="text">{{ $t("readmore") }}</span>
+                </a>
               </div>
             </div>
-            </div>
+          </div>
         </template>
       </div>
       <div class="pagination">
@@ -240,7 +253,6 @@ const listTech = [
     image: "https://ionicframework.com/img/meta/ionic-framework-og.png",
   },
 ];
-
 
 const blogs = ref([]);
 const currentPage = ref(1);
@@ -438,7 +450,8 @@ onMounted(() => {
 .butn-crev {
   transition: transform 0.22s, box-shadow 0.22s;
 }
-.butn-crev:hover, .butn-crev:focus {
+.butn-crev:hover,
+.butn-crev:focus {
   transform: scale(1.06) translateY(-2px) rotate(-1deg);
   z-index: 2;
 }

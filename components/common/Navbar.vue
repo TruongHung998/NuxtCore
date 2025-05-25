@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg bord blur">
     <div class="container o-hidden">
       <a class="logo icon-img-100" href="/">
-        <span class="tulen-text">Hung Truong</span>
+        <span class="tulen-text">No Codding No Life</span>
       </a>
 
       <button
