@@ -57,7 +57,7 @@ const blogData = ref(null);
 onMounted(async () => {
   try {
     const response = await axios.get(
-      `https://14.225.204.82:1337/api/articles?filters[slug]=${slug.value}&populate=*`,
+      `https://env4buy.shop/api/articles?filters[slug]=${slug.value}&populate=*`,
       {
         headers: {
           "Content-Type": "application/json",

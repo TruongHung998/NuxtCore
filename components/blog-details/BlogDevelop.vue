@@ -144,7 +144,7 @@ const fetchRandomBlogs = async () => {
   isLoadingRandomBlogs.value = true;
   try {
     const response = await axios.get(
-      `https://14.225.204.82:1337/api/articles?pagination[page]=1&pagination[pageSize]=100`,
+      `https://env4buy.shop/api/articles?pagination[page]=1&pagination[pageSize]=100`,
       {
         headers: {
           "Content-Type": "application/json",
