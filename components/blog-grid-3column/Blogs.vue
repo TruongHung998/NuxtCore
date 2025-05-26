@@ -263,7 +263,7 @@ const isLoading = ref(false);
 const fetchBlogs = async () => {
   try {
     const response = await axios.get(
-      `http://14.225.204.82:1337/api/articles?pagination[page]=${currentPage.value}&pagination[pageSize]=${itemsPerPage.value}`,
+      `https://14.225.204.82:1337/api/articles?pagination[page]=${currentPage.value}&pagination[pageSize]=${itemsPerPage.value}`,
       {
         headers: {
           "Content-Type": "application/json",

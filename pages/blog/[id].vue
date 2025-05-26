@@ -57,7 +57,7 @@ const blogData = ref(null);
 onMounted(async () => {
   try {
     const response = await axios.get(
-      `http://14.225.204.82:1337/api/articles?filters[slug]=${slug.value}&populate=*`,
+      `https://14.225.204.82:1337/api/articles?filters[slug]=${slug.value}&populate=*`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -100,36 +100,21 @@ onMounted(async () => {
 .skeleton-title {
   width: 55%;
   height: 36px;
-  background: linear-gradient(
-    90deg,
-    #23242a 25%,
-    #35363c 50%,
-    #23242a 75%
-  );
+  background: linear-gradient(90deg, #23242a 25%, #35363c 50%, #23242a 75%);
   border-radius: 10px;
   animation: skeleton-loading 1.2s infinite linear alternate;
 }
 .skeleton-subtitle {
   width: 38%;
   height: 22px;
-  background: linear-gradient(
-    90deg,
-    #23242a 25%,
-    #35363c 50%,
-    #23242a 75%
-  );
+  background: linear-gradient(90deg, #23242a 25%, #35363c 50%, #23242a 75%);
   border-radius: 8px;
   animation: skeleton-loading 1.2s infinite linear alternate;
 }
 .skeleton-content {
   width: 100%;
   height: 18px;
-  background: linear-gradient(
-    90deg,
-    #23242a 25%,
-    #35363c 50%,
-    #23242a 75%
-  );
+  background: linear-gradient(90deg, #23242a 25%, #35363c 50%, #23242a 75%);
   border-radius: 8px;
   animation: skeleton-loading 1.2s infinite linear alternate;
 }
