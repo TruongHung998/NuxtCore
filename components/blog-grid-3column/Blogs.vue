@@ -94,73 +94,97 @@
     </section>
     <div class="container">
       <div class="row">
-        <template v-if="isLoading">
-          <div v-for="n in 6" :key="n" class="col-md-6 col-lg-4">
-            <div class="item mb-50">
-              <div
-                class="img fit-img align-items-center justify-center d-flex skeleton-box"
-                style="width: 70%; height: 180px"
-              ></div>
-              <div class="cont pt-40">
-                <h4
-                  class="fz-30 skeleton-box"
-                  style="width: 70%; height: 32px"
-                ></h4>
-                <p class="skeleton-box" style="width: 100%; height: 18px"></p>
-                <div
-                  class="butn-crev d-flex align-items-center mt-40 skeleton-box"
-                  style="width: 40%; height: 32px"
-                ></div>
+        <div class="col-12 mb-60 search-content">
+          <div class="search-container">
+            <div class="search-wrapper">
+              <div class="search-box">
+                <input
+                  type="text"
+                  v-model="searchQuery"
+                  @input="debouncedSearch"
+                  @keyup.enter="handleSearch"
+                  placeholder="Tìm kiếm nội dung..."
+                  class="search-input"
+                />
+                <div class="search-icon-wrapper" @click="handleSearch">
+                  <i class="ti-search search-icon" v-if="!isLoading"></i>
+                  <div class="search-loading" v-else></div>
+                </div>
               </div>
             </div>
+          </div>
+        </div>
+        <template v-if="isLoading">
+          <div v-for="n in 6" :key="n" class="col-12">
+            <BlogSkeleton />
           </div>
         </template>
         <template v-else>
           <div
+            v-if="isSearching && blogs.length === 0 && !isLoading"
+            class="col-12"
+          >
+            <div class="no-results">
+              <div class="no-results-icon">
+                <i class="ti-search"></i>
+              </div>
+              <h4>Không tìm thấy kết quả</h4>
+              <p>Hãy thử tìm kiếm với từ khóa khác</p>
+              <button @click="clearSearch" class="clear-search-btn">
+                Xóa tìm kiếm
+              </button>
+            </div>
+          </div>
+          <div
             v-for="blog in blogs"
             :key="blog.id"
-            class="col-md-6 col-lg-4 blog-item-click"
+            class="col-12 blog-item-click"
             @click="$router.push(`/blog/${blog.slug}`)"
-            style="cursor: pointer"
           >
-            <div class="item mb-50">
-              <div class="img fit-img align-items-center justify-center d-flex">
+            <div class="blog-card">
+              <div class="blog-image-wrapper">
                 <img
                   :src="
                     blog.cover
                       ? blog.cover
                       : 'https://static-00.iconduck.com/assets.00/notion-icon-2048x2048-bi8b4fm1.png'
                   "
-                  alt=""
-                  class="align-items-center justify-center d-flex"
-                  style="
-                    width: 70%;
-                    height: 70%;
-                    object-fit: contain !important;
-                  "
+                  :alt="blog.title"
+                  class="blog-image"
                 />
+                <div class="image-overlay">
+                  <div class="read-indicator">
+                    <i class="ti-arrow-top-right"></i>
+                  </div>
+                </div>
               </div>
-              <div class="cont pt-40">
-                <h4 class="fz-30">{{ blog.title }}</h4>
-                <p>{{ blog.description }}</p>
-                <a
-                  :href="`/blog/${blog.slug}`"
-                  class="butn-crev d-flex align-items-center mt-40"
-                  @click.stop.prevent="$router.push(`/blog/${blog.slug}`)"
-                >
-                  <span class="hover-this">
-                    <span class="circle hover-anim">
-                      <i class="ti-arrow-top-right"></i>
-                    </span>
-                  </span>
-                  <span class="text">{{ $t("readmore") }}</span>
-                </a>
+              <div class="blog-content">
+                <div class="blog-meta">
+                  <span class="blog-date">{{
+                    formatDate(blog.createdAt)
+                  }}</span>
+                  <span class="blog-category">{{
+                    blog.category ? blog.category.name : "Tech"
+                  }}</span>
+                </div>
+                <h4 class="blog-title">{{ blog.title }}</h4>
+                <p class="blog-description">
+                  {{ truncateText(blog.description, 120) }}
+                </p>
+                <div class="blog-footer">
+                  <div class="read-more-wrapper">
+                    <span class="read-more-text">{{ $t("readmore") }}</span>
+                    <div class="read-more-arrow">
+                      <i class="ti-arrow-right"></i>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </template>
       </div>
-      <div class="pagination">
+      <div class="pagination" v-if="!isSearching">
         <button
           v-if="currentPage > 1"
           @click="changePage(currentPage - 1)"
@@ -192,6 +216,7 @@ import { Swiper, SwiperSlide } from "swiper/vue";
 import { Navigation, Pagination, Autoplay } from "swiper";
 import { ref, onMounted, computed } from "vue";
 import axios from "axios";
+import BlogSkeleton from "@/components/common/BlogSkeleton.vue";
 
 const swiperOptions = {
   modules: [Navigation, Pagination, Autoplay],
@@ -259,11 +284,57 @@ const currentPage = ref(1);
 const itemsPerPage = ref(6);
 const totalPages = ref(0);
 const isLoading = ref(false);
+const searchQuery = ref("");
+const isSearching = ref(false);
+
+let searchTimeout = null;
+
+const debouncedSearch = () => {
+  clearTimeout(searchTimeout);
+  searchTimeout = setTimeout(() => {
+    handleSearch();
+  }, 500);
+};
+
+const handleSearch = async () => {
+  if (searchQuery.value.trim()) {
+    isSearching.value = true;
+    await searchBlogs(searchQuery.value);
+  } else {
+    isSearching.value = false;
+    currentPage.value = 1;
+    await fetchBlogs();
+  }
+};
+
+const searchBlogs = async (query) => {
+  try {
+    isLoading.value = true;
+    const response = await axios.get(
+      `https://env4buy.shop/api/articles?filters[title][$containsi]=${query}&populate=*`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer e2fb542445502f15e84956b8230c9675e0bc9c0ad9be548fbdf6372a9bad394661b5e974db0cae9f3cc52bda6a6f74446d17e58ee5e95a1f0157c5aa5953af61d86e74c68b82a19b847516d58e5ca6fbb0632114ffd57df3912dad85477d97e4c55f5940ea0576e06defa737fbe6b2e864d2470ffc1d0f8a99fb04fa6cffeb66`,
+        },
+      }
+    );
+    blogs.value = response.data.data;
+    totalPages.value = Math.ceil(
+      response.data.data.length / itemsPerPage.value
+    );
+  } catch (error) {
+    console.error("Error searching blogs:", error);
+  } finally {
+    isLoading.value = false;
+  }
+};
 
 const fetchBlogs = async () => {
   try {
+    isLoading.value = true;
     const response = await axios.get(
-      `https://env4buy.shop/api/articles?pagination[page]=${currentPage.value}&pagination[pageSize]=${itemsPerPage.value}`,
+      `https://env4buy.shop/api/articles?pagination[page]=${currentPage.value}&pagination[pageSize]=${itemsPerPage.value}&populate=*`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -275,16 +346,39 @@ const fetchBlogs = async () => {
     totalPages.value = response.data.meta.pagination.pageCount;
   } catch (error) {
     console.error("Error fetching blogs:", error);
+  } finally {
+    isLoading.value = false;
   }
 };
 
+const clearSearch = () => {
+  searchQuery.value = "";
+  isSearching.value = false;
+  currentPage.value = 1;
+  fetchBlogs();
+};
+
 const changePage = async (page) => {
-  if (page >= 1 && page <= totalPages.value) {
-    isLoading.value = true;
+  if (page >= 1 && page <= totalPages.value && !isSearching.value) {
     currentPage.value = page;
     await fetchBlogs();
-    isLoading.value = false;
   }
+};
+
+// Utility functions
+const formatDate = (dateString) => {
+  const date = new Date(dateString);
+  return date.toLocaleDateString("vi-VN", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+};
+
+const truncateText = (text, maxLength) => {
+  if (!text) return "";
+  if (text.length <= maxLength) return text;
+  return text.substring(0, maxLength) + "...";
 };
 
 onMounted(() => {
@@ -432,14 +526,7 @@ onMounted(() => {
 .cont p {
   transition: transform 0.22s, text-shadow 0.22s;
 }
-.item:hover .cont h4.fz-30 {
-  transform: scale(1.025) rotate(-1deg);
-  text-shadow: 0 1px 4px #00eaff33, 0 0px 1px #fff;
-}
-.item:hover .cont p {
-  transform: scale(1.01) rotate(0.5deg);
-  text-shadow: 0 1px 3px #007bff22;
-}
+
 .img.fit-img {
   transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s;
 }
@@ -454,5 +541,419 @@ onMounted(() => {
 .butn-crev:focus {
   transform: scale(1.06) translateY(-2px) rotate(-1deg);
   z-index: 2;
+}
+
+/* Search Content Styles */
+.search-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 2rem;
+}
+
+.search-container {
+  width: 100%;
+  max-width: 600px;
+  position: relative;
+}
+
+.search-wrapper {
+  position: relative;
+  background: rgba(30, 32, 38, 0.95);
+  border-radius: 16px;
+  padding: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.search-wrapper:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.search-wrapper:focus-within {
+  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.2);
+  border-color: rgba(0, 123, 255, 0.5);
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 0 24px;
+  height: 64px;
+  position: relative;
+}
+
+.search-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  padding-right: 20px;
+}
+
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+  font-style: italic;
+  transition: color 0.3s ease;
+}
+
+.search-input:focus::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.search-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: #007bff;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
+}
+
+.search-icon-wrapper:hover {
+  background: #0056b3;
+}
+
+.search-icon {
+  color: #ffffff;
+  font-size: 18px;
+}
+
+.search-loading {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-left-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.no-results {
+  text-align: center;
+  padding: 60px 20px;
+  background: rgba(30, 32, 38, 0.1);
+  border-radius: 16px;
+  margin: 40px 0;
+}
+
+.no-results-icon {
+  font-size: 48px;
+  color: rgba(255, 255, 255, 0.3);
+  margin-bottom: 20px;
+}
+
+.no-results h4 {
+  color: #ffffff;
+  margin-bottom: 12px;
+  font-size: 24px;
+}
+
+.no-results p {
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 24px;
+}
+
+.clear-search-btn {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.clear-search-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+}
+
+.search-suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(30, 32, 38, 0.95);
+  border-radius: 0 0 16px 16px;
+  padding: 12px 24px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: none;
+  animation: slideDown 0.3s ease;
+}
+
+.suggestion-text {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  font-style: italic;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .search-container {
+    max-width: 90%;
+  }
+
+  .search-box {
+    height: 56px;
+    padding: 0 20px;
+  }
+
+  .search-input {
+    font-size: 15px;
+  }
+
+  .search-icon-wrapper {
+    width: 40px;
+    height: 40px;
+  }
+
+  .search-icon {
+    font-size: 16px;
+  }
+}
+
+/* Optimized Blog Card Styles */
+.blog-item-click {
+  cursor: pointer;
+  padding: 15px;
+  transition: transform 0.2s ease;
+}
+
+.blog-item-click:hover {
+  transform: translateY(-2px);
+}
+
+.blog-card {
+  background: rgba(30, 32, 38, 0.95);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  position: relative;
+  display: flex;
+  min-height: 200px;
+}
+
+.blog-card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  border-color: rgba(0, 123, 255, 0.3);
+}
+
+.blog-image-wrapper {
+  position: relative;
+  width: 280px;
+  height: 200px;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  margin: 16px;
+}
+
+.blog-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.2s ease;
+}
+
+.blog-card:hover .blog-image {
+  transform: scale(1.02);
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 123, 255, 0.1);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+.blog-card:hover .image-overlay {
+  opacity: 1;
+}
+
+.read-indicator {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #007bff;
+  font-size: 16px;
+}
+
+.blog-content {
+  flex: 1;
+  padding: 24px 24px 24px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.blog-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.blog-date {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 13px;
+  font-weight: 500;
+  background: rgba(0, 123, 255, 0.1);
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 123, 255, 0.2);
+}
+
+.blog-category {
+  color: #00eaff;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.blog-title {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 12px;
+  transition: color 0.2s ease;
+}
+
+.blog-card:hover .blog-title {
+  color: #00eaff;
+}
+
+.blog-description {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.blog-footer {
+  margin-top: auto;
+}
+
+.read-more-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #007bff;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: color 0.2s ease;
+}
+
+.blog-card:hover .read-more-wrapper {
+  color: #00eaff;
+}
+
+.read-more-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: #007bff;
+  border-radius: 50%;
+  color: white;
+  font-size: 12px;
+  transition: background-color 0.2s ease;
+}
+
+.blog-card:hover .read-more-arrow {
+  background: #00eaff;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .blog-card {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .blog-image-wrapper {
+    width: 100%;
+    height: 200px;
+    margin: 16px 16px 0 16px;
+  }
+
+  .blog-content {
+    padding: 16px 24px 24px 24px;
+  }
+
+  .blog-title {
+    font-size: 20px;
+  }
+
+  .blog-description {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .blog-item-click {
+    padding: 8px;
+  }
+
+  .blog-card {
+    margin: 8px 0;
+  }
+
+  .blog-image-wrapper {
+    margin: 12px;
+    height: 180px;
+  }
+
+  .blog-content {
+    padding: 12px 20px 20px 20px;
+  }
+
+  .blog-title {
+    font-size: 18px;
+  }
 }
 </style>

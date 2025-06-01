@@ -20,7 +20,7 @@
       </div>
       <div class="pt-30 pb-30 mt-80 bord-thin-top">
         <div class="text-center">
-          <p class="fz-14">© Tulen Garcia</p>
+          <p class="fz-14">© No Coding No Life</p>
         </div>
       </div>
     </div>

@@ -16,7 +16,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: "Tulen Garcia",
+      title: "No Coding No Life",
       htmlAttrs: {
         lang: "vi",
       },

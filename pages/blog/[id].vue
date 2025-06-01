@@ -10,13 +10,7 @@
         <Header :titleLabel="titleLabel" />
         <div class="blogdevelopcontainer">
           <template v-if="!blogData">
-            <div class="skeleton-blogdevelop">
-              <div class="skeleton-title"></div>
-              <div class="skeleton-subtitle"></div>
-              <div class="skeleton-content"></div>
-              <div class="skeleton-content short"></div>
-              <div class="skeleton-content"></div>
-            </div>
+            <BlogDetailSkeleton />
           </template>
           <BlogDevelop v-else :blog="blogData" />
         </div>
@@ -35,6 +29,7 @@ import Navbar from "@/components/common/Navbar";
 import ProgressScroll from "@/components/common/ProgressScroll";
 import Cursor from "@/components/common/cusor";
 import LoadingScreen from "@/components/common/loader";
+import BlogDetailSkeleton from "@/components/common/BlogDetailSkeleton";
 import axios from "axios";
 import { onMounted, ref } from "vue";
 
@@ -86,49 +81,5 @@ onMounted(async () => {
 </script>
 
 <style scoped>
-.skeleton-blogdevelop {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding: 40px 28px;
-  background: rgba(30, 32, 38, 0.85);
-  border-radius: 18px;
-  box-shadow: 0 4px 32px 0 rgba(0, 0, 0, 0.18);
-  min-height: 320px;
-  margin: 24px 0;
-}
-.skeleton-title {
-  width: 55%;
-  height: 36px;
-  background: linear-gradient(90deg, #23242a 25%, #35363c 50%, #23242a 75%);
-  border-radius: 10px;
-  animation: skeleton-loading 1.2s infinite linear alternate;
-}
-.skeleton-subtitle {
-  width: 38%;
-  height: 22px;
-  background: linear-gradient(90deg, #23242a 25%, #35363c 50%, #23242a 75%);
-  border-radius: 8px;
-  animation: skeleton-loading 1.2s infinite linear alternate;
-}
-.skeleton-content {
-  width: 100%;
-  height: 18px;
-  background: linear-gradient(90deg, #23242a 25%, #35363c 50%, #23242a 75%);
-  border-radius: 8px;
-  animation: skeleton-loading 1.2s infinite linear alternate;
-}
-.skeleton-content.short {
-  width: 68%;
-}
-@keyframes skeleton-loading {
-  0% {
-    filter: brightness(0.95);
-    background-position: 0% 50%;
-  }
-  100% {
-    filter: brightness(1.15);
-    background-position: 100% 50%;
-  }
-}
+/* Removed old skeleton styles - now using reusable components */
 </style>
