@@ -91,6 +91,7 @@ const props = defineProps({
   min-height: 200px;
   padding: 16px;
   gap: 16px;
+  margin-bottom: 1rem;
 }
 
 .blog-skeleton-image {

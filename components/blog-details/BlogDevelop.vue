@@ -3,98 +3,159 @@
     class="blog section-padding"
     style="padding-top: 2rem; padding-bottom: 1rem"
   >
-    <div class="container">
-      <div class="row xlg-marg">
+    <div class="container-fluid px-4">
+      <div class="row xlg-marg flex-row">
         <div class="col-lg-8">
           <div class="main-post">
-            <div class="item pb-60">
-              <article>
-                <div class="title mt-30 blog-animation">
-                  <template v-if="!blog || !blog.description">
-                    <div
-                      class="skeleton-box"
-                      style="width: 80%; height: 32px; margin-bottom: 8px"
-                    ></div>
-                    <div
-                      class="skeleton-box"
-                      style="width: 60%; height: 18px"
-                    ></div>
-                  </template>
-                  <template v-else>
-                    <h4>{{ blog.description }}</h4>
-                  </template>
-                </div>
-              </article>
-            </div>
+            <article class="blog-article">
+              <div class="article-header">
+                <template v-if="!blog || !blog.description">
+                  <div class="title-skeleton">
+                    <div class="skeleton-shimmer main-title-skeleton"></div>
+                    <div class="skeleton-shimmer sub-title-skeleton"></div>
+                    <div class="skeleton-shimmer decoration-skeleton"></div>
+                  </div>
+                </template>
+                <template v-else>
+                  <div class="article-title">
+                    <h1 class="main-title">{{ blog.description }}</h1>
+                    <div class="title-decoration"></div>
+                  </div>
+                </template>
+              </div>
 
-            <div class="info-area flex pt-50 bord-thin-top"></div>
-            <div v-html="markedHtml" style="white-space: break-spaces"></div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="sidebar">
-            <div class="widget last-post-thum" style="margin-top: 2rem">
-              <h6 class="title-widget">Bài viết khác</h6>
-              <template v-if="isLoadingRandomBlogs">
-                <div
-                  v-for="n in 3"
-                  :key="n"
-                  class="item d-flex align-items-center"
-                >
-                  <div>
-                    <div
-                      class="img skeleton-box"
-                      style="width: 100px; height: 100px"
-                    ></div>
+              <template v-if="!blog || !blog.description">
+                <div class="article-meta-skeleton">
+                  <div class="meta-skeleton-item">
+                    <div class="skeleton-shimmer icon-skeleton"></div>
+                    <div class="skeleton-shimmer text-skeleton"></div>
                   </div>
-                  <div class="cont" style="width: 70%">
-                    <span
-                      class="tag skeleton-box"
-                      style="
-                        width: 60%;
-                        height: 18px;
-                        display: block;
-                        margin-bottom: 8px;
-                      "
-                    ></span>
-                    <h6
-                      class="skeleton-box"
-                      style="width: 90%; height: 16px"
-                    ></h6>
+                  <div class="meta-skeleton-item">
+                    <div class="skeleton-shimmer icon-skeleton"></div>
+                    <div class="skeleton-shimmer text-skeleton"></div>
                   </div>
+                  <div class="meta-skeleton-item">
+                    <div class="skeleton-shimmer icon-skeleton"></div>
+                    <div class="skeleton-shimmer text-skeleton"></div>
+                  </div>
+                </div>
+
+                <div class="content-skeleton">
+                  <div class="skeleton-shimmer content-line full"></div>
+                  <div class="skeleton-shimmer content-line"></div>
+                  <div class="skeleton-shimmer content-line medium"></div>
+                  <div class="skeleton-shimmer content-line full"></div>
+                  <div class="skeleton-shimmer content-line short"></div>
+                  <div class="skeleton-shimmer content-line"></div>
+                  <div class="skeleton-shimmer content-line medium"></div>
+                  <div class="skeleton-shimmer content-line full"></div>
+                  <div class="skeleton-shimmer content-line short"></div>
+                  <div class="skeleton-shimmer content-line"></div>
+                  <div class="skeleton-shimmer content-line medium"></div>
+                  <div class="skeleton-shimmer content-line full"></div>
+                  <div class="skeleton-shimmer content-image"></div>
+                  <div class="skeleton-shimmer content-line"></div>
+                  <div class="skeleton-shimmer content-line short"></div>
+                  <div class="skeleton-shimmer content-line medium"></div>
                 </div>
               </template>
               <template v-else>
-                <div
-                  class="item d-flex align-items-center"
-                  v-for="(randomBlog, index) in randomBlogs"
-                  :key="index"
-                >
-                  <div>
-                    <div class="img">
-                      <a :href="`/blog/${randomBlog.slug}`">
-                        <img
-                          :src="randomBlog.cover"
-                          alt=""
-                          style="object-fit: cover; width: 100%; height: 100px"
-                        />
-                      </a>
-                    </div>
+                <div class="article-meta">
+                  <div class="meta-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>{{ new Date().toLocaleDateString("vi-VN") }}</span>
                   </div>
-                  <div class="cont">
-                    <span class="tag">
-                      <a :href="`/blog/${randomBlog.slug}`">{{
-                        randomBlog.title
-                      }}</a>
-                    </span>
-                    <h6>
-                      <a :href="`/blog/${randomBlog.slug}`">
-                        {{ randomBlog.description }}
-                      </a>
-                    </h6>
+                  <div class="meta-item">
+                    <i class="fas fa-clock"></i>
+                    <span>5 phút đọc</span>
+                  </div>
+                  <div class="meta-item">
+                    <i class="fas fa-tag"></i>
+                    <span>Blog</span>
                   </div>
                 </div>
+
+                <div class="article-content">
+                  <div class="content-wrapper" v-html="markedHtml"></div>
+                </div>
               </template>
+            </article>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="sidebar related-post sticky-sidebar">
+            <div class="widget last-post-thum">
+              <div class="widget-header">
+                <h6 class="title-widget">Bài viết khác</h6>
+                <div class="widget-divider"></div>
+              </div>
+              <div class="related-posts-container">
+                <template v-if="isLoadingRandomBlogs">
+                  <div
+                    v-for="n in 3"
+                    :key="n"
+                    class="related-post-item loading"
+                    :style="{ animationDelay: `${n * 0.1}s` }"
+                  >
+                    <div class="post-image-container">
+                      <div
+                        class="skeleton-shimmer img-skeleton"
+                        :style="{ animationDelay: `${n * 0.05}s` }"
+                      ></div>
+                    </div>
+                    <div class="post-content">
+                      <div
+                        class="skeleton-shimmer tag-skeleton"
+                        :style="{ animationDelay: `${n * 0.1 + 0.1}s` }"
+                      ></div>
+                      <div
+                        class="skeleton-shimmer description-skeleton-1"
+                        :style="{ animationDelay: `${n * 0.1 + 0.15}s` }"
+                      ></div>
+                      <div
+                        class="skeleton-shimmer description-skeleton-2"
+                        :style="{ animationDelay: `${n * 0.1 + 0.2}s` }"
+                      ></div>
+                      <div
+                        class="skeleton-shimmer description-skeleton-3"
+                        :style="{ animationDelay: `${n * 0.1 + 0.25}s` }"
+                      ></div>
+                    </div>
+                  </div>
+                </template>
+                <template v-else>
+                  <div
+                    class="related-post-item"
+                    v-for="(randomBlog, index) in randomBlogs"
+                    :key="index"
+                  >
+                    <div class="post-image-container">
+                      <a :href="`/blog/${randomBlog.slug}`" class="image-link">
+                        <img
+                          :src="randomBlog.cover"
+                          :alt="randomBlog.title"
+                          class="post-image"
+                        />
+                        <div class="image-overlay">
+                          <i class="fas fa-external-link-alt"></i>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="post-content">
+                      <span class="post-tag">
+                        <a :href="`/blog/${randomBlog.slug}`">{{
+                          randomBlog.title
+                        }}</a>
+                      </span>
+                      <h6 class="post-description">
+                        <a :href="`/blog/${randomBlog.slug}`">
+                          {{ randomBlog.description }}
+                        </a>
+                      </h6>
+                    </div>
+                  </div>
+                </template>
+              </div>
             </div>
           </div>
         </div>
@@ -197,31 +258,855 @@ table tr:hover {
   background-color: #444444;
 }
 
-.skeleton-box {
-  background: linear-gradient(90deg, #444 25%, #555 50%, #444 75%);
+/* Enhanced Skeleton Loading Styles */
+.skeleton-shimmer {
+  background: linear-gradient(
+    110deg,
+    rgba(255, 255, 255, 0.03) 8%,
+    rgba(0, 234, 255, 0.1) 18%,
+    rgba(255, 255, 255, 0.03) 33%
+  );
   background-size: 200% 100%;
-  animation: skeleton-loading 1.2s infinite linear;
+  animation: shimmer 2s infinite ease-in-out, pulse 3s infinite ease-in-out;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.skeleton-shimmer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 234, 255, 0.15),
+    transparent
+  );
+  transform: translateX(-100%);
+  animation: shimmer-wave 2s infinite ease-in-out;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes shimmer-wave {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Staggered animation for content lines */
+.content-skeleton .content-line:nth-child(1) {
+  animation-delay: 0s;
+}
+.content-skeleton .content-line:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.content-skeleton .content-line:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.content-skeleton .content-line:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.content-skeleton .content-line:nth-child(5) {
+  animation-delay: 0.4s;
+}
+.content-skeleton .content-line:nth-child(6) {
+  animation-delay: 0.5s;
+}
+.content-skeleton .content-line:nth-child(7) {
+  animation-delay: 0.6s;
+}
+.content-skeleton .content-line:nth-child(8) {
+  animation-delay: 0.7s;
+}
+.content-skeleton .content-line:nth-child(9) {
+  animation-delay: 0.8s;
+}
+.content-skeleton .content-line:nth-child(10) {
+  animation-delay: 0.9s;
+}
+.content-skeleton .content-line:nth-child(11) {
+  animation-delay: 1s;
+}
+.content-skeleton .content-line:nth-child(12) {
+  animation-delay: 1.1s;
+}
+.content-skeleton .content-image {
+  animation-delay: 1.2s;
+}
+
+/* Main Title Skeleton */
+.title-skeleton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.main-title-skeleton {
+  width: 85%;
+  height: 48px;
+  border-radius: 12px;
+  max-width: 600px;
+  animation-delay: 0s;
+}
+
+.sub-title-skeleton {
+  width: 65%;
+  height: 24px;
+  border-radius: 8px;
+  max-width: 400px;
+  animation-delay: 0.2s;
+}
+
+.decoration-skeleton {
+  width: 80px;
+  height: 4px;
+  border-radius: 2px;
+  margin-top: 8px;
+  animation-delay: 0.4s;
+}
+
+/* Meta Section Skeleton */
+.article-meta-skeleton {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-bottom: 40px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.meta-skeleton-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.meta-skeleton-item:nth-child(1) .icon-skeleton,
+.meta-skeleton-item:nth-child(1) .text-skeleton {
+  animation-delay: 0.5s;
+}
+.meta-skeleton-item:nth-child(2) .icon-skeleton,
+.meta-skeleton-item:nth-child(2) .text-skeleton {
+  animation-delay: 0.6s;
+}
+.meta-skeleton-item:nth-child(3) .icon-skeleton,
+.meta-skeleton-item:nth-child(3) .text-skeleton {
+  animation-delay: 0.7s;
+}
+
+.icon-skeleton {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+}
+
+.text-skeleton {
+  width: 80px;
+  height: 16px;
   border-radius: 6px;
 }
 
-@keyframes skeleton-loading {
+/* Content Section Skeleton */
+.content-skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.content-line {
+  height: 18px;
+  border-radius: 6px;
+  width: 100%;
+}
+
+.content-line.short {
+  width: 70%;
+}
+
+.content-line.medium {
+  width: 85%;
+}
+
+.content-line.full {
+  width: 100%;
+}
+
+.content-image {
+  width: 100%;
+  height: 200px;
+  border-radius: 12px;
+  margin: 24px 0;
+}
+
+/* Sidebar Skeleton Improvements */
+.img-skeleton {
+  width: 100px;
+  height: 100px;
+  border-radius: 12px;
+}
+
+.tag-skeleton {
+  width: 70%;
+  height: 16px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+.description-skeleton-1 {
+  width: 95%;
+  height: 14px;
+  border-radius: 6px;
+  margin-bottom: 6px;
+}
+
+.description-skeleton-2 {
+  width: 85%;
+  height: 14px;
+  border-radius: 6px;
+  margin-bottom: 6px;
+}
+
+.description-skeleton-3 {
+  width: 60%;
+  height: 14px;
+  border-radius: 6px;
+}
+
+/* Legacy skeleton box for backward compatibility */
+.skeleton-box {
+  background: linear-gradient(
+    110deg,
+    rgba(255, 255, 255, 0.03) 8%,
+    rgba(0, 234, 255, 0.1) 18%,
+    rgba(255, 255, 255, 0.03) 33%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite ease-in-out;
+  border-radius: 8px;
+}
+
+/* Enhanced loading state for related posts */
+.related-post-item.loading {
+  pointer-events: none;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  animation: fade-in 0.5s ease-in-out;
+}
+
+.related-post-item.loading::before {
+  opacity: 0;
+}
+
+@keyframes fade-in {
   0% {
-    background-position: 200% 0;
+    opacity: 0;
+    transform: translateY(10px);
   }
   100% {
-    background-position: -200% 0;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive skeleton adjustments */
+@media (max-width: 768px) {
+  .main-title-skeleton {
+    width: 95%;
+    height: 36px;
+  }
+
+  .sub-title-skeleton {
+    width: 75%;
+    height: 20px;
+  }
+
+  .article-meta-skeleton {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .content-image {
+    height: 150px;
+  }
+
+  .img-skeleton {
+    width: 80px;
+    height: 80px;
   }
 }
 
 .sidebar .item .cont .tag a,
 .sidebar .item .cont h6 a {
   display: inline-block;
-  transition: color 0.3s, transform 0.3s, text-shadow 0.3s;
+  transition: color 0.2s ease;
 }
 .sidebar .item .cont .tag a:hover,
 .sidebar .item .cont h6 a:hover {
   color: #00eaff;
-  transform: scale(1.06) rotate(-2deg);
-  text-shadow: 0 2px 12px #00eaff88, 0 0px 2px #fff;
+}
+
+/* Enhanced Related Posts Styling */
+.related-post {
+  margin-top: 0 !important;
+}
+
+/* Blog section setup for sticky */
+.blog.section-padding {
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Ensure row has proper display and alignment */
+.row.xlg-marg {
+  display: flex !important;
+  align-items: flex-start;
+  position: relative;
+}
+
+/* Sticky Sidebar */
+.sticky-sidebar {
+  position: sticky !important;
+  top: 2rem;
+  align-self: flex-start;
+  max-height: calc(100vh - 4rem);
+  overflow-y: auto;
+  z-index: 10;
+  will-change: transform;
+}
+
+/* Custom scrollbar for sidebar */
+.sticky-sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sticky-sidebar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+}
+
+.sticky-sidebar::-webkit-scrollbar-thumb {
+  background: rgba(0, 234, 255, 0.3);
+  border-radius: 3px;
+}
+
+.sticky-sidebar::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 234, 255, 0.5);
+}
+
+.widget {
+  margin-top: 0 !important;
+}
+.widget {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.widget-header {
+  margin-bottom: 24px;
+}
+
+.title-widget {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, #00eaff, #0099cc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.widget-divider {
+  height: 3px;
+  background: linear-gradient(90deg, #00eaff, #0099cc, transparent);
+  border-radius: 2px;
+  width: 60px;
+}
+
+.related-posts-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.related-post-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.related-post-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 234, 255, 0.1),
+    rgba(0, 153, 204, 0.1)
+  );
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.related-post-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(0, 234, 255, 0.15);
+  border-color: rgba(0, 234, 255, 0.2);
+}
+
+.related-post-item:hover::before {
+  opacity: 1;
+}
+
+.post-image-container {
+  flex-shrink: 0;
+  position: relative;
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.image-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.post-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.2s ease;
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 234, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.image-overlay i {
+  color: white;
+  font-size: 20px;
+}
+
+.related-post-item:hover .post-image {
+  transform: scale(1.05);
+}
+
+.related-post-item:hover .image-overlay {
+  opacity: 1;
+}
+
+.post-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.post-tag {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.post-tag a {
+  color: #00eaff;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.post-tag a:hover {
+  color: #ffffff;
+}
+
+.post-description {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.post-description a {
+  color: #b0b0b0;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.post-description a:hover {
+  color: #ffffff;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .sticky-sidebar {
+    position: static;
+    max-height: none;
+    overflow-y: visible;
+  }
+
+  .related-post-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .post-image-container {
+    width: 100%;
+    height: 150px;
+    margin: 0 auto;
+  }
+
+  .widget {
+    padding: 16px;
+  }
+}
+
+/* Medium screens - adjust sticky positioning */
+@media (min-width: 769px) and (max-width: 991px) {
+  .sticky-sidebar {
+    top: 1.5rem;
+    max-height: calc(100vh - 3rem);
+  }
+}
+
+/* Enhanced Main Post Styling */
+.main-post {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  position: relative;
+  overflow: hidden;
+  max-width: none;
+  width: 100%;
+}
+
+.main-post::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #00eaff, #0099cc, #00eaff);
+}
+
+.main-post::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #00eaff, #0099cc, #00eaff);
+}
+
+.blog-article {
+  position: relative;
+  z-index: 1;
+}
+
+.article-header {
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.title-skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.title-skeleton .main-title {
+  width: 80%;
+  height: 40px;
+  border-radius: 8px;
+}
+
+.title-skeleton .sub-title {
+  width: 60%;
+  height: 20px;
+  border-radius: 6px;
+}
+
+.article-title {
+  text-align: center;
+}
+
+.main-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 16px 0;
+  line-height: 1.2;
+  background: linear-gradient(135deg, #ffffff, #00eaff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.title-decoration {
+  height: 4px;
+  width: 80px;
+  background: linear-gradient(90deg, #00eaff, #0099cc);
+  margin: 0 auto;
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(0, 234, 255, 0.4);
+}
+
+.article-meta {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-bottom: 40px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #b0b0b0;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.meta-item:hover {
+  color: #00eaff;
+}
+
+.meta-item i {
+  color: #00eaff;
+  font-size: 16px;
+}
+
+.article-content {
+  position: relative;
+}
+
+.content-wrapper {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #e0e0e0;
+  white-space: break-spaces;
+}
+
+.content-wrapper h1,
+.content-wrapper h2,
+.content-wrapper h3,
+.content-wrapper h4,
+.content-wrapper h5,
+.content-wrapper h6 {
+  color: #ffffff;
+  margin: 32px 0 16px 0;
+  font-weight: 700;
+}
+
+.content-wrapper h1 {
+  font-size: 2rem;
+  border-bottom: 2px solid #00eaff;
+  padding-bottom: 8px;
+}
+
+.content-wrapper h2 {
+  font-size: 1.75rem;
+  color: #00eaff;
+}
+
+.content-wrapper h3 {
+  font-size: 1.5rem;
+}
+
+.content-wrapper p {
+  margin-bottom: 20px;
+  text-align: justify;
+}
+
+.content-wrapper a {
+  color: #00eaff;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.content-wrapper a:hover {
+  color: #ffffff;
+  border-bottom-color: #00eaff;
+}
+
+.content-wrapper blockquote {
+  background: rgba(0, 234, 255, 0.1);
+  border-left: 4px solid #00eaff;
+  padding: 20px;
+  margin: 24px 0;
+  border-radius: 8px;
+  font-style: italic;
+  color: #ffffff;
+}
+
+.content-wrapper code {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-family: "Courier New", monospace;
+  color: #00eaff;
+  font-size: 14px;
+}
+
+.content-wrapper pre {
+  background: #1e1e1e;
+  padding: 20px;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 20px 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.content-wrapper pre code {
+  background: none;
+  padding: 0;
+  color: #e0e0e0;
+}
+
+.content-wrapper ul,
+.content-wrapper ol {
+  margin: 16px 0;
+  padding-left: 24px;
+}
+
+.content-wrapper li {
+  margin-bottom: 8px;
+  color: #e0e0e0;
+}
+
+.content-wrapper img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 20px 0;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive design for main post */
+@media (max-width: 768px) {
+  .main-post {
+    padding: 24px;
+    border-radius: 16px;
+  }
+
+  .main-title {
+    font-size: 1.8rem;
+  }
+
+  .article-meta {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .content-wrapper {
+    font-size: 15px;
+  }
+
+  .content-wrapper h1 {
+    font-size: 1.6rem;
+  }
+
+  .content-wrapper h2 {
+    font-size: 1.4rem;
+  }
+}
+
+/* Container width adjustments */
+@media (min-width: 1200px) {
+  .container-fluid {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1400px) {
+  .container-fluid {
+    max-width: 1600px;
+  }
 }
 </style>

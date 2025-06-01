@@ -1,8 +1,5 @@
 <template>
   <section class="blog-main blog section-padding" style="padding-top: 0">
-    <div v-if="isLoading" class="loading-overlay">
-      <div class="spinner"></div>
-    </div>
     <section
       style="padding-top: 1rem; padding-bottom: 2rem"
       class="testim-modern section-padding sub-bg bord-top-grd bord-bottom-grd"
@@ -48,38 +45,18 @@
             }"
           >
             <SwiperSlide class="swiper-slide" v-for="tech in listTech">
-              <div class="item">
-                <div style="padding-top: 1rem">
-                  <div class="text">
-                    <ul>
-                      <li
-                        v-for="description in tech.descriptions"
-                        style="list-style-type: circle"
-                      >
-                        {{ description }}
-                      </li>
-                    </ul>
-                  </div>
+              <div class="item tech-item">
+                <div class="text">
+                  <ul>
+                    <li v-for="description in tech.descriptions">
+                      {{ description }}
+                    </li>
+                  </ul>
                 </div>
                 <div class="info">
                   <div class="d-flex align-items-center">
-                    <div>
-                      <div
-                        class="img"
-                        style="
-                          display: flex;
-                          align-items: center;
-                          justify-content: center;
-                          width: 60px;
-                          height: 60px;
-                        "
-                      >
-                        <img
-                          :src="tech.image"
-                          alt=""
-                          style="object-fit: contain"
-                        />
-                      </div>
+                    <div class="img">
+                      <img :src="tech.image" :alt="tech.title" />
                     </div>
                     <div class="ml-20">
                       <h6 class="fz-18">{{ tech.title }}</h6>
@@ -220,7 +197,7 @@ import BlogSkeleton from "@/components/common/BlogSkeleton.vue";
 
 const swiperOptions = {
   modules: [Navigation, Pagination, Autoplay],
-  slidesPerView: "auto",
+  slidesPerView: 3,
   loop: true,
   speed: 1000,
   centeredSlides: false,
@@ -234,6 +211,32 @@ const swiperOptions = {
   },
   autoplay: {
     delay: 2000,
+  },
+  breakpoints: {
+    320: {
+      slidesPerView: 1,
+      spaceBetween: 15,
+    },
+    480: {
+      slidesPerView: 1,
+      spaceBetween: 20,
+    },
+    640: {
+      slidesPerView: 1.5,
+      spaceBetween: 20,
+    },
+    768: {
+      slidesPerView: 2,
+      spaceBetween: 25,
+    },
+    1024: {
+      slidesPerView: 2.5,
+      spaceBetween: 30,
+    },
+    1200: {
+      slidesPerView: 3,
+      spaceBetween: 30,
+    },
   },
 };
 const listTech = [
@@ -712,8 +715,114 @@ onMounted(() => {
   }
 }
 
+/* Tech Item Styles */
+.tech-item {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 24px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tech-item:hover {
+  border-color: rgba(0, 123, 255, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 123, 255, 0.15);
+}
+
+.tech-item .text {
+  flex: 1;
+  margin-bottom: 20px;
+}
+
+.tech-item .text ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tech-item .text li {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 12px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.tech-item .text li:before {
+  content: "•";
+  color: #00eaff;
+  font-size: 16px;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.tech-item .text li:last-child {
+  margin-bottom: 0;
+}
+
+.tech-item .info {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tech-item .info .img {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tech-item .info .img img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  filter: brightness(0.9);
+}
+
+.tech-item .info h6 {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 18px;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.tech-item .info .d-flex {
+  align-items: center;
+}
+
+.tech-item .info .ml-20 {
+  margin-left: 16px;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
+  .tech-item {
+    padding: 20px;
+  }
+
+  .tech-item .text li {
+    font-size: 13px;
+    padding-left: 18px;
+  }
+
+  .tech-item .info h6 {
+    font-size: 16px;
+  }
+
+  .tech-item .info .img img {
+    width: 36px;
+    height: 36px;
+  }
+
   .search-container {
     max-width: 90%;
   }
