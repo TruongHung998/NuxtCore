@@ -82,8 +82,11 @@
             </article>
           </div>
         </div>
-        <div class="col-lg-4">
-          <div class="sidebar related-post sticky-sidebar">
+        <div class="col-lg-4" style="padding-left: .5rem;">
+          <div
+            class="sidebar related-post"
+            :class="{ 'sticky-related-post': isScrolledDown }"
+          >
             <div class="widget last-post-thum">
               <div class="widget-header">
                 <h6 class="title-widget">Bài viết khác</h6>
@@ -167,7 +170,7 @@
 import axios from "axios";
 import { marked } from "marked";
 import { Autoplay, Navigation, Pagination } from "swiper";
-import { defineProps, onMounted, ref } from "vue";
+import { defineProps, onMounted, ref, onUnmounted } from "vue";
 
 const props = defineProps({
   blog: {
@@ -200,6 +203,7 @@ const swiperOptions = {
 
 const randomBlogs = ref([]);
 const isLoadingRandomBlogs = ref(true);
+const isScrolledDown = ref(false);
 
 const fetchRandomBlogs = async () => {
   isLoadingRandomBlogs.value = true;
@@ -223,8 +227,20 @@ const fetchRandomBlogs = async () => {
   }
 };
 
+const handleScroll = () => {
+  const scrollY = window.scrollY;
+  const viewportHeight = window.innerHeight;
+  const threshold = viewportHeight * 0.5; // 40vh
+  isScrolledDown.value = scrollY > threshold;
+};
+
 onMounted(() => {
   fetchRandomBlogs();
+  window.addEventListener("scroll", handleScroll);
+});
+
+onUnmounted(() => {
+  window.removeEventListener("scroll", handleScroll);
 });
 </script>
 <style>
@@ -582,6 +598,17 @@ table tr:hover {
 /* Enhanced Related Posts Styling */
 .related-post {
   margin-top: 0 !important;
+  transition: all 0.3s ease;
+}
+
+.sticky-related-post {
+  position: fixed !important;
+  top: 10vh !important;
+  right: 1rem !important;
+  width: calc(33.33% - 2rem) !important;
+  z-index: 100 !important;
+  max-height: calc(100vh - 2rem);
+  overflow-y: auto;
 }
 
 /* Blog section setup for sticky */
@@ -595,36 +622,6 @@ table tr:hover {
   display: flex !important;
   align-items: flex-start;
   position: relative;
-}
-
-/* Sticky Sidebar */
-.sticky-sidebar {
-  position: sticky !important;
-  top: 2rem;
-  align-self: flex-start;
-  max-height: calc(100vh - 4rem);
-  overflow-y: auto;
-  z-index: 10;
-  will-change: transform;
-}
-
-/* Custom scrollbar for sidebar */
-.sticky-sidebar::-webkit-scrollbar {
-  width: 6px;
-}
-
-.sticky-sidebar::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 3px;
-}
-
-.sticky-sidebar::-webkit-scrollbar-thumb {
-  background: rgba(0, 234, 255, 0.3);
-  border-radius: 3px;
-}
-
-.sticky-sidebar::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 234, 255, 0.5);
 }
 
 .widget {
@@ -815,6 +812,13 @@ table tr:hover {
     overflow-y: visible;
   }
 
+  .sticky-related-post {
+    position: static !important;
+    width: 100% !important;
+    right: auto !important;
+    top: auto !important;
+  }
+
   .related-post-item {
     flex-direction: column;
     text-align: center;
@@ -836,6 +840,32 @@ table tr:hover {
   .sticky-sidebar {
     top: 1.5rem;
     max-height: calc(100vh - 3rem);
+  }
+
+  .sticky-related-post {
+    width: calc(33.33% - 1.5rem) !important;
+    right: 0.75rem !important;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .sticky-related-post {
+    width: calc(33.33% - 1.5rem) !important;
+    right: 0.75rem !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .sticky-related-post {
+    width: calc(33.33% - 1.5rem) !important;
+    right: 0.75rem !important;
+  }
+}
+
+@media (min-width: 1400px) {
+  .sticky-related-post {
+    width: calc(33.33% - 2rem) !important;
+    right: 1rem !important;
   }
 }
 

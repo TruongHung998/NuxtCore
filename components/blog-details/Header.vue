@@ -18,7 +18,7 @@
             <li class="breadcrumb-item active" aria-current="page">
               {{
                 titleLabel?.title
-                  ? truncateText(titleLabel.title, 50)
+                  ? truncateText(titleLabel.title, 100)
                   : "Chi tiết bài viết"
               }}
             </li>
