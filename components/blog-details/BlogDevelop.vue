@@ -63,7 +63,7 @@
                 <div class="article-meta">
                   <div class="meta-item">
                     <i class="fas fa-calendar-alt"></i>
-                    <span>{{ new Date().toLocaleDateString("vi-VN") }}</span>
+                    <span>{{ new Date(blog.createdAt).toLocaleDateString("vi-VN") }}</span>
                   </div>
                   <div class="meta-item">
                     <i class="fas fa-clock"></i>

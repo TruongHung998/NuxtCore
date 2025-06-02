@@ -337,7 +337,7 @@ const fetchBlogs = async () => {
   try {
     isLoading.value = true;
     const response = await axios.get(
-      `https://env4buy.shop/api/articles?pagination[page]=${currentPage.value}&pagination[pageSize]=${itemsPerPage.value}&populate=*`,
+      `https://env4buy.shop/api/articles?pagination[page]=${currentPage.value}&pagination[pageSize]=${itemsPerPage.value}&populate=*&sort=createdAt:desc`,
       {
         headers: {
           "Content-Type": "application/json",
