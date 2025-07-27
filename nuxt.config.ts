@@ -16,7 +16,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: "No Coding No Life",
+      title: "Viet Hung & Lan Huyen - Wedding Invitation",
       htmlAttrs: {
         lang: "vi",
       },
@@ -38,15 +38,11 @@ export default defineNuxtConfig({
         // Google Fonts
         {
           rel: "stylesheet",
-          href: "https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap",
+          href: "https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap",
         },
         {
           rel: "stylesheet",
-          href: "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700&display=swap",
-        },
-        {
-          rel: "stylesheet",
-          href: "https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap",
+          href: "https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700&display=swap",
         },
         { rel: "stylesheet", href: "/assets/css/plugins.css" },
         { rel: "stylesheet", href: "/assets/css/style.css" },
@@ -83,7 +79,7 @@ export default defineNuxtConfig({
       { code: "vi", name: "Vietnamese", iso: "vi-VN", file: "vi.json" },
     ],
     defaultLocale: "en",
-    langDir: "locales/"
+    langDir: "locales/",
   },
-  css: ["~/public/assets/scss/global.scss"],
+  css: ["~/public/assets/scss/global.scss", "~/assets/scss/wedding.scss"],
 });
