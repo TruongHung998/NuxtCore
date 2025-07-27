@@ -500,6 +500,120 @@ $overlay-light: rgba(248, 248, 246, 0.9);
   }
 }
 
+// Scroll Snapping
+.scroll-snap {
+  scroll-snap-type: none;
+  overflow-y: auto;
+  height: auto;
+}
+.section {
+  scroll-snap-align: none;
+}
+
+// Section scroll-trigger animation
+.section {
+  opacity: 0;
+  transform: translateY(40px) scale(0.98);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.section.section-visible {
+  opacity: 1;
+  transform: none;
+}
+
+// Karaoke Animation (preserve whitespace)
+.karaoke-line {
+  display: inline-block;
+  white-space: pre;
+}
+.karaoke-char {
+  opacity: 0.3;
+  transition: opacity 0.15s;
+}
+.karaoke-char.active {
+  opacity: 1;
+  color: #fffbe6;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+}
+.karaoke-fade-enter-active,
+.karaoke-fade-leave-active {
+  transition: opacity 0.5s;
+}
+.karaoke-fade-enter-from,
+.karaoke-fade-leave-to {
+  opacity: 0;
+}
+
+// Artistic Font for Couple Names
+.artistic-font {
+  font-family: "Great Vibes", cursive, "Nunito", sans-serif;
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: #fffbe6;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+}
+
+// Animated Countdown
+.count-flip-enter-active,
+.count-flip-leave-active {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s;
+}
+.count-flip-enter-from,
+.count-flip-leave-to {
+  opacity: 0;
+  transform: translateY(-1em) scale(0.8);
+}
+
+// Countdown fade animation
+.count-fade-enter-active,
+.count-fade-leave-active {
+  transition: opacity 0.4s, transform 0.4s;
+}
+.count-fade-enter-from,
+.count-fade-leave-to {
+  opacity: 0;
+  transform: translateY(-0.5em) scale(0.9);
+}
+
+// Masonry Gallery
+.gallery-masonry {
+  column-count: 4;
+  column-gap: 20px;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  @media (max-width: 1200px) {
+    column-count: 3;
+  }
+  @media (max-width: 900px) {
+    column-count: 2;
+  }
+  @media (max-width: 600px) {
+    column-count: 1;
+  }
+}
+.gallery-masonry-item {
+  break-inside: avoid;
+  margin-bottom: 20px;
+  border-radius: 15px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: box-shadow 0.3s, transform 0.3s;
+  background: #fff;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  &.vertical img {
+    aspect-ratio: 3/4;
+  }
+  &.horizontal img {
+    aspect-ratio: 4/3;
+  }
+  &.square img {
+    aspect-ratio: 1/1;
+  }
+}
+
 // Responsive Design
 @media (max-width: 768px) {
   .nav-dots {
@@ -582,6 +696,27 @@ $overlay-light: rgba(248, 248, 246, 0.9);
     .and {
       margin: 15px 0;
     }
+  }
+}
+
+// Responsive Improvements
+@media (max-width: 900px) {
+  .karaoke-lyrics {
+    font-size: 1.2rem;
+  }
+  .artistic-font {
+    font-size: 2.5rem;
+  }
+}
+@media (max-width: 600px) {
+  .karaoke-lyrics {
+    font-size: 1rem;
+  }
+  .artistic-font {
+    font-size: 1.5rem;
+  }
+  .gallery-masonry {
+    column-count: 1;
   }
 }
 

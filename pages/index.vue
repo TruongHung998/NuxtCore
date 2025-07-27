@@ -1,5 +1,6 @@
 <template>
   <div class="wedding-website">
+    <CustomCursor />
     <!-- Navigation Dots -->
     <nav class="nav-dots">
       <button
@@ -13,8 +14,12 @@
 
     <!-- Main Content -->
     <main class="main-content">
-      <!-- Section 1: Hero with Lyrics -->
-      <section ref="heroSection" class="section hero-section">
+      <!-- Section 1: Hero with Karaoke Lyrics -->
+      <section
+        ref="heroSection"
+        class="section hero-section"
+        :class="{ 'section-visible': sectionVisible[0] }"
+      >
         <div class="hero-background">
           <img
             src="/assets/hinhcuoi/HUG00052.webp"
@@ -23,30 +28,37 @@
           />
           <div class="hero-overlay"></div>
         </div>
-
         <div class="hero-content">
-          <div class="lyrics-container">
-            <div
-              v-for="(line, index) in lyrics"
-              :key="index"
-              class="lyric-line"
-              :style="{ animationDelay: `${index * 0.5}s` }"
-            >
-              {{ line }}
-            </div>
+          <div class="karaoke-lyrics">
+            <transition name="karaoke-fade" mode="out-in">
+              <div :key="currentLyricIndex" class="karaoke-line">
+                <span
+                  v-for="(char, i) in karaokeCharArray"
+                  :key="i"
+                  class="karaoke-char"
+                  :class="{ active: i < karaokeCharIndex }"
+                  v-html="char === ' ' ? '&nbsp;' : char"
+                ></span>
+              </div>
+            </transition>
           </div>
         </div>
       </section>
 
-      <!-- Section 2: Photo Gallery -->
-      <section ref="gallerySection" class="section gallery-section">
+      <!-- Section 2: Photo Gallery Masonry -->
+      <section
+        ref="gallerySection"
+        class="section gallery-section"
+        :class="{ 'section-visible': sectionVisible[1] }"
+      >
         <div class="container">
           <h2 class="section-title">Our Love Story</h2>
-          <div class="gallery-grid">
+          <div class="gallery-masonry">
             <div
               v-for="(image, index) in galleryImages"
               :key="index"
-              class="gallery-item"
+              class="gallery-masonry-item"
+              :class="image.aspect"
               @click="openLightbox(index)"
             >
               <img
@@ -73,37 +85,67 @@
       </section>
 
       <!-- Section 3: Wedding Information -->
-      <section ref="infoSection" class="section info-section">
+      <section
+        ref="infoSection"
+        class="section info-section"
+        :class="{ 'section-visible': sectionVisible[2] }"
+      >
         <div class="container">
           <div class="wedding-info">
-            <h2 class="couple-names">
+            <h2 class="couple-names artistic-font">
               <span class="groom-name">Viet Hung</span>
               <span class="and">&</span>
               <span class="bride-name">Lan Huyen</span>
             </h2>
-
             <div class="wedding-date">
               <div class="date-label">November 30, 2025</div>
               <div class="countdown" ref="countdown">
                 <div class="countdown-item">
-                  <span class="countdown-number" ref="days">00</span>
+                  <transition name="count-fade" mode="out-in">
+                    <span
+                      class="countdown-number"
+                      ref="days"
+                      :key="countdown.days"
+                      >{{ countdown.days }}</span
+                    >
+                  </transition>
                   <span class="countdown-label">Days</span>
                 </div>
                 <div class="countdown-item">
-                  <span class="countdown-number" ref="hours">00</span>
+                  <transition name="count-fade" mode="out-in">
+                    <span
+                      class="countdown-number"
+                      ref="hours"
+                      :key="countdown.hours"
+                      >{{ countdown.hours }}</span
+                    >
+                  </transition>
                   <span class="countdown-label">Hours</span>
                 </div>
                 <div class="countdown-item">
-                  <span class="countdown-number" ref="minutes">00</span>
+                  <transition name="count-fade" mode="out-in">
+                    <span
+                      class="countdown-number"
+                      ref="minutes"
+                      :key="countdown.minutes"
+                      >{{ countdown.minutes }}</span
+                    >
+                  </transition>
                   <span class="countdown-label">Minutes</span>
                 </div>
                 <div class="countdown-item">
-                  <span class="countdown-number" ref="seconds">00</span>
+                  <transition name="count-fade" mode="out-in">
+                    <span
+                      class="countdown-number"
+                      ref="seconds"
+                      :key="countdown.seconds"
+                      >{{ countdown.seconds }}</span
+                    >
+                  </transition>
                   <span class="countdown-label">Seconds</span>
                 </div>
               </div>
             </div>
-
             <div class="venue-info">
               <h3>Join Us</h3>
               <p class="venue-address">
@@ -116,7 +158,11 @@
       </section>
 
       <!-- Section 4: Venue Map -->
-      <section ref="mapSection" class="section map-section">
+      <section
+        ref="mapSection"
+        class="section map-section"
+        :class="{ 'section-visible': sectionVisible[3] }"
+      >
         <div class="container">
           <h2 class="section-title">Find Us</h2>
           <div class="map-container">
@@ -194,6 +240,28 @@
 </template>
 
 <script setup lang="ts">
+import { ref, computed, onMounted, onUnmounted, watch, nextTick } from "vue";
+import { useHead } from "#imports";
+import CustomCursor from "@/components/ui/CustomCursor.vue";
+
+// Artistic font for couple names
+useHead({
+  link: [
+    {
+      rel: "stylesheet",
+      href: "https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap",
+    },
+    {
+      rel: "stylesheet",
+      href: "https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap",
+    },
+    {
+      rel: "stylesheet",
+      href: "https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700&display=swap",
+    },
+  ],
+});
+
 // Wedding details
 const weddingDate = new Date("2025-11-30T00:00:00");
 
@@ -208,200 +276,300 @@ const lyrics = [
   "I was lost within the darkness, but then I found her",
   "I found you",
 ];
+const currentLyricIndex = ref(0);
+const karaokeCharIndex = ref(0);
+const karaokeCharArray = computed(() =>
+  Array.from(lyrics[currentLyricIndex.value])
+);
+let karaokeInterval: NodeJS.Timeout | null = null;
+let karaokeLineTimeout: NodeJS.Timeout | null = null;
 
-// Gallery images (excluding HUG00052.webp which is used in hero)
+const startKaraoke = () => {
+  karaokeCharIndex.value = 0;
+  if (karaokeInterval) clearInterval(karaokeInterval);
+  if (karaokeLineTimeout) clearTimeout(karaokeLineTimeout);
+  karaokeInterval = setInterval(() => {
+    if (karaokeCharIndex.value < karaokeCharArray.value.length) {
+      karaokeCharIndex.value++;
+    } else {
+      clearInterval(karaokeInterval!);
+      karaokeLineTimeout = setTimeout(() => {
+        karaokeCharIndex.value = 0;
+        currentLyricIndex.value = (currentLyricIndex.value + 1) % lyrics.length;
+        startKaraoke();
+      }, 1200);
+    }
+  }, 40);
+};
+onMounted(() => {
+  startKaraoke();
+});
+onUnmounted(() => {
+  if (karaokeInterval) clearInterval(karaokeInterval);
+  if (karaokeLineTimeout) clearTimeout(karaokeLineTimeout);
+});
+
+// Gallery images with varied aspect classes
 const galleryImages = [
   {
     src: "/assets/hinhcuoi/HUG00025.webp",
-    alt: "Viet Hung and Lan Huyen - Love Story 1",
+    alt: "Love Story 1",
+    aspect: "vertical",
   },
   {
     src: "/assets/hinhcuoi/HUG00163.webp",
-    alt: "Viet Hung and Lan Huyen - Love Story 2",
+    alt: "Love Story 2",
+    aspect: "horizontal",
   },
   {
     src: "/assets/hinhcuoi/HUG00192.webp",
-    alt: "Viet Hung and Lan Huyen - Love Story 3",
+    alt: "Love Story 3",
+    aspect: "square",
   },
   {
     src: "/assets/hinhcuoi/HUG00221.webp",
-    alt: "Viet Hung and Lan Huyen - Love Story 4",
+    alt: "Love Story 4",
+    aspect: "vertical",
   },
   {
     src: "/assets/hinhcuoi/HUG00246.webp",
-    alt: "Viet Hung and Lan Huyen - Love Story 5",
+    alt: "Love Story 5",
+    aspect: "horizontal",
   },
   {
     src: "/assets/hinhcuoi/HUG00263.webp",
-    alt: "Viet Hung and Lan Huyen - Love Story 6",
+    alt: "Love Story 6",
+    aspect: "vertical",
   },
   {
     src: "/assets/hinhcuoi/HUG00293.webp",
-    alt: "Viet Hung and Lan Huyen - Love Story 7",
+    alt: "Love Story 7",
+    aspect: "horizontal",
   },
   {
     src: "/assets/hinhcuoi/HUG00324.webp",
-    alt: "Viet Hung and Lan Huyen - Love Story 8",
+    alt: "Love Story 8",
+    aspect: "square",
   },
   {
     src: "/assets/hinhcuoi/HUG00353.webp",
-    alt: "Viet Hung and Lan Huyen - Love Story 9",
+    alt: "Love Story 9",
+    aspect: "vertical",
   },
   {
     src: "/assets/hinhcuoi/HUG00374.webp",
-    alt: "Viet Hung and Lan Huyen - Love Story 10",
+    alt: "Love Story 10",
+    aspect: "horizontal",
   },
   {
     src: "/assets/hinhcuoi/HUG00410.webp",
-    alt: "Viet Hung and Lan Huyen - Love Story 11",
+    alt: "Love Story 11",
+    aspect: "vertical",
   },
   {
     src: "/assets/hinhcuoi/HUG00532.webp",
-    alt: "Viet Hung and Lan Huyen - Love Story 12",
+    alt: "Love Story 12",
+    aspect: "square",
   },
   {
     src: "/assets/hinhcuoi/HUG00637.webp",
-    alt: "Viet Hung and Lan Huyen - Love Story 13",
+    alt: "Love Story 13",
+    aspect: "vertical",
   },
   {
     src: "/assets/hinhcuoi/HUG00805.webp",
-    alt: "Viet Hung and Lan Huyen - Love Story 14",
+    alt: "Love Story 14",
+    aspect: "horizontal",
   },
   {
     src: "/assets/hinhcuoi/HUG00818.webp",
-    alt: "Viet Hung and Lan Huyen - Love Story 15",
+    alt: "Love Story 15",
+    aspect: "vertical",
   },
   {
     src: "/assets/hinhcuoi/HUG00930.webp",
-    alt: "Viet Hung and Lan Huyen - Love Story 16",
+    alt: "Love Story 16",
+    aspect: "square",
   },
   {
     src: "/assets/hinhcuoi/HUG01017.webp",
-    alt: "Viet Hung and Lan Huyen - Love Story 17",
+    alt: "Love Story 17",
+    aspect: "vertical",
   },
   {
     src: "/assets/hinhcuoi/HUG09101.webp",
-    alt: "Viet Hung and Lan Huyen - Love Story 18",
+    alt: "Love Story 18",
+    aspect: "horizontal",
   },
   {
     src: "/assets/hinhcuoi/HUG09122.webp",
-    alt: "Viet Hung and Lan Huyen - Love Story 19",
+    alt: "Love Story 19",
+    aspect: "vertical",
   },
   {
     src: "/assets/hinhcuoi/HUG09133.webp",
-    alt: "Viet Hung and Lan Huyen - Love Story 20",
+    alt: "Love Story 20",
+    aspect: "square",
   },
   {
     src: "/assets/hinhcuoi/HUG09183.webp",
-    alt: "Viet Hung and Lan Huyen - Love Story 21",
+    alt: "Love Story 21",
+    aspect: "vertical",
   },
   {
     src: "/assets/hinhcuoi/HUG09192.webp",
-    alt: "Viet Hung and Lan Huyen - Love Story 22",
+    alt: "Love Story 22",
+    aspect: "horizontal",
   },
   {
     src: "/assets/hinhcuoi/HUG09271.webp",
-    alt: "Viet Hung and Lan Huyen - Love Story 23",
+    alt: "Love Story 23",
+    aspect: "vertical",
   },
   {
     src: "/assets/hinhcuoi/HUG09300.webp",
-    alt: "Viet Hung and Lan Huyen - Love Story 24",
+    alt: "Love Story 24",
+    aspect: "square",
   },
   {
     src: "/assets/hinhcuoi/HUG09350.webp",
-    alt: "Viet Hung and Lan Huyen - Love Story 25",
+    alt: "Love Story 25",
+    aspect: "vertical",
   },
   {
     src: "/assets/hinhcuoi/HUG09395.webp",
-    alt: "Viet Hung and Lan Huyen - Love Story 26",
+    alt: "Love Story 26",
+    aspect: "horizontal",
   },
   {
     src: "/assets/hinhcuoi/HUG09401.webp",
-    alt: "Viet Hung and Lan Huyen - Love Story 27",
+    alt: "Love Story 27",
+    aspect: "vertical",
   },
   {
     src: "/assets/hinhcuoi/HUG09441.webp",
-    alt: "Viet Hung and Lan Huyen - Love Story 28",
+    alt: "Love Story 28",
+    aspect: "square",
   },
   {
     src: "/assets/hinhcuoi/HUG09461.webp",
-    alt: "Viet Hung and Lan Huyen - Love Story 29",
+    alt: "Love Story 29",
+    aspect: "vertical",
   },
   {
     src: "/assets/hinhcuoi/HUG09482.webp",
-    alt: "Viet Hung and Lan Huyen - Love Story 30",
+    alt: "Love Story 30",
+    aspect: "horizontal",
   },
   {
     src: "/assets/hinhcuoi/HUG09557.webp",
-    alt: "Viet Hung and Lan Huyen - Love Story 31",
+    alt: "Love Story 31",
+    aspect: "vertical",
   },
   {
     src: "/assets/hinhcuoi/HUG09606.webp",
-    alt: "Viet Hung and Lan Huyen - Love Story 32",
+    alt: "Love Story 32",
+    aspect: "square",
   },
   {
     src: "/assets/hinhcuoi/HUG09695.webp",
-    alt: "Viet Hung and Lan Huyen - Love Story 33",
+    alt: "Love Story 33",
+    aspect: "vertical",
   },
   {
     src: "/assets/hinhcuoi/HUG09738.webp",
-    alt: "Viet Hung and Lan Huyen - Love Story 34",
+    alt: "Love Story 34",
+    aspect: "horizontal",
   },
   {
     src: "/assets/hinhcuoi/HUG09767.webp",
-    alt: "Viet Hung and Lan Huyen - Love Story 35",
+    alt: "Love Story 35",
+    aspect: "vertical",
   },
   {
     src: "/assets/hinhcuoi/HUG09799.webp",
-    alt: "Viet Hung and Lan Huyen - Love Story 36",
+    alt: "Love Story 36",
+    aspect: "square",
   },
   {
     src: "/assets/hinhcuoi/HUG09905.webp",
-    alt: "Viet Hung and Lan Huyen - Love Story 37",
+    alt: "Love Story 37",
+    aspect: "vertical",
   },
   {
     src: "/assets/hinhcuoi/HUG09943.webp",
-    alt: "Viet Hung and Lan Huyen - Love Story 38",
+    alt: "Love Story 38",
+    aspect: "horizontal",
   },
   {
     src: "/assets/hinhcuoi/HUG09970.webp",
-    alt: "Viet Hung and Lan Huyen - Love Story 39",
+    alt: "Love Story 39",
+    aspect: "vertical",
   },
   {
     src: "/assets/hinhcuoi/HUG09986.webp",
-    alt: "Viet Hung and Lan Huyen - Love Story 40",
+    alt: "Love Story 40",
+    aspect: "square",
   },
   {
     src: "/assets/hinhcuoi/HUG09999.webp",
-    alt: "Viet Hung and Lan Huyen - Love Story 41",
+    alt: "Love Story 41",
+    aspect: "vertical",
   },
 ];
 
-// Reactive state
+// Countdown state and animation
+const countdown = ref({
+  days: "00",
+  hours: "00",
+  minutes: "00",
+  seconds: "00",
+});
+let countdownInterval: NodeJS.Timeout | null = null;
+const updateCountdown = () => {
+  const now = new Date().getTime();
+  const distance = weddingDate.getTime() - now;
+  if (distance > 0) {
+    const daysValue = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hoursValue = Math.floor(
+      (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    const minutesValue = Math.floor(
+      (distance % (1000 * 60 * 60)) / (1000 * 60)
+    );
+    const secondsValue = Math.floor((distance % (1000 * 60)) / 1000);
+    countdown.value = {
+      days: daysValue.toString().padStart(2, "0"),
+      hours: hoursValue.toString().padStart(2, "0"),
+      minutes: minutesValue.toString().padStart(2, "0"),
+      seconds: secondsValue.toString().padStart(2, "0"),
+    };
+  }
+};
+onMounted(() => {
+  updateCountdown();
+  countdownInterval = setInterval(updateCountdown, 1000);
+});
+onUnmounted(() => {
+  if (countdownInterval) clearInterval(countdownInterval);
+});
+
+// Section refs and scroll trigger animation
 const currentSection = ref(0);
 const lightboxOpen = ref(false);
 const currentImageIndex = ref(0);
-
-// Section refs
 const heroSection = ref<HTMLElement>();
 const gallerySection = ref<HTMLElement>();
 const infoSection = ref<HTMLElement>();
 const mapSection = ref<HTMLElement>();
-
-// Countdown refs
-const days = ref<HTMLElement>();
-const hours = ref<HTMLElement>();
-const minutes = ref<HTMLElement>();
-const seconds = ref<HTMLElement>();
-
+const sectionRefs = [heroSection, gallerySection, infoSection, mapSection];
+const sectionVisible = ref([true, false, false, false]); // Always show first section on load
 const sections = computed(() => [
   heroSection.value,
   gallerySection.value,
   infoSection.value,
   mapSection.value,
 ]);
-
-// Methods
 const scrollToSection = (index: number) => {
   sections.value[index]?.scrollIntoView({ behavior: "smooth" });
   currentSection.value = index;
@@ -412,80 +580,53 @@ const openLightbox = (index: number) => {
   lightboxOpen.value = true;
   document.body.style.overflow = "hidden";
 };
-
 const closeLightbox = () => {
   lightboxOpen.value = false;
   document.body.style.overflow = "auto";
 };
-
 const nextImage = () => {
   if (currentImageIndex.value < galleryImages.length - 1) {
     currentImageIndex.value++;
   }
 };
-
 const previousImage = () => {
   if (currentImageIndex.value > 0) {
     currentImageIndex.value--;
   }
 };
 
-const updateCountdown = () => {
-  const now = new Date().getTime();
-  const distance = weddingDate.getTime() - now;
-
-  if (distance > 0) {
-    const daysValue = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hoursValue = Math.floor(
-      (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-    );
-    const minutesValue = Math.floor(
-      (distance % (1000 * 60 * 60)) / (1000 * 60)
-    );
-    const secondsValue = Math.floor((distance % (1000 * 60)) / 1000);
-
-    if (days.value)
-      days.value.textContent = daysValue.toString().padStart(2, "0");
-    if (hours.value)
-      hours.value.textContent = hoursValue.toString().padStart(2, "0");
-    if (minutes.value)
-      minutes.value.textContent = minutesValue.toString().padStart(2, "0");
-    if (seconds.value)
-      seconds.value.textContent = secondsValue.toString().padStart(2, "0");
-  }
-};
-
-// Lifecycle
+// Intersection observer for nav dots and scroll-trigger animation
 onMounted(() => {
-  // Set up countdown timer
-  updateCountdown();
-  const countdownInterval = setInterval(updateCountdown, 1000);
-
-  // Set up intersection observer for section tracking
-  const observer = new IntersectionObserver(
+  // Fallback: if observer fails, show all after 1s
+  setTimeout(() => {
+    if (sectionVisible.value.filter(Boolean).length === 1) {
+      sectionVisible.value = [true, true, true, true];
+    }
+  }, 1200);
+  const observer = new window.IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const index = sections.value.findIndex(
-            (section) => section === entry.target
-          );
-          if (index !== -1) {
-            currentSection.value = index;
+        const idx = sections.value.findIndex(
+          (section) => section === entry.target
+        );
+        if (idx !== -1) {
+          if (entry.isIntersecting) {
+            currentSection.value = idx;
+            sectionVisible.value[idx] = true;
           }
         }
       });
     },
-    { threshold: 0.5 }
+    { threshold: 0.3 }
   );
-
-  sections.value.forEach((section) => {
-    if (section) observer.observe(section);
+  nextTick(() => {
+    sections.value.forEach((section, idx) => {
+      if (section) observer.observe(section);
+    });
   });
-
   // Keyboard navigation for lightbox
   const handleKeydown = (e: KeyboardEvent) => {
     if (!lightboxOpen.value) return;
-
     switch (e.key) {
       case "Escape":
         closeLightbox();
@@ -498,12 +639,8 @@ onMounted(() => {
         break;
     }
   };
-
   document.addEventListener("keydown", handleKeydown);
-
-  // Cleanup
   onUnmounted(() => {
-    clearInterval(countdownInterval);
     observer.disconnect();
     document.removeEventListener("keydown", handleKeydown);
   });
@@ -594,6 +731,9 @@ useHead({
 /* Main Content */
 .main-content {
   scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  height: 100vh; /* Ensure main content takes full height */
+  overflow-y: auto; /* Allow scrolling for content */
 }
 
 /* Section Styles */
@@ -659,30 +799,35 @@ useHead({
   padding: 0 20px;
 }
 
-.lyrics-container {
+.karaoke-lyrics {
   display: flex;
   flex-direction: column;
   gap: 20px;
-}
-
-.lyric-line {
   font-family: "Nunito", sans-serif;
   font-size: clamp(1.5rem, 4vw, 2.5rem);
   font-weight: 300;
   line-height: 1.4;
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeInUp 1s ease forwards;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.lyric-line:nth-child(even) {
-  font-style: italic;
-  font-weight: 200;
+.karaoke-line {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s ease forwards;
 }
 
-.lyric-line:nth-child(odd) {
-  font-weight: 400;
+.karaoke-line.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.karaoke-char {
+  display: inline-block;
+  transition: color 0.2s ease-in-out;
+}
+
+.karaoke-char.active {
+  color: #94a094; /* Highlight color for active characters */
 }
 
 /* Gallery Section */
@@ -700,7 +845,7 @@ useHead({
   font-family: "Nunito", sans-serif;
 }
 
-.gallery-grid {
+.gallery-masonry {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
@@ -708,13 +853,21 @@ useHead({
   margin: 0 auto;
 }
 
-.gallery-item {
+.gallery-masonry-item {
   position: relative;
   border-radius: 15px;
   overflow: hidden;
   cursor: pointer;
   transition: all 0.4s ease;
-  aspect-ratio: 1;
+  aspect-ratio: 1; /* Default to square */
+}
+
+.gallery-masonry-item.vertical {
+  grid-row: span 2;
+}
+
+.gallery-masonry-item.horizontal {
+  grid-column: span 2;
 }
 
 .gallery-item:hover {
@@ -783,6 +936,13 @@ useHead({
   line-height: 1.2;
 }
 
+.couple-names.artistic-font {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(4rem, 8vw, 6rem);
+  color: #f8f8f6;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
 .groom-name,
 .bride-name {
   display: block;
@@ -827,6 +987,17 @@ useHead({
   line-height: 1;
   margin-bottom: 5px;
   font-family: "Nunito", sans-serif;
+}
+
+.countdown-number.count-flip-enter-active,
+.countdown-number.count-flip-leave-active {
+  transition: all 0.5s ease;
+}
+
+.countdown-number.count-flip-enter-from,
+.countdown-number.count-flip-leave-to {
+  transform: scale(0.9);
+  opacity: 0;
 }
 
 .countdown-label {
@@ -999,7 +1170,7 @@ useHead({
     height: 10px;
   }
 
-  .gallery-grid {
+  .gallery-masonry {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 15px;
   }
@@ -1039,7 +1210,7 @@ useHead({
     padding: 0 15px;
   }
 
-  .gallery-grid {
+  .gallery-masonry {
     grid-template-columns: 1fr;
     gap: 15px;
   }

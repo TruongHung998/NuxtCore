@@ -73,6 +73,7 @@ export default defineNuxtConfig({
 
   // i18n configuration
   modules: ["@nuxtjs/i18n"],
+
   i18n: {
     locales: [
       { code: "en", name: "English", iso: "en-US", file: "en.json" },
@@ -81,5 +82,7 @@ export default defineNuxtConfig({
     defaultLocale: "en",
     langDir: "locales/",
   },
+
   css: ["~/public/assets/scss/global.scss", "~/assets/scss/wedding.scss"],
+  compatibilityDate: "2025-07-27",
 });
