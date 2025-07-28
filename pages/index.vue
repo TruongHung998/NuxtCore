@@ -1,5 +1,8 @@
 <template>
   <div class="wedding-website">
+    <!-- Loading Screen -->
+    <LoadingScreen :images="allImages" @loading-complete="onLoadingComplete" />
+
     <CustomCursor />
     <!-- Navigation Dots -->
     <nav class="nav-dots">
@@ -13,7 +16,7 @@
     </nav>
 
     <!-- Main Content -->
-    <main class="main-content">
+    <main class="main-content" :class="{ 'content-hidden': isLoading }">
       <!-- Section 1: Hero with Karaoke Lyrics -->
       <section
         ref="heroSection"
@@ -45,41 +48,132 @@
         </div>
       </section>
 
-      <!-- Section 2: Photo Gallery Masonry -->
+      <!-- Section 2: Photo Gallery Carousel -->
       <section
         ref="gallerySection"
         class="section gallery-section"
         :class="{ 'section-visible': sectionVisible[1] }"
       >
-        <div class="container">
-          <h2 class="section-title">Our Love Story</h2>
-          <div class="gallery-masonry">
+        <div class="carousel-container">
+          <div class="carousel-wrapper">
             <div
               v-for="(image, index) in galleryImages"
               :key="index"
-              class="gallery-masonry-item"
-              :class="image.aspect"
-              @click="openLightbox(index)"
+              class="carousel-card"
+              :class="{
+                active: currentCardIndex === index,
+                prev: currentCardIndex - 1 === index,
+                next: currentCardIndex + 1 === index,
+              }"
+              :style="getCardTransform(index)"
+              @click="handleCardClick(index)"
             >
-              <img
-                :src="image.src"
-                :alt="image.alt"
-                class="gallery-image"
-                loading="lazy"
-              />
-              <div class="gallery-overlay">
-                <div class="gallery-icon">
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
-                  </svg>
+              <div class="card-image-container">
+                <img
+                  :src="image.src"
+                  :alt="image.alt"
+                  class="card-image"
+                  loading="lazy"
+                />
+                <div class="card-overlay">
+                  <div class="card-info">
+                    <h3 class="card-title">{{ image.alt }}</h3>
+                    <p class="card-description">Click to view details</p>
+                  </div>
+                  <div class="card-actions">
+                    <button
+                      class="action-btn like-btn"
+                      @click.stop="likeCard(index)"
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <path
+                          d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+                        />
+                      </svg>
+                    </button>
+                    <button
+                      class="action-btn view-btn"
+                      @click.stop="openLightbox(index)"
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <path
+                          d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
+                        />
+                        <circle cx="12" cy="12" r="3" />
+                      </svg>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
+          </div>
+
+          <!-- Carousel Progress -->
+          <div class="carousel-progress">
+            <div class="progress-bar">
+              <div
+                class="progress-fill"
+                :style="{
+                  width: `${
+                    ((currentCardIndex + 1) / galleryImages.length) * 100
+                  }%`,
+                }"
+              ></div>
+            </div>
+            <span class="progress-text"
+              >{{ currentCardIndex + 1 }} / {{ galleryImages.length }}</span
+            >
+          </div>
+
+          <!-- Carousel Navigation -->
+          <div class="carousel-nav">
+            <button
+              class="nav-btn prev-btn"
+              @click="previousCard"
+              :disabled="currentCardIndex === 0"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M15 18l-6-6 6-6" />
+              </svg>
+            </button>
+            <div class="carousel-indicators">
+              <button
+                v-for="(image, index) in galleryImages"
+                :key="index"
+                class="indicator-dot"
+                :class="{ active: currentCardIndex === index }"
+                @click="goToCard(index)"
+              ></button>
+            </div>
+            <button
+              class="nav-btn next-btn"
+              @click="nextCard"
+              :disabled="currentCardIndex === galleryImages.length - 1"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M9 18l6-6-6-6" />
+              </svg>
+            </button>
           </div>
         </div>
       </section>
@@ -242,7 +336,8 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted, watch, nextTick } from "vue";
 import { useHead } from "#imports";
-import CustomCursor from "@/components/ui/CustomCursor.vue";
+import CustomCursor from "@/components/UI/CustomCursor.vue";
+import LoadingScreen from "@/components/common/LoadingScreen.vue";
 
 // Artistic font for couple names
 useHead({
@@ -518,6 +613,19 @@ const galleryImages = [
   },
 ];
 
+// All images for preloading
+const allImages = computed(() => [
+  "/assets/hinhcuoi/HUG00052.webp", // Hero image
+  ...galleryImages.map((img) => img.src),
+]);
+
+// Loading state
+const isLoading = ref(true);
+
+const onLoadingComplete = () => {
+  isLoading.value = false;
+};
+
 // Countdown state and animation
 const countdown = ref({
   days: "00",
@@ -573,6 +681,48 @@ const sections = computed(() => [
 const scrollToSection = (index: number) => {
   sections.value[index]?.scrollIntoView({ behavior: "smooth" });
   currentSection.value = index;
+};
+
+// Carousel functionality
+const currentCardIndex = ref(0);
+
+const getCardTransform = (index: number) => {
+  const diff = index - currentCardIndex.value;
+  const translateX = diff * 100;
+  const scale = diff === 0 ? 1 : 0.85;
+  const opacity = Math.abs(diff) <= 1 ? 1 : 0.2;
+  const zIndex = diff === 0 ? 10 : 10 - Math.abs(diff);
+
+  return {
+    transform: `translateX(${translateX}%) scale(${scale})`,
+    opacity: opacity.toString(),
+    zIndex: zIndex.toString(),
+  };
+};
+
+const nextCard = () => {
+  if (currentCardIndex.value < galleryImages.length - 1) {
+    currentCardIndex.value++;
+  }
+};
+
+const previousCard = () => {
+  if (currentCardIndex.value > 0) {
+    currentCardIndex.value--;
+  }
+};
+
+const goToCard = (index: number) => {
+  currentCardIndex.value = index;
+};
+
+const handleCardClick = (index: number) => {
+  openLightbox(index);
+};
+
+const likeCard = (index: number) => {
+  // Add like functionality here
+  console.log(`Liked card ${index}`);
 };
 
 const openLightbox = (index: number) => {
@@ -731,9 +881,14 @@ useHead({
 /* Main Content */
 .main-content {
   scroll-behavior: smooth;
-  scroll-snap-type: y mandatory;
   height: 100vh; /* Ensure main content takes full height */
   overflow-y: auto; /* Allow scrolling for content */
+  transition: opacity 0.5s ease-out;
+}
+
+.content-hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* Section Styles */
@@ -743,7 +898,6 @@ useHead({
   align-items: center;
   justify-content: center;
   position: relative;
-  scroll-snap-align: start;
 }
 
 .container {
@@ -845,75 +999,259 @@ useHead({
   font-family: "Nunito", sans-serif;
 }
 
-.gallery-masonry {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.gallery-masonry-item {
+/* Carousel Styles */
+.carousel-container {
+  width: 100vw;
+  margin: 0;
   position: relative;
-  border-radius: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.carousel-wrapper {
+  position: relative;
+  height: 85vh;
+  min-height: 600px;
+  max-height: 900px;
   overflow: hidden;
-  cursor: pointer;
-  transition: all 0.4s ease;
-  aspect-ratio: 1; /* Default to square */
+  border-radius: 0;
+  box-shadow: none;
 }
 
-.gallery-masonry-item.vertical {
-  grid-row: span 2;
-}
-
-.gallery-masonry-item.horizontal {
-  grid-column: span 2;
-}
-
-.gallery-item:hover {
-  transform: scale(1.05);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-}
-
-.gallery-item:hover .gallery-overlay {
-  opacity: 1;
-}
-
-.gallery-item:hover .gallery-image {
-  transform: scale(1.1);
-}
-
-.gallery-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.4s ease;
-}
-
-.gallery-overlay {
+.carousel-card {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(148, 160, 148, 0.8);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  user-select: none;
+  will-change: transform, opacity;
+}
+
+.card-image-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  overflow: hidden;
+  touch-action: pan-y pinch-zoom;
+  background: linear-gradient(135deg, #f8f8f6 0%, #e8e8e6 100%);
+}
+
+.card-image-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(14, 52, 25, 0.15) 100%,
+    rgba(14, 147, 52, 0.08) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  transition: transform 0.3s ease;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  position: relative;
+  z-index: 2;
+}
+
+.carousel-card:hover .card-image {
+  transform: scale(1.05);
+}
+
+.card-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.4) 50%,
+    transparent 100%
+  );
+  color: white;
+  padding: 30px 20px 20px;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  z-index: 3;
+}
+
+.carousel-card:hover .card-overlay {
+  transform: translateY(0);
+}
+
+.card-info {
+  margin-bottom: 15px;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+  font-family: "Nunito", sans-serif;
+}
+
+.card-description {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.card-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.action-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
 }
 
-.gallery-icon {
+.action-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.action-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.like-btn:hover {
+  background: rgba(255, 105, 180, 0.3);
+}
+
+.view-btn:hover {
+  background: rgba(148, 160, 148, 0.3);
+}
+
+/* Carousel Navigation */
+.carousel-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 30px;
+  padding: 0 40px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.nav-btn {
   width: 50px;
   height: 50px;
-  color: white;
-  opacity: 0.9;
+  border-radius: 50%;
+  border: 2px solid #94a094;
+  background: white;
+  color: #94a094;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-.gallery-icon svg {
-  width: 100%;
+.nav-btn:hover:not(:disabled) {
+  background: #94a094;
+  color: white;
+  transform: scale(1.1);
+}
+
+.nav-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.nav-btn svg {
+  width: 24px;
+  height: 24px;
+}
+
+.carousel-indicators {
+  display: flex;
+  gap: 8px;
+}
+
+.indicator-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(148, 160, 148, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.indicator-dot.active {
+  background: #94a094;
+  transform: scale(1.2);
+}
+
+.indicator-dot:hover {
+  background: #94a094;
+  transform: scale(1.1);
+}
+
+/* Carousel Progress */
+.carousel-progress {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+  justify-content: center;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 40px;
+}
+
+.progress-bar {
+  flex: 1;
+  max-width: 200px;
+  height: 4px;
+  background: rgba(148, 160, 148, 0.2);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-fill {
   height: 100%;
+  background: linear-gradient(90deg, #94a094, #7a8a7a);
+  border-radius: 2px;
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.progress-text {
+  font-size: 0.9rem;
+  color: #94a094;
+  font-weight: 500;
+  min-width: 60px;
+  text-align: center;
 }
 
 /* Info Section */
@@ -1062,47 +1400,57 @@ useHead({
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.95);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 2000;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(10px);
+  animation: lightboxFadeIn 0.3s ease-out;
 }
 
 .lightbox-content {
   position: relative;
-  max-width: 90vw;
-  max-height: 90vh;
+  max-width: 95vw;
+  max-height: 95vh;
+  animation: lightboxScaleIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .lightbox-image {
   max-width: 100%;
-  max-height: 90vh;
+  max-height: 95vh;
   object-fit: contain;
-  border-radius: 10px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s ease;
+}
+
+.lightbox-image:hover {
+  transform: scale(1.02);
 }
 
 .lightbox-close {
   position: absolute;
-  top: -50px;
+  top: -60px;
   right: 0;
-  background: none;
+  background: rgba(255, 255, 255, 0.1);
   border: none;
   color: white;
-  font-size: 2rem;
   cursor: pointer;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .lightbox-close:hover {
-  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1) rotate(90deg);
 }
 
 .lightbox-close svg {
@@ -1117,8 +1465,8 @@ useHead({
   background: rgba(255, 255, 255, 0.1);
   border: none;
   color: white;
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   cursor: pointer;
   display: flex;
@@ -1126,6 +1474,7 @@ useHead({
   justify-content: center;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .lightbox-nav:hover {
@@ -1134,16 +1483,37 @@ useHead({
 }
 
 .lightbox-nav svg {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
 }
 
 .lightbox-prev {
-  left: -70px;
+  left: -80px;
 }
 
 .lightbox-next {
-  right: -70px;
+  right: -80px;
+}
+
+/* Lightbox Animations */
+@keyframes lightboxFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes lightboxScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 /* Animations */
@@ -1170,9 +1540,44 @@ useHead({
     height: 10px;
   }
 
-  .gallery-masonry {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 15px;
+  .carousel-container {
+    width: 100vw;
+  }
+
+  .carousel-wrapper {
+    height: 75vh;
+    min-height: 450px;
+    max-height: 700px;
+  }
+
+  .carousel-nav {
+    padding: 0 10px;
+  }
+
+  .nav-btn {
+    width: 45px;
+    height: 45px;
+  }
+
+  .carousel-progress {
+    margin-top: 15px;
+  }
+
+  .progress-bar {
+    max-width: 150px;
+  }
+
+  .card-overlay {
+    padding: 20px 15px 15px;
+  }
+
+  .card-title {
+    font-size: 1.2rem;
+  }
+
+  .action-btn {
+    width: 35px;
+    height: 35px;
   }
 
   .countdown {
@@ -1210,9 +1615,55 @@ useHead({
     padding: 0 15px;
   }
 
-  .gallery-masonry {
-    grid-template-columns: 1fr;
+  .carousel-wrapper {
+    height: 65vh;
+    min-height: 400px;
+    max-height: 600px;
+  }
+
+  .carousel-nav {
+    flex-direction: column;
     gap: 15px;
+    align-items: center;
+  }
+
+  .nav-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .carousel-indicators {
+    order: -1;
+  }
+
+  .carousel-progress {
+    margin-top: 15px;
+  }
+
+  .progress-bar {
+    max-width: 120px;
+  }
+
+  .card-overlay {
+    padding: 15px 10px 10px;
+  }
+
+  .card-title {
+    font-size: 1rem;
+  }
+
+  .card-description {
+    font-size: 0.8rem;
+  }
+
+  .action-btn {
+    width: 30px;
+    height: 30px;
+  }
+
+  .action-btn svg {
+    width: 16px;
+    height: 16px;
   }
 
   .countdown {
