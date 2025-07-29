@@ -73,6 +73,12 @@ const App: React.FC = () => {
           setTimeout(() => setLoading(false), 1000);
         }
       };
+      img.onerror = () => {
+        loadedCount++;
+        if (loadedCount === allImages.length) {
+          setTimeout(() => setLoading(false), 1000);
+        }
+      };
     });
   }, []);
 
