@@ -7,50 +7,10 @@ const LoadingScreen = ({ onLoadingComplete }) => {
   const [isComplete, setIsComplete] = useState(false);
 
   // Memoize image files array to prevent re-creation on every render
+  // Only preload hero image for loading screen
   const imageFiles = useMemo(
     () => [
-      "HUG00025.webp",
-      "HUG00052.webp",
-      "HUG00163.webp",
-      "HUG00192.webp",
-      "HUG00221.webp",
-      "HUG00246.webp",
-      "HUG00263.webp",
-      "HUG00293.webp",
-      "HUG00324.webp",
-      "HUG00353.webp",
-      "HUG00374.webp",
-      "HUG00410.webp",
-      "HUG00532.webp",
-      "HUG00637.webp",
-      "HUG00805.webp",
-      "HUG00818.webp",
-      "HUG00930.webp",
-      "HUG01017.webp",
-      "HUG09101.webp",
-      "HUG09122.webp",
-      "HUG09133.webp",
-      "HUG09183.webp",
-      "HUG09192.webp",
-      "HUG09271.webp",
-      "HUG09300.webp",
-      "HUG09350.webp",
-      "HUG09395.webp",
-      "HUG09401.webp",
-      "HUG09441.webp",
-      "HUG09461.webp",
-      "HUG09482.webp",
-      "HUG09557.webp",
-      "HUG09606.webp",
-      "HUG09695.webp",
-      "HUG09738.webp",
-      "HUG09767.webp",
-      "HUG09799.webp",
-      "HUG09905.webp",
-      "HUG09943.webp",
-      "HUG09970.webp",
-      "HUG09986.webp",
-      "HUG09999.webp",
+      "HUG00052.webp", // Only hero image
     ],
     []
   );

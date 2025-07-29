@@ -8,14 +8,15 @@ const HeroSection = () => {
 
   const romanticLines = useMemo(
     () => [
-      "Two hearts becoming one",
-      "A love story written in the stars",
-      "Forever starts with you",
-      "In your eyes I found my home",
-      "Together we write our beautiful beginning",
-      "Love brought us here today",
-      "Our hearts beat as one",
-      "Viet Hung and Lan Huyen",
+      "Georgia, wrap me up in all your-",
+      "I want you in my arms",
+      "Oh, let me hold you",
+      "I'll never let you go again like I did",
+      "Oh, I used to say",
+      "I would never fall in love again until I found her",
+      "I said, I would never fall unless it's you I fall into",
+      "I was lost within the darkness, but then I found her",
+      "I found you"
     ],
     []
   );
@@ -29,7 +30,7 @@ const HeroSection = () => {
       if (currentWordIndex < words.length) {
         const timer = setTimeout(() => {
           setCurrentWordIndex((prev) => prev + 1);
-        }, 500); // 0.5s delay between words
+        }, 300); // 0.5s delay between words
 
         return () => clearTimeout(timer);
       } else {
@@ -38,7 +39,7 @@ const HeroSection = () => {
           const nextLineIndex = (currentLineIndex + 1) % romanticLines.length;
           setCurrentLineIndex(nextLineIndex);
           setCurrentWordIndex(0);
-        }, 2000); // 2s delay between lines
+        }, 1500); // 2s delay between lines
 
         return () => clearTimeout(lineTimer);
       }
