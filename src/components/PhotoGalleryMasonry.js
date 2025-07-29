@@ -16,9 +16,7 @@ const PhotoGalleryMasonry = () => {
   // Gallery images array
   const galleryImages = [
     "HUG00025.webp",
-    "HUG00163.webp",
     "HUG00192.webp",
-    "HUG00221.webp",
     "HUG00246.webp",
     "HUG00263.webp",
     "HUG00293.webp",
@@ -26,12 +24,6 @@ const PhotoGalleryMasonry = () => {
     "HUG00353.webp",
     "HUG00374.webp",
     "HUG00410.webp",
-    "HUG00532.webp",
-    "HUG00637.webp",
-    "HUG00805.webp",
-    "HUG00818.webp",
-    "HUG00930.webp",
-    "HUG01017.webp",
     "HUG09101.webp",
     "HUG09122.webp",
     "HUG09133.webp",
@@ -40,7 +32,6 @@ const PhotoGalleryMasonry = () => {
     "HUG09271.webp",
     "HUG09300.webp",
     "HUG09350.webp",
-    "HUG09395.webp",
     "HUG09401.webp",
     "HUG09441.webp",
     "HUG09461.webp",
@@ -50,11 +41,6 @@ const PhotoGalleryMasonry = () => {
     "HUG09695.webp",
     "HUG09738.webp",
     "HUG09767.webp",
-    "HUG09799.webp",
-    "HUG09905.webp",
-    "HUG09943.webp",
-    "HUG09970.webp",
-    "HUG09986.webp",
     "HUG09999.webp",
   ];
 
@@ -130,15 +116,6 @@ const PhotoGalleryMasonry = () => {
   return (
     <div className="photo-gallery-masonry-section section" ref={ref}>
       <div className="gallery-container">
-        <motion.h2
-          className="gallery-title"
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-        >
-          Our Beautiful Moments
-        </motion.h2>
-
         <motion.div
           className="masonry-container"
           variants={containerVariants}
