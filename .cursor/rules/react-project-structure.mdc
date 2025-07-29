@@ -1,0 +1,43 @@
+---
+
+# React Project Structure
+
+This guide outlines a standard project structure for React applications to ensure consistency and maintainability.
+
+## Directory Layout
+
+A typical React project should follow this structure:
+
+/src
+|-- /components       # Reusable UI components
+|   |-- /common       # Generic components like buttons, inputs
+|   |-- /layout       # Components for page structure (Header, Footer)
+|   |-- /...          # Feature-specific components
+|
+|-- /pages            # Page components, mapped to routes
+|   |-- HomePage.js
+|   |-- AboutPage.js
+|
+|-- /hooks            # Custom React hooks
+|   |-- useAuth.js
+|   |-- useFetch.js
+|
+|-- /services         # API calls, external services
+|   |-- api.js
+|   |-- authService.js
+|
+|-- /store            # State management (Redux, Zustand, etc.)
+|   |-- /actions
+|   |-- /reducers
+|   |-- /selectors
+|
+|-- /styles           # Global styles, variables, mixins
+|   |-- _variables.scss
+|   |-- global.css
+|
+|-- /utils            # Utility functions
+|
+|-- App.js            # Main application component
+|-- index.js          # Entry point of the application
+
+---

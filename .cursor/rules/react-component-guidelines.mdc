@@ -1,0 +1,41 @@
+# React Component Guidelines
+
+Follow these guidelines to maintain consistency and quality in your components.
+
+## General Principles
+
+- **Single Responsibility:** Each component should have a single, well-defined purpose.
+- **Keep it Small:** Break down large components into smaller, reusable ones.
+- **Props:** Use clear and concise prop names. Define `propTypes` or use TypeScript for type checking.
+
+## Naming Conventions
+
+- **PascalCase:** Component files and names should use PascalCase (e.g., `MyComponent.js`).
+- **Hooks:** Custom hooks should be prefixed with `use` (e.g., `useCustomHook.js`).
+
+## Functional Components
+
+Prefer functional components with hooks over class-based components.
+
+```jsx
+import React, { useState } from "react";
+
+const MyComponent = ({ initialValue }) => {
+  const [count, setCount] = useState(initialValue);
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  );
+};
+
+export default MyComponent;
+```
+
+description:
+globs:
+alwaysApply: false
+
+---

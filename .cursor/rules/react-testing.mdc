@@ -1,0 +1,39 @@
+# Testing in React
+
+Testing is essential for building robust and reliable applications.
+
+## Tools
+
+- **Jest:** A popular JavaScript testing framework.
+- **React Testing Library:** A library for testing React components in a way that resembles how users interact with them.
+
+## What to Test
+
+- **Component Rendering:** Ensure components render correctly with different props.
+- **User Interactions:** Test that components respond correctly to user events (e.g., clicks, input).
+- **State Changes:** Verify that component state updates as expected.
+- **Hooks:** Test custom hooks to ensure they provide the correct logic.
+
+## Example
+
+```jsx
+import React from "react";
+import { render, screen, fireEvent } from "@testing-library/react";
+import MyComponent from "./MyComponent";
+
+test("increments count when button is clicked", () => {
+  render(<MyComponent initialValue={0} />);
+
+  const button = screen.getByText(/increment/i);
+  fireEvent.click(button);
+
+  const count = screen.getByText(/count: 1/i);
+  expect(count).toBeInTheDocument();
+});
+```
+
+description:
+globs:
+alwaysApply: false
+
+---

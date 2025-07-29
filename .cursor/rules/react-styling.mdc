@@ -1,0 +1,20 @@
+# Styling in React
+
+Consistent styling is key to a professional-looking application. Choose one of the following methods and stick to it.
+
+## Recommended Approaches
+
+- **CSS-in-JS (Styled Components, Emotion):** Co-locates styles with components, enabling dynamic styling based on props.
+- **Tailwind CSS:** A utility-first CSS framework that allows for rapid UI development without writing custom CSS.
+- **CSS Modules:** Scopes CSS class names locally to the component, avoiding global scope conflicts.
+
+## General Guidelines
+
+- **Global Styles:** Use a global stylesheet (e.g., `global.css`) for base styles, resets, and typography.
+- **Theming:** For applications with themes (e.g., light/dark mode), use CSS variables or a theming solution provided by your chosen styling library.
+- **Avoid Inline Styles:** Inline styles should be used sparingly, as they are not reusable and can make maintenance difficult.
+  description:
+  globs:
+  alwaysApply: false
+
+---

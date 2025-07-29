@@ -1,0 +1,21 @@
+# State Management
+
+Effective state management is crucial for building scalable and maintainable React applications.
+
+## Local vs. Global State
+
+- **Local State:** Use `useState` or `useReducer` for state that is local to a single component or a small group of related components.
+- **Global State:** For state that needs to be shared across the entire application (e.g., user authentication, theme), consider using:
+  - **Context API:** Suitable for low-frequency updates.
+  - **Zustand or Redux Toolkit:** For more complex state with high-frequency updates.
+
+## Best Practices
+
+- **Lift State Up:** When multiple components need to share the same state, lift it up to their closest common ancestor.
+- **Avoid Prop Drilling:** For deeply nested components, use the Context API or a state management library to avoid passing props through many levels.
+- **Keep State Normalized:** When using a global store, normalize nested data to make it easier to manage and update.
+  description:
+  globs:
+  alwaysApply: false
+
+---
