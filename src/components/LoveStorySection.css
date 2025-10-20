@@ -74,8 +74,8 @@
   border-radius: 10px;
   background: linear-gradient(
     135deg,
-    rgba(255, 105, 180, 0.8),
-    rgba(255, 182, 193, 0.8)
+    rgba(148, 160, 148, 0.8),
+    rgba(178, 188, 178, 0.8)
   );
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
@@ -130,7 +130,7 @@
   display: inline-block;
   font-size: 90px;
   font-family: cursive;
-  color: #d63030;
+  color: #94a094;
   font-weight: normal;
   margin-top: 10px;
   opacity: 0.8;
@@ -157,7 +157,7 @@
 
 .story-message h3::before,
 .story-message h3::after {
-  content: "🌸";
+  content: "�";
   font-size: 24px;
 }
 
@@ -182,8 +182,8 @@
   color: #000;
   font-family: cursive;
   padding: 30px;
-  border-left: 3px solid #ff69b4;
-  background: rgba(255, 105, 180, 0.05);
+  border-left: 3px solid #94a094;
+  background: rgba(148, 160, 148, 0.05);
   border-radius: 10px;
 }
 

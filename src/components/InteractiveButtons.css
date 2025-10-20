@@ -54,20 +54,20 @@
   padding: 0;
   justify-content: center;
   background: #fff;
-  border: 2px solid #ff69b4;
+  border: 2px solid #94a094;
   position: relative;
 }
 
 .like-button:hover,
 .gift-button:hover {
-  background: #ff69b4;
+  background: #94a094;
   transform: scale(1.1);
 }
 
 .like-icon,
 .gift-icon {
   font-size: 20px;
-  color: #ff69b4;
+  color: #94a094;
 }
 
 .like-button:hover .like-icon,
@@ -79,7 +79,7 @@
   position: absolute;
   top: -5px;
   right: -5px;
-  background: linear-gradient(135deg, #ff9aa6, #ff4969);
+  background: linear-gradient(135deg, #a8b5a8, #7a8a7a);
   color: white;
   font-size: 10px;
   width: 20px;
@@ -205,13 +205,13 @@
 
 .message-input:focus {
   outline: none;
-  border-color: #ff69b4;
+  border-color: #94a094;
 }
 
 .submit-button {
   width: 100%;
   padding: 15px;
-  background: linear-gradient(135deg, #ff69b4, #ff1493);
+  background: linear-gradient(135deg, #94a094, #7a8a7a);
   color: white;
   border: none;
   border-radius: 10px;
@@ -223,7 +223,7 @@
 
 .submit-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
+  box-shadow: 0 5px 15px rgba(148, 160, 148, 0.3);
 }
 
 .gift-modal {
@@ -245,7 +245,7 @@
 }
 
 .gift-option:hover {
-  border-color: #ff69b4;
+  border-color: #94a094;
   transform: translateY(-2px);
 }
 
@@ -265,7 +265,7 @@
 .copy-button {
   margin-top: 10px;
   padding: 8px 20px;
-  background: #ff69b4;
+  background: #94a094;
   color: white;
   border: none;
   border-radius: 5px;
@@ -275,7 +275,7 @@
 }
 
 .copy-button:hover {
-  background: #ff1493;
+  background: #7a8a7a;
   transform: scale(1.05);
 }
 

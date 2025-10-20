@@ -54,9 +54,9 @@ const HeroSection = () => {
           className="hero-couple"
         >
           <div className="couple-names">
-            <span className="bride-name">BRIDE</span>
+            <span className="bride-name">Viet Hung</span>
             <span className="date">2025.05.20</span>
-            <span className="groom-name">GROOM</span>
+            <span className="groom-name">Lan Huyen</span>
           </div>
         </motion.div>
 
