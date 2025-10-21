@@ -2,6 +2,24 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import "./App.css";
 
+// Import images
+// Vertical images
+import heroImage from "./assets/webassests/vertical/HUG09101.jpg";
+import invitationImage from "./assets/webassests/vertical/HUG09122.jpg";
+import portraitLeft from "./assets/webassests/vertical/HUG09133.jpg";
+import portraitRight from "./assets/webassests/vertical/HUG09183.jpg";
+
+// Horizontal images
+import secondImage from "./assets/webassests/horizontal/HUG00052.jpg";
+import storyImageTall from "./assets/webassests/vertical/HUG09271.jpg";
+import storyImageWide from "./assets/webassests/horizontal/HUG09695.jpg";
+import dearestPhoto from "./assets/webassests/vertical/HUG09300.jpg";
+import galleryLeft from "./assets/webassests/vertical/HUG09350.jpg";
+import galleryRight from "./assets/webassests/vertical/HUG09482.jpg";
+import galleryLarge from "./assets/webassests/horizontal/HUG09986.jpg";
+import finalCover from "./assets/webassests/vertical/HUG09738.jpg";
+import finalPortrait from "./assets/webassests/vertical/HUG09943.jpg";
+
 function App() {
   const [loading, setLoading] = useState(true);
 
@@ -37,7 +55,7 @@ function App() {
                 transition={{ duration: 1.3, ease: "easeOut" }}
               >
                 <img
-                  src="https://cdn.cinelove.me/uploads/edf2f668-5f54-400b-92ca-df733b786988/6713b987-38ea-44fe-8a70-ac863ea4e9b9.jpg"
+                  src={heroImage}
                   alt="Wedding Cover"
                   className="cover-image"
                 />
@@ -116,7 +134,7 @@ function App() {
                 transition={{ duration: 1.3, delay: 0.2, ease: "easeOut" }}
               >
                 <img
-                  src="https://cdn.cinelove.me/uploads/edf2f668-5f54-400b-92ca-df733b786988/039c547c-561e-4bbf-97cf-67c53c4de9b2.jpg"
+                  src={secondImage}
                   alt="Wedding Photo"
                   className="section-image"
                 />
@@ -190,7 +208,7 @@ function App() {
                 </motion.p>
 
                 <img
-                  src="https://cdn.cinelove.me/uploads/edf2f668-5f54-400b-92ca-df733b786988/116768f0-22bc-49bc-b774-8adae7e450f6.jpg"
+                  src={invitationImage}
                   alt="Invitation Photo"
                   className="invitation-photo"
                 />
@@ -239,12 +257,12 @@ function App() {
                 </p>
                 <div className="story-images-grid">
                   <img
-                    src="https://cdn.cinelove.me/uploads/edf2f668-5f54-400b-92ca-df733b786988/a220f19d-296a-4558-967b-d36da01ea21a.jpg"
+                    src={storyImageTall}
                     alt="Love Story"
                     className="story-img-tall"
                   />
                   <img
-                    src="https://cdn.cinelove.me/uploads/edf2f668-5f54-400b-92ca-df733b786988/a220f19d-296a-4558-967b-d36da01ea21a.jpg"
+                    src={storyImageWide}
                     alt="Love Story"
                     className="story-img-wide"
                   />
@@ -299,7 +317,7 @@ function App() {
                 </div>
 
                 <img
-                  src="https://cdn.cinelove.me/uploads/edf2f668-5f54-400b-92ca-df733b786988/194bfc9e-0e33-430f-99c1-4392258df491.jpg"
+                  src={dearestPhoto}
                   alt="Dearest Love"
                   className="dearest-photo"
                 />
@@ -346,12 +364,12 @@ function App() {
                 transition={{ duration: 1.3, delay: 0.2, ease: "easeOut" }}
               >
                 <img
-                  src="https://cdn.cinelove.me/uploads/edf2f668-5f54-400b-92ca-df733b786988/da42915a-a9f2-48d7-9763-731779e1b756.jpg"
+                  src={portraitLeft}
                   alt="Portrait 1"
                   className="portrait-left"
                 />
                 <img
-                  src="https://cdn.cinelove.me/uploads/edf2f668-5f54-400b-92ca-df733b786988/e6eb445f-19a3-4cd5-85f8-2064d0336140.jpg"
+                  src={portraitRight}
                   alt="Portrait 2"
                   className="portrait-right"
                 />
@@ -511,12 +529,12 @@ function App() {
               >
                 <div className="gallery-photos">
                   <img
-                    src="https://cdn.cinelove.me/uploads/edf2f668-5f54-400b-92ca-df733b786988/ea854c9a-08db-40e9-8e75-e06d02c2e3fa.jpg"
+                    src={galleryLeft}
                     alt="Gallery 1"
                     className="gallery-img-left"
                   />
                   <img
-                    src="https://cdn.cinelove.me/uploads/edf2f668-5f54-400b-92ca-df733b786988/896e2d9f-df30-4caa-b36b-c7647c4d661f.jpg"
+                    src={galleryRight}
                     alt="Gallery 2"
                     className="gallery-img-right"
                   />
@@ -528,7 +546,7 @@ function App() {
                 </p>
 
                 <img
-                  src="https://cdn.cinelove.me/uploads/edf2f668-5f54-400b-92ca-df733b786988/4171bfdb-e2ce-4c0e-afdf-9032bbe7c94f.jpg"
+                  src={galleryLarge}
                   alt="Gallery Large"
                   className="gallery-large"
                 />
@@ -556,7 +574,7 @@ function App() {
                 transition={{ duration: 1.3, delay: 0.2, ease: "easeOut" }}
               >
                 <img
-                  src="https://cdn.cinelove.me/uploads/edf2f668-5f54-400b-92ca-df733b786988/039c547c-561e-4bbf-97cf-67c53c4de9b2.jpg"
+                  src={finalCover}
                   alt="Final Cover"
                   className="final-cover"
                 />
@@ -568,7 +586,7 @@ function App() {
                 </div>
 
                 <img
-                  src="https://cdn.cinelove.me/uploads/edf2f668-5f54-400b-92ca-df733b786988/7c0d808f-6c53-48b9-962b-64cd1f825527.jpg"
+                  src={finalPortrait}
                   alt="Final Portrait"
                   className="final-portrait"
                 />
