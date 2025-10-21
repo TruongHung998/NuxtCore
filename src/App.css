@@ -49,7 +49,7 @@ body {
 
 /* Desktop Container */
 .desktop-view {
-  max-width: 768px;
+  max-width: 500px;
   margin: 0 auto;
   background-color: var(--secondary-beige);
   min-height: 100vh;
@@ -57,7 +57,7 @@ body {
 }
 
 .desktop-content {
-  width: 768px;
+  width: 500px;
   margin: auto;
   position: relative;
   border: 1px solid #e0e0e0;
@@ -69,7 +69,7 @@ body {
 }
 
 /* Mobile Responsive - Early override */
-@media (max-width: 768px) {
+@media (max-width: 500px) {
   .app-container {
     padding: 0;
   }
@@ -124,7 +124,7 @@ html {
 
 .page-container {
   position: relative;
-  width: 768px;
+  width: 500px;
   background: #fff;
   min-height: 100%;
 }
@@ -132,7 +132,7 @@ html {
 /* Hero Section - Exact positioning from HTML */
 .hero-section {
   position: relative;
-  width: 768px;
+  width: 500px;
   height: 849px;
   overflow: hidden;
   background: var(--white);
@@ -289,7 +289,7 @@ html {
 /* Second Section */
 .second-section {
   position: relative;
-  width: 768px;
+  width: 500px;
   height: 308px;
   margin-top: 35px;
   padding: 0;
@@ -336,7 +336,7 @@ html {
 /* Invitation Header Section */
 .invitation-header-section {
   position: relative;
-  width: 768px;
+  width: 500px;
   padding: 40px 20px;
   background: var(--white);
   text-align: center;
@@ -390,7 +390,7 @@ html {
 /* Love Story Section */
 .love-story-section {
   position: relative;
-  width: 768px;
+  width: 500px;
   padding: 60px 20px;
   background: var(--white);
 }
@@ -489,7 +489,7 @@ html {
 /* Our Story Section */
 .our-story-section {
   position: relative;
-  width: 768px;
+  width: 500px;
   padding: 50px 20px;
   background: var(--white);
   text-align: center;
@@ -534,7 +534,7 @@ html {
 /* Large Photo Section */
 .large-photo-section {
   position: relative;
-  width: 768px;
+  width: 500px;
   height: 636px;
   overflow: hidden;
   background: var(--white);
@@ -564,7 +564,7 @@ html {
 /* Love Freedom Section */
 .love-freedom-section {
   position: relative;
-  width: 768px;
+  width: 500px;
   padding: 50px 20px;
   background: var(--white);
   text-align: center;
@@ -598,7 +598,7 @@ html {
 /* Portrait Section */
 .portrait-section {
   position: relative;
-  width: 768px;
+  width: 500px;
   padding: 40px 20px;
   background: var(--white);
 }
@@ -631,7 +631,7 @@ html {
 .date-section,
 .calendar-section {
   position: relative;
-  width: 768px;
+  width: 500px;
   padding: 50px 20px;
   background: var(--white);
   text-align: center;
@@ -753,7 +753,7 @@ html {
 /* Invitation Details Section */
 .invitation-details-section {
   position: relative;
-  width: 768px;
+  width: 500px;
   padding: 60px 30px;
   background: var(--white);
   text-align: center;
@@ -824,7 +824,7 @@ html {
 .story-images,
 .gallery-section {
   position: relative;
-  width: 768px;
+  width: 500px;
   padding: 40px 20px;
   background: var(--white);
 }
@@ -888,7 +888,7 @@ html {
 /* RSVP Section */
 .rsvp-section {
   position: relative;
-  width: 768px;
+  width: 500px;
   padding: 40px 20px;
   background: #fff;
 }
@@ -978,7 +978,7 @@ html {
 /* Map Section */
 .map-section {
   position: relative;
-  width: 768px;
+  width: 500px;
   padding: 40px 20px;
   background: var(--white);
 }
@@ -1010,7 +1010,7 @@ html {
 /* Final Section */
 .final-section {
   position: relative;
-  width: 768px;
+  width: 500px;
   padding: 80px 20px;
   background: var(--white);
   text-align: center;
@@ -1783,7 +1783,7 @@ p {
 
 .final-portrait {
   width: 100%;
-  max-width: 768px;
+  max-width: 500px;
   height: auto;
   margin: 20px auto;
   display: block;
@@ -1811,7 +1811,7 @@ p {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 500px) {
   .app-container {
     padding: 0;
   }
