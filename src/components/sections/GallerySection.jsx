@@ -14,26 +14,6 @@ const GallerySection = ({ galleryLeft, galleryRight, galleryLarge }) => {
         <img src={galleryLeft} alt="Gallery 1" className="gallery-img-left" />
         <img src={galleryRight} alt="Gallery 2" className="gallery-img-right" />
       </div>
-
-      <p className="gallery-quote">
-        As the clouds and mist dissipate&nbsp;
-        <div>love you and everyone knows it</div>
-      </p>
-
-      <img src={galleryLarge} alt="Gallery Large" className="gallery-large" />
-
-      <span className="forever-text">FOREVER</span>
-      <span className="and-text">AND</span>
-      <span className="ever-text">EVER</span>
-
-      <p className="final-poem">
-        Em tựa núi sông, băng qua rừng biếc,&nbsp;
-        <div>Thoáng hiện như cánh chim, muôn hoa bừng nở.&nbsp;</div>
-        <div>Giữa nhân gian cỏ cây vô tận,&nbsp;</div>
-        <div>Riêng anh chỉ thấy em là ngọn núi xanh dịu dàng.</div>
-      </p>
-
-      <div className="decorative-divider"></div>
     </motion.div>
   );
 };

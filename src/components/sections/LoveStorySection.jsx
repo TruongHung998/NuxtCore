@@ -35,15 +35,6 @@ const LoveStorySection = ({ storyImageTall, storyImageWide }) => {
         <div>Cảm ơn gia đình, bạn bè đã luôn đồng hành.&nbsp;</div>
         <div>Lâu rồi không gặp, thật sự rất nhớ mọi người!</div>
       </motion.p>
-      <h3 className="date-display">14.12.2025</h3>
-      <p className="date-message">
-        Chúng mình, hẹn gặp nhau trong ngày cưới nhé!
-      </p>
-      <div className="story-images-grid">
-        <img src={storyImageTall} alt="Love Story" className="story-img-tall" />
-        <img src={storyImageWide} alt="Love Story" className="story-img-wide" />
-      </div>{" "}
-      <div className="date-stamp">14.12.2025</div>
     </motion.div>
   );
 };

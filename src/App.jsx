@@ -75,36 +75,20 @@ function App() {
                 storyImageWide={storyImageWide}
               />
 
-              {/* SECTION 5: OUR LOVE STORY Title */}
-              <OurStorySection />
-
-              {/* SECTION 6: Large Photo Section */}
-              <LargePhotoSection dearestPhoto={dearestPhoto} />
-
-              {/* SECTION 7: Love and Freedom Section */}
-              <LoveFreedomSection />
-
-              {/* SECTION 8: Portrait Photos */}
-              <PortraitSection
-                portraitLeft={portraitLeft}
-                portraitRight={portraitRight}
-              />
-
-              {/* SECTION 9: Calendar & Date Section */}
-              <CalendarSection />
-
-              {/* SECTION 10: Invitation Details */}
-              <InvitationDetailsSection />
-
-              {/* SECTION 11: Map Section */}
-              <MapSection />
-
               {/* SECTION 12: Gallery Section */}
               <GallerySection
                 galleryLeft={galleryLeft}
                 galleryRight={galleryRight}
                 galleryLarge={galleryLarge}
               />
+
+              {/* SECTION 10: Invitation Details */}
+              <InvitationDetailsSection />
+              {/* SECTION 9: Calendar & Date Section */}
+              <CalendarSection />
+
+              {/* SECTION 11: Map Section */}
+              <MapSection />
 
               {/* SECTION 13: Final Photo & Thank You */}
               <FinalSection

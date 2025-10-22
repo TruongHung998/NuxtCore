@@ -9,7 +9,6 @@ const InvitationDetailsSection = () => {
       viewport={{ once: true }}
       transition={{ duration: 1.3, delay: 0, ease: "easeOut" }}
     >
-      <h3 className="invited-title">-- You Are Invited--</h3>
       <h4 className="invite-text">Trân Trọng Kính Mời</h4>
       <p className="invite-subtitle">THAM DỰ TIỆC MỪNG LỄ THÀNH HÔN</p>
       <p className="invite-time">Vào lúc</p>
@@ -17,19 +16,19 @@ const InvitationDetailsSection = () => {
       <div className="time-date-display">
         <span className="time-slot">12:00</span>
         <div className="date-full">
-          <p>Chủ nhật / Sunday</p>
-          <p className="date-number">14</p>
-          <p>Tháng 12 / December</p>
+          <p>Thứ 7 / Saturday</p>
+          <p className="date-number">29</p>
+          <p>Tháng 11 / November</p>
         </div>
         <span className="time-year">2025</span>
       </div>
 
-      <p className="lunar-date">(Âm lịch 24 tháng 10 năm Ất Tỵ)</p>
+      <p className="lunar-date">(Âm lịch 10 tháng 10 năm Ất Tỵ)</p>
 
       <h4 className="location-title">Địa điểm / Address</h4>
       <div className="location-info">
-        <p>Diamond Place</p>
-        <p>15A Hồ Văn Huê, Phường Đức Nhuận, Hồ Chí Minh</p>
+        <p>Nhà hàng Hải sản Đảo Hải Long</p>
+        <p>179a Đ. Nguyễn Hữu Thọ, Nhơn Đức, Nhà Bè, HCM</p>
       </div>
     </motion.div>
   );

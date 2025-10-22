@@ -28,6 +28,10 @@
 
 .parents-info {
   margin: var(--spacing-lg) 0;
+  display: flex;
+  gap: var(--spacing-lg);
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .parents-title {
@@ -110,7 +114,7 @@
   justify-content: center;
   gap: 10px;
   margin: var(--spacing-xl) 0;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 .invitation-leaf {
