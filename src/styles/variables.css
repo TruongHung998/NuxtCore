@@ -1,0 +1,66 @@
+/* CSS Variables - Design Tokens */
+:root {
+  /* Colors */
+  --primary-green: #94a094;
+  --secondary-beige: #f8f8f6;
+  --white: #ffffff;
+  --black: #000000;
+  --gray: #8c8c8c;
+  --dark-gray: #5c5c5c;
+  --light-gray: #f0f2f5;
+
+  /* Legacy color variables */
+  --primary-red: #94a094;
+  --dark-red: #7a8a7a;
+
+  /* Spacing - Mobile first */
+  --spacing-xs: 8px;
+  --spacing-sm: 15px;
+  --spacing-md: 20px;
+  --spacing-lg: 30px;
+  --spacing-xl: 40px;
+  --spacing-xxl: 60px;
+
+  /* Font sizes - Mobile first */
+  --fs-xs: 12px;
+  --fs-sm: 13px;
+  --fs-base: 14px;
+  --fs-md: 16px;
+  --fs-lg: 18px;
+  --fs-xl: 20px;
+  --fs-2xl: 24px;
+  --fs-3xl: 28px;
+  --fs-4xl: 32px;
+  --fs-5xl: 36px;
+  --fs-6xl: 42px;
+  --fs-7xl: 48px;
+
+  /* Font families */
+  --font-primary: "Quicksand", sans-serif;
+  --font-secondary: "Playfair Display", serif;
+  --font-cursive: "Signora", cursive;
+  --font-decorative: "Soul Note Display", cursive;
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.3s ease;
+  --transition-slow: 0.5s ease;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 4px 20px rgba(0, 0, 0, 0.1);
+  --shadow-text: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-text-strong: 2px 2px 8px rgba(0, 0, 0, 0.7);
+
+  /* Border radius */
+  --radius-sm: 5px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+  --radius-xl: 15px;
+  --radius-full: 50%;
+
+  /* Container sizes */
+  --container-mobile: 100vw;
+  --container-desktop: 500px;
+}

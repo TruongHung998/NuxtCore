@@ -1,0 +1,281 @@
+/* Gallery & Visual Sections - Mobile First */
+
+/* Large Photo Section */
+.large-photo-section {
+  height: auto;
+  min-height: 400px;
+}
+
+.large-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.large-photo-text {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--white);
+  font-size: var(--fs-2xl);
+  font-weight: bold;
+  font-family: var(--font-secondary);
+  text-align: center;
+  text-shadow: var(--shadow-text-strong);
+  letter-spacing: 2px;
+  z-index: 1;
+}
+
+.dearest-labels {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 1;
+}
+
+.dearest-labels span {
+  display: block;
+  font-size: var(--fs-xl);
+  font-weight: bold;
+  font-family: var(--font-secondary);
+  color: var(--white);
+  text-shadow: var(--shadow-text-strong);
+  line-height: 1.3;
+  letter-spacing: 2px;
+}
+
+.dearest-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Portrait Section */
+.portrait-section {
+  padding: var(--spacing-lg) var(--spacing-sm);
+}
+
+.portraits-container {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.portrait-image,
+.portrait-left,
+.portrait-right {
+  width: 48%;
+  height: auto;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+}
+
+.portrait-text {
+  font-size: var(--fs-3xl);
+  font-weight: bold;
+  font-family: var(--font-secondary);
+  color: var(--black);
+  text-align: center;
+  letter-spacing: 2px;
+  margin-top: var(--spacing-md);
+}
+
+.quote-center,
+.perfect-poem {
+  font-size: var(--fs-sm);
+  font-weight: 400;
+  font-family: var(--font-primary);
+  color: var(--dark-gray);
+  text-align: center;
+  line-height: 1.6;
+  margin: var(--spacing-lg) 0;
+  font-style: italic;
+  padding: 0 var(--spacing-sm);
+}
+
+/* Gallery Section */
+.gallery-section {
+  padding: var(--spacing-xl) var(--spacing-sm);
+}
+
+.gallery-title {
+  font-size: var(--fs-5xl);
+  font-weight: bold;
+  font-family: var(--font-secondary);
+  color: var(--black);
+  text-align: center;
+  letter-spacing: 2px;
+  margin-bottom: var(--spacing-xl);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+}
+
+.gallery-image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  transition: transform var(--transition-base);
+}
+
+.gallery-image:hover {
+  transform: scale(1.05);
+}
+
+.gallery-image.wide {
+  grid-column: span 2;
+  height: 300px;
+}
+
+.gallery-text {
+  font-size: var(--fs-4xl);
+  font-weight: bold;
+  font-family: var(--font-secondary);
+  color: var(--primary-red);
+  text-align: center;
+  letter-spacing: 2px;
+  margin: var(--spacing-lg) 0;
+}
+
+.gallery-photos {
+  display: flex;
+  gap: var(--spacing-sm);
+  justify-content: center;
+  margin: var(--spacing-lg) 0;
+  flex-direction: column;
+}
+
+.gallery-img-left,
+.gallery-img-right {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+}
+
+.gallery-quote {
+  font-size: var(--fs-sm);
+  font-weight: 400;
+  font-family: var(--font-primary);
+  color: var(--dark-gray);
+  text-align: center;
+  line-height: 1.8;
+  margin: var(--spacing-lg) 0;
+  font-style: italic;
+  padding: 0 var(--spacing-sm);
+}
+
+.gallery-large {
+  width: 95%;
+  max-width: 357px;
+  height: auto;
+  margin: var(--spacing-md) auto;
+  display: block;
+  border-radius: var(--radius-sm);
+}
+
+.forever-text,
+.and-text,
+.ever-text {
+  display: block;
+  font-size: var(--fs-2xl);
+  font-weight: bold;
+  font-family: var(--font-secondary);
+  color: var(--primary-red);
+  text-align: center;
+  letter-spacing: 3px;
+  margin: 10px 0;
+}
+
+.and-text {
+  font-size: var(--fs-lg);
+  color: var(--black);
+}
+
+.final-poem {
+  font-size: var(--fs-xs);
+  font-weight: 400;
+  font-family: var(--font-primary);
+  color: var(--dark-gray);
+  text-align: center;
+  line-height: 1.8;
+  margin: var(--spacing-lg) auto;
+  max-width: 400px;
+  font-style: italic;
+  padding: 0 var(--spacing-sm);
+}
+
+/* Desktop Adjustments */
+@media (min-width: 501px) {
+  .large-photo-section {
+    height: 636px;
+  }
+
+  .large-photo-text {
+    font-size: var(--fs-4xl);
+  }
+
+  .dearest-labels {
+    top: 30px;
+  }
+
+  .dearest-labels span {
+    font-size: var(--fs-3xl);
+  }
+
+  .portrait-section {
+    padding: var(--spacing-xl) var(--spacing-md);
+  }
+
+  .portrait-image {
+    height: 250px;
+  }
+
+  .quote-center,
+  .perfect-poem {
+    font-size: var(--fs-base);
+  }
+
+  .gallery-section {
+    padding: var(--spacing-xxl) var(--spacing-md);
+  }
+
+  .gallery-title {
+    font-size: var(--fs-5xl);
+  }
+
+  .gallery-photos {
+    flex-direction: row;
+  }
+
+  .gallery-img-left,
+  .gallery-img-right {
+    width: 48%;
+  }
+
+  .gallery-quote {
+    font-size: var(--fs-base);
+  }
+
+  .forever-text,
+  .ever-text {
+    font-size: var(--fs-5xl);
+  }
+
+  .and-text {
+    font-size: var(--fs-2xl);
+  }
+
+  .final-poem {
+    font-size: var(--fs-md);
+  }
+}

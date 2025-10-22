@@ -1,0 +1,98 @@
+/* Layout - Mobile First */
+
+.app-container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--white);
+  position: relative;
+  padding: 0;
+}
+
+.desktop-view {
+  max-width: 100%;
+  margin: 0 auto;
+  background-color: var(--secondary-beige);
+  min-height: 100vh;
+  padding: 0;
+}
+
+.desktop-content {
+  width: 100%;
+  margin: auto;
+  position: relative;
+  background: var(--white);
+  height: 100%;
+}
+
+.wedding-content {
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: var(--white);
+  height: 100vh;
+}
+
+.page-container {
+  position: relative;
+  width: 100%;
+  background: var(--white);
+  min-height: 100%;
+}
+
+/* Section Base - Mobile First */
+.hero-section,
+.second-section,
+.invitation-header-section,
+.love-story-section,
+.our-story-section,
+.large-photo-section,
+.love-freedom-section,
+.portrait-section,
+.calendar-section,
+.invitation-details-section,
+.gallery-section,
+.map-section,
+.rsvp-section,
+.final-section {
+  position: relative;
+  width: 100%;
+  background: var(--white);
+  overflow: hidden;
+}
+
+/* Desktop Layout */
+@media (min-width: 501px) {
+  .desktop-view {
+    max-width: var(--container-desktop);
+    padding: 5vh 0;
+  }
+
+  .desktop-content {
+    width: var(--container-desktop);
+    border: 1px solid #e0e0e0;
+    box-shadow: var(--shadow-sm);
+    border-radius: 3px;
+  }
+
+  .wedding-content {
+    height: 90vh;
+  }
+
+  .page-container,
+  .hero-section,
+  .second-section,
+  .invitation-header-section,
+  .love-story-section,
+  .our-story-section,
+  .large-photo-section,
+  .love-freedom-section,
+  .portrait-section,
+  .calendar-section,
+  .invitation-details-section,
+  .gallery-section,
+  .map-section,
+  .rsvp-section,
+  .final-section {
+    width: var(--container-desktop);
+  }
+}

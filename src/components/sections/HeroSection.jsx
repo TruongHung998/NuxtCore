@@ -39,7 +39,7 @@ const HeroSection = ({ heroImage }) => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.3, delay: 0, ease: "easeOut" }}
       >
-        14.12.2025
+        29.11.2025
       </motion.div>
     </motion.div>
   );

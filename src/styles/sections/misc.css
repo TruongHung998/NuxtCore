@@ -1,0 +1,252 @@
+/* Miscellaneous Sections - Mobile First */
+
+/* Love Freedom Section */
+.love-freedom-section {
+  padding: var(--spacing-xl) var(--spacing-sm);
+  text-align: center;
+}
+
+.love-freedom-title {
+  font-size: var(--fs-xl);
+  font-weight: 600;
+  font-family: var(--font-secondary);
+  color: var(--black);
+  margin-bottom: var(--spacing-md);
+  line-height: 1.4;
+}
+
+.nature-poem {
+  font-size: var(--fs-xs);
+  font-weight: 400;
+  font-family: var(--font-primary);
+  color: var(--dark-gray);
+  line-height: 1.8;
+  margin: var(--spacing-md) auto;
+  max-width: 400px;
+  font-style: italic;
+  padding: 0 var(--spacing-sm);
+}
+
+.info-labels {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-md);
+  margin: var(--spacing-lg) 0;
+  flex-direction: column;
+}
+
+.info-labels span {
+  font-size: var(--fs-base);
+  font-weight: 600;
+  font-family: var(--font-primary);
+  color: var(--dark-gray);
+  letter-spacing: 1px;
+}
+
+/* Map Section */
+.map-section {
+  padding: var(--spacing-lg) var(--spacing-sm);
+}
+
+.map-title {
+  font-size: var(--fs-3xl);
+  font-weight: bold;
+  font-family: var(--font-secondary);
+  color: var(--black);
+  text-align: center;
+  margin-bottom: var(--spacing-md);
+  letter-spacing: 1px;
+}
+
+.map-container {
+  width: 100%;
+  height: 250px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* RSVP Section */
+.rsvp-section {
+  padding: var(--spacing-lg) var(--spacing-sm);
+  background: var(--white);
+}
+
+.rsvp-form {
+  background: var(--white);
+  color: var(--black);
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius-sm);
+  padding: var(--spacing-sm);
+  border: 1px solid #e0e0e0;
+}
+
+.rsvp-form h3 {
+  margin-bottom: var(--spacing-md);
+  color: var(--black);
+  font-weight: bold;
+  font-size: var(--fs-base);
+  text-align: center;
+  font-family: var(--font-primary);
+}
+
+/* Final Section */
+.final-section {
+  padding: var(--spacing-xxl) var(--spacing-sm);
+  text-align: center;
+}
+
+.final-message {
+  font-size: var(--fs-3xl);
+  font-weight: bold;
+  font-family: var(--font-cursive);
+  color: var(--primary-red);
+  margin-bottom: var(--spacing-lg);
+  letter-spacing: 2px;
+  line-height: 1.3;
+}
+
+.final-subtitle {
+  font-size: var(--fs-xl);
+  font-weight: 400;
+  font-family: var(--font-primary);
+  color: var(--dark-gray);
+  line-height: 1.8;
+  margin: var(--spacing-md) auto;
+  max-width: 400px;
+}
+
+.final-thankyou,
+.thankyou-title {
+  font-size: var(--fs-3xl);
+  font-weight: bold;
+  font-family: var(--font-secondary);
+  color: var(--black);
+  margin-top: var(--spacing-xl);
+  letter-spacing: 2px;
+}
+
+.final-signature,
+.sunshine-title {
+  font-size: var(--fs-2xl);
+  font-weight: normal;
+  font-family: var(--font-cursive);
+  color: var(--primary-red);
+  margin-top: var(--spacing-md);
+  line-height: 1.3;
+}
+
+.final-year {
+  font-size: var(--fs-lg);
+  font-weight: 500;
+  font-family: var(--font-primary);
+  color: var(--dark-gray);
+  margin-top: var(--spacing-lg);
+}
+
+.final-cover {
+  width: 100%;
+  height: auto;
+  margin-bottom: var(--spacing-md);
+}
+
+.final-labels {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: var(--spacing-md) 0;
+}
+
+.final-labels span {
+  font-size: var(--fs-xl);
+  font-weight: bold;
+  font-family: var(--font-secondary);
+  color: var(--primary-red);
+  letter-spacing: 2px;
+  margin: 5px 0;
+}
+
+.final-portrait {
+  width: 95%;
+  max-width: 500px;
+  height: auto;
+  margin: var(--spacing-md) auto;
+  display: block;
+}
+
+/* Watermark (hidden) */
+.watermark {
+  display: none;
+}
+
+/* Desktop Adjustments */
+@media (min-width: 501px) {
+  .love-freedom-section {
+    padding: var(--spacing-xxl) var(--spacing-md);
+  }
+
+  .love-freedom-title {
+    font-size: var(--fs-3xl);
+  }
+
+  .nature-poem {
+    font-size: var(--fs-md);
+  }
+
+  .info-labels {
+    flex-direction: row;
+  }
+
+  .map-section {
+    padding: var(--spacing-xl) var(--spacing-md);
+  }
+
+  .map-container {
+    height: 350px;
+    border-radius: var(--radius-lg);
+  }
+
+  .rsvp-section {
+    padding: var(--spacing-xl) var(--spacing-md);
+  }
+
+  .rsvp-form {
+    padding: var(--spacing-md);
+  }
+
+  .rsvp-form h3 {
+    font-size: var(--fs-lg);
+  }
+
+  .final-section {
+    padding: 80px var(--spacing-md);
+  }
+
+  .final-message {
+    font-size: var(--fs-6xl);
+  }
+
+  .final-subtitle {
+    font-size: var(--fs-xl);
+  }
+
+  .final-thankyou,
+  .thankyou-title {
+    font-size: var(--fs-5xl);
+  }
+
+  .final-signature,
+  .sunshine-title {
+    font-size: var(--fs-3xl);
+  }
+
+  .final-labels span {
+    font-size: var(--fs-2xl);
+  }
+}

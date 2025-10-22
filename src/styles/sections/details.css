@@ -1,0 +1,309 @@
+/* Detail Sections - Mobile First */
+
+/* Calendar Section */
+.calendar-section {
+  padding: var(--spacing-xl) var(--spacing-sm);
+  text-align: center;
+}
+
+.calendar-title {
+  font-size: var(--fs-2xl);
+  font-weight: bold;
+  font-family: var(--font-secondary);
+  color: var(--primary-red);
+  margin-bottom: var(--spacing-lg);
+  letter-spacing: 2px;
+}
+
+.calendar-widget {
+  max-width: 100%;
+  margin: var(--spacing-lg) auto;
+  padding: var(--spacing-sm);
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  border: 2px solid var(--light-gray);
+}
+
+.calendar-header {
+  font-size: var(--fs-md);
+  font-weight: bold;
+  font-family: var(--font-secondary);
+  color: var(--black);
+  margin-bottom: var(--spacing-md);
+  text-align: center;
+}
+
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-sm);
+}
+
+.calendar-weekday {
+  font-size: 11px;
+  font-weight: 600;
+  font-family: var(--font-primary);
+  color: var(--dark-gray);
+  text-align: center;
+  padding: 5px 0;
+}
+
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: var(--spacing-xs);
+}
+
+.calendar-day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 500;
+  font-family: var(--font-primary);
+  color: var(--black);
+  background: var(--light-gray);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  min-height: 30px;
+}
+
+.calendar-day.empty {
+  background: transparent;
+  cursor: default;
+}
+
+.calendar-day:not(.empty):hover {
+  background: var(--primary-red);
+  color: var(--white);
+  transform: scale(1.1);
+}
+
+.calendar-day.highlighted {
+  background: var(--primary-red);
+  color: var(--white);
+  font-weight: bold;
+  font-size: var(--fs-base);
+  box-shadow: 0 4px 12px rgba(214, 48, 48, 0.5);
+  transform: scale(1.15);
+}
+
+.calendar-note {
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  font-family: var(--font-primary);
+  color: var(--dark-gray);
+  margin-top: var(--spacing-md);
+  font-style: italic;
+  padding: 0 var(--spacing-sm);
+}
+
+/* Invitation Details Section */
+.invitation-details-section {
+  padding: var(--spacing-xl) var(--spacing-sm);
+  text-align: center;
+}
+
+.invitation-details-title,
+.invited-title {
+  font-size: var(--fs-xl);
+  font-weight: bold;
+  font-family: var(--font-secondary);
+  color: var(--primary-red);
+  margin-bottom: var(--spacing-lg);
+  letter-spacing: 2px;
+}
+
+.invitation-time,
+.time-slot {
+  font-size: var(--fs-4xl);
+  font-weight: bold;
+  font-family: var(--font-secondary);
+  color: var(--black);
+  margin: var(--spacing-md) 0;
+}
+
+.invitation-day,
+.invite-subtitle,
+.invite-time {
+  font-size: var(--fs-md);
+  font-weight: 500;
+  font-family: var(--font-primary);
+  color: var(--dark-gray);
+  margin: 10px 0;
+}
+
+.invitation-full-date {
+  font-size: var(--fs-3xl);
+  font-weight: 600;
+  font-family: var(--font-secondary);
+  color: var(--black);
+  margin: var(--spacing-sm) 0;
+}
+
+.invitation-lunar,
+.lunar-date {
+  font-size: var(--fs-sm);
+  font-weight: 400;
+  font-family: var(--font-primary);
+  color: var(--dark-gray);
+  font-style: italic;
+  margin: var(--spacing-md) 0;
+}
+
+.invitation-location {
+  font-size: var(--fs-xl);
+  font-weight: 500;
+  font-family: var(--font-primary);
+  color: var(--black);
+  margin: var(--spacing-lg) 0;
+  line-height: 1.6;
+}
+
+.invitation-address {
+  font-size: var(--fs-base);
+  font-weight: 400;
+  font-family: var(--font-primary);
+  color: var(--dark-gray);
+  line-height: 1.8;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.time-date-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-lg);
+  margin: var(--spacing-lg) 0;
+  flex-direction: column;
+}
+
+.date-full {
+  text-align: center;
+}
+
+.date-full p {
+  font-size: var(--fs-base);
+  font-weight: 500;
+  font-family: var(--font-primary);
+  color: var(--dark-gray);
+  margin: 5px 0;
+}
+
+.date-number {
+  font-size: var(--fs-6xl) !important;
+  font-weight: bold !important;
+  font-family: var(--font-secondary) !important;
+  color: var(--black) !important;
+}
+
+.time-year {
+  font-size: var(--fs-5xl);
+  font-weight: bold;
+  font-family: var(--font-secondary);
+  color: var(--black);
+}
+
+.location-title {
+  font-size: var(--fs-xl);
+  font-weight: bold;
+  font-family: var(--font-secondary);
+  color: var(--black);
+  margin: var(--spacing-lg) 0 var(--spacing-sm);
+  text-align: center;
+}
+
+.location-info {
+  text-align: center;
+}
+
+.location-info p {
+  font-size: var(--fs-md);
+  font-weight: 500;
+  font-family: var(--font-primary);
+  color: var(--dark-gray);
+  margin: var(--spacing-xs) 0;
+  line-height: 1.6;
+  padding: 0 var(--spacing-sm);
+}
+
+/* Desktop Adjustments */
+@media (min-width: 501px) {
+  .calendar-section,
+  .invitation-details-section {
+    padding: var(--spacing-xxl) var(--spacing-lg);
+  }
+
+  .calendar-title {
+    font-size: var(--fs-4xl);
+  }
+
+  .calendar-widget {
+    max-width: 420px;
+    padding: 25px;
+  }
+
+  .calendar-header {
+    font-size: var(--fs-2xl);
+  }
+
+  .calendar-weekday {
+    font-size: var(--fs-sm);
+    padding: var(--spacing-xs) 0;
+  }
+
+  .calendar-day {
+    font-size: var(--fs-md);
+    min-height: 40px;
+  }
+
+  .calendar-day.highlighted {
+    font-size: var(--fs-lg);
+  }
+
+  .calendar-note {
+    font-size: var(--fs-base);
+  }
+
+  .invitation-details-title,
+  .invited-title {
+    font-size: var(--fs-5xl);
+  }
+
+  .invitation-time,
+  .time-slot {
+    font-size: var(--fs-7xl);
+  }
+
+  .invitation-day,
+  .invite-subtitle,
+  .invite-time {
+    font-size: var(--fs-xl);
+  }
+
+  .time-date-display {
+    flex-direction: row;
+    gap: var(--spacing-lg);
+  }
+
+  .date-number {
+    font-size: 52px !important;
+  }
+
+  .time-year {
+    font-size: var(--fs-7xl);
+  }
+
+  .location-title {
+    font-size: var(--fs-2xl);
+  }
+
+  .location-info p {
+    font-size: var(--fs-lg);
+  }
+}

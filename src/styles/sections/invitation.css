@@ -1,0 +1,178 @@
+/* Invitation Sections - Mobile First */
+
+/* Second Section */
+.second-section {
+  margin-top: var(--spacing-md);
+  padding: var(--spacing-md) 0;
+}
+
+/* Invitation Header Section */
+.invitation-header-section {
+  padding: var(--spacing-lg) var(--spacing-sm);
+  text-align: center;
+}
+
+.invitation-two-columns {
+  display: flex;
+  gap: var(--spacing-lg);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.invitation-left-column,
+.invitation-right-column {
+  width: 100%;
+  padding: var(--spacing-md);
+}
+
+.parents-info {
+  margin: var(--spacing-lg) 0;
+}
+
+.parents-title {
+  font-size: var(--fs-lg);
+  font-weight: 600;
+  font-family: var(--font-primary);
+  color: var(--black);
+  margin-bottom: 10px;
+}
+
+.parents-names {
+  font-size: var(--fs-base);
+  font-weight: 400;
+  font-family: var(--font-primary);
+  color: var(--dark-gray);
+  line-height: 1.6;
+}
+
+.parents-column {
+  margin: var(--spacing-md) 0;
+  text-align: center;
+}
+
+.parents-column h4 {
+  font-size: var(--fs-lg);
+  font-weight: bold;
+  font-family: var(--font-secondary);
+  color: var(--primary-red);
+  margin-bottom: 10px;
+}
+
+.parents-column p {
+  font-size: var(--fs-base);
+  font-weight: 400;
+  font-family: var(--font-primary);
+  color: var(--dark-gray);
+  margin: 5px 0;
+}
+
+.invitation-main-title,
+.invitation-request,
+.invite-text {
+  font-size: var(--fs-xl);
+  font-weight: bold;
+  font-family: var(--font-secondary);
+  color: var(--primary-red);
+  margin: var(--spacing-lg) 0;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.invitation-names {
+  font-size: var(--fs-4xl);
+  font-weight: normal;
+  font-family: var(--font-cursive);
+  color: var(--black);
+  margin: var(--spacing-md) 0;
+}
+
+.invitation-date-display {
+  font-size: var(--fs-2xl);
+  font-weight: 500;
+  font-family: var(--font-secondary);
+  color: var(--black);
+  margin: var(--spacing-sm) 0;
+}
+
+.invitation-photo {
+  width: 95%;
+  max-width: 372px;
+  height: auto;
+  margin: var(--spacing-md) auto;
+  display: block;
+  border-radius: var(--radius-sm);
+}
+
+.invitation-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: var(--spacing-xl) 0;
+  flex-direction: column;
+}
+
+.invitation-leaf {
+  font-size: var(--fs-5xl);
+  color: var(--primary-red);
+}
+
+.invitation-text {
+  color: var(--black);
+  font-size: var(--fs-md);
+  font-weight: 500;
+  font-family: var(--font-secondary);
+  text-align: center;
+  line-height: 1.2;
+}
+
+.invitation-message {
+  color: var(--black);
+  font-size: var(--fs-md);
+  font-weight: 500;
+  font-family: var(--font-secondary);
+  text-align: center;
+  margin: var(--spacing-lg) 0;
+}
+
+/* Desktop Adjustments */
+@media (min-width: 501px) {
+  .invitation-header-section {
+    padding: var(--spacing-xl) var(--spacing-md);
+  }
+
+  .invitation-two-columns {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .invitation-left-column,
+  .invitation-right-column {
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
+  }
+
+  .invitation-main-title,
+  .invitation-request,
+  .invite-text {
+    font-size: var(--fs-4xl);
+  }
+
+  .invitation-names {
+    font-size: var(--fs-7xl);
+  }
+
+  .invitation-box {
+    flex-direction: row;
+  }
+
+  .invitation-leaf {
+    font-size: var(--fs-7xl);
+  }
+
+  .invitation-text {
+    font-size: var(--fs-xl);
+  }
+}

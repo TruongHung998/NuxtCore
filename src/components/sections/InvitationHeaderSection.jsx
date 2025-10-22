@@ -28,13 +28,13 @@ const InvitationHeaderSection = ({ invitationImage }) => {
       >
         <div className="parents-column">
           <h4>Nhà trai</h4>
-          <p>Ông Nguyễn Văn Khiêm</p>
-          <p>Bà Nguyễn Thị Lương</p>
+          <p>Ông Trương Bá Long</p>
+          <p>Bà Phạm Hoàng Thuỷ</p>
         </div>
         <div className="parents-column">
           <h4>Nhà gái</h4>
-          <p>Ông Trần Thiện Thảo</p>
-          <p>Bà Hà Thị Cẩm Hà</p>
+          <p>Ông Nguyễn Tiến Khương</p>
+          <p>Bà Nguyễn Thị Hậu</p>
         </div>
       </motion.div>
 

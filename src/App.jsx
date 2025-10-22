@@ -66,9 +66,6 @@ function App() {
               {/* SECTION 1: Hero Section */}
               <HeroSection heroImage={heroImage} />
 
-              {/* SECTION 2: Second Image Section */}
-              <SecondSection secondImage={secondImage} />
-
               {/* SECTION 3: Invitation Header */}
               <InvitationHeaderSection invitationImage={invitationImage} />
 
