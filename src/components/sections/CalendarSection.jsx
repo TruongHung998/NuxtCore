@@ -75,7 +75,6 @@ const CalendarSection = () => {
         </div>
       </div>
 
-      <p className="calendar-note">Saturday, November 29, 2025 at 12:00</p>
     </motion.div>
   );
 };

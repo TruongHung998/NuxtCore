@@ -1,5 +1,6 @@
 export { default as HeroSection } from "./HeroSection";
 export { default as SecondSection } from "./SecondSection";
+export { default as LogoCountdownSection } from "./LogoCountdownSection";
 export { default as InvitationHeaderSection } from "./InvitationHeaderSection";
 export { default as LoveStorySection } from "./LoveStorySection";
 export { default as OurStorySection } from "./OurStorySection";

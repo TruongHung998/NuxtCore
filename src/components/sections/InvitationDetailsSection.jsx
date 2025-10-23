@@ -9,27 +9,75 @@ const InvitationDetailsSection = () => {
       viewport={{ once: true }}
       transition={{ duration: 1.3, delay: 0, ease: "easeOut" }}
     >
-      <h4 className="invite-text">Trân Trọng Kính Mời</h4>
-      <p className="invite-subtitle">THAM DỰ TIỆC MỪNG LỄ THÀNH HÔN</p>
-      <p className="invite-time">Vào lúc</p>
+      <motion.div
+        className="divider-line"
+        initial={{ opacity: 0, scaleX: 0 }}
+        whileInView={{ opacity: 1, scaleX: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
+      />
 
-      <div className="time-date-display">
-        <span className="time-slot">12:00</span>
-        <div className="date-full">
-          <p>Thứ 7 / Saturday</p>
-          <p className="date-number">29</p>
-          <p>Tháng 11 / November</p>
-        </div>
-        <span className="time-year">2025</span>
-      </div>
+      <motion.p
+        className="invite-blessing"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1.3, delay: 0.3, ease: "easeOut" }}
+      >
+        Được tổ chức vào lúc
+      </motion.p>
 
-      <p className="lunar-date">(Âm lịch 10 tháng 10 năm Ất Tỵ)</p>
+      <motion.div
+        className="divider-line"
+        initial={{ opacity: 0, scaleX: 0 }}
+        whileInView={{ opacity: 1, scaleX: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
+      />
 
-      <h4 className="location-title">Địa điểm / Address</h4>
-      <div className="location-info">
-        <p>Nhà hàng Hải sản Đảo Hải Long</p>
-        <p>179a Đ. Nguyễn Hữu Thọ, Nhơn Đức, Nhà Bè, HCM</p>
-      </div>
+      <motion.div
+        className="time-date-display"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1.3, delay: 0.6, ease: "easeOut" }}
+      >
+        <p className="time-slot">17:30 - CHỦ NHẬT</p>
+        <p className="date-number">21.09.2025</p>
+      </motion.div>
+
+      <motion.div
+        className="divider-line"
+        initial={{ opacity: 0, scaleX: 0 }}
+        whileInView={{ opacity: 1, scaleX: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
+      />
+
+      <motion.div
+        className="location-section"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1.3, delay: 1, ease: "easeOut" }}
+      >
+        <p className="location-title">Địa điểm:</p>
+        <h3 className="location-name">MAPLE HOTEL & APARTMENT</h3>
+        <p className="location-address">
+          16 Tôn Dần, Lộc Thọ, Nha Trang, Khánh Hòa
+        </p>
+      </motion.div>
+
+      <motion.div
+        className="direction-button"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1.3, delay: 1.2, ease: "easeOut" }}
+      >
+        <span className="map-icon">📍</span>
+        <span className="direction-text">CHỈ ĐƯỜNG</span>
+      </motion.div>
     </motion.div>
   );
 };

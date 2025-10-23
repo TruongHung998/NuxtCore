@@ -1,0 +1,207 @@
+/* Logo Countdown Section */
+.logo-countdown-section {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  background: #fafafa;
+}
+
+.logo-countdown-container {
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+/* Logo Styles */
+.logo-wrapper {
+  width: 100%;
+  max-width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-logo {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+}
+
+/* Text Styles */
+.countdown-text {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 30px;
+}
+
+.countdown-title,
+.countdown-subtitle {
+  font-family: var(--font-serif, "Playfair Display", serif);
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  font-weight: 300;
+  letter-spacing: 8px;
+  color: #b8b8b8;
+  margin: 0;
+  line-height: 1.6;
+  text-transform: uppercase;
+}
+
+.countdown-subtitle {
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  letter-spacing: 8px;
+}
+
+/* Countdown Timer Styles */
+.countdown-timer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding: 20px 0;
+  font-family: var(--font-serif, "Playfair Display", serif);
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 200;
+  letter-spacing: 10px;
+  color: #b8b8b8;
+}
+
+.timer-number {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  line-height: 1;
+  min-width: 2ch;
+  text-align: center;
+}
+
+.timer-separator {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  margin: 0 5px;
+}
+
+.timer-label {
+  display: none;
+}
+
+/* Image Styles */
+.vertical-image-wrapper,
+.horizontal-image-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.vertical-image-wrapper {
+  max-width: 500px;
+}
+
+.horizontal-image-wrapper {
+  max-width: 100%;
+}
+
+.vertical-image,
+.horizontal-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.vertical-image {
+  max-height: 600px;
+}
+
+.horizontal-image {
+  max-height: 500px;
+}
+
+.vertical-image-wrapper:hover .vertical-image,
+.horizontal-image-wrapper:hover .horizontal-image {
+  transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .logo-countdown-section {
+    padding: 60px 15px;
+  }
+
+  .logo-countdown-container {
+    gap: 30px;
+  }
+
+  .logo-wrapper {
+    max-width: 100px;
+  }
+
+  .countdown-text {
+    margin-bottom: 20px;
+  }
+
+  .countdown-title,
+  .countdown-subtitle {
+    letter-spacing: 4px;
+  }
+
+  .countdown-timer {
+    gap: 10px;
+    letter-spacing: 5px;
+  }
+
+  .timer-separator {
+    margin: 0 3px;
+  }
+
+  .vertical-image-wrapper {
+    max-width: 100%;
+  }
+
+  .vertical-image {
+    max-height: 500px;
+  }
+
+  .horizontal-image {
+    max-height: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-countdown-section {
+    padding: 40px 10px;
+  }
+
+  .countdown-text {
+    gap: 5px;
+    margin-bottom: 15px;
+  }
+
+  .countdown-title,
+  .countdown-subtitle {
+    letter-spacing: 2px;
+  }
+
+  .countdown-timer {
+    gap: 8px;
+    letter-spacing: 3px;
+  }
+
+  .timer-separator {
+    margin: 0 2px;
+  }
+}

@@ -10,15 +10,6 @@ const InvitationHeaderSection = ({ invitationImage }) => {
       viewport={{ once: true }}
       transition={{ duration: 1.3, delay: 0, ease: "easeOut" }}
     >
-      <div className="invitation-box">
-        <span className="invitation-leaf left">🌿</span>
-        <div className="invitation-text">
-          <p>WEDDING</p>
-          <p>INVITATION</p>
-        </div>
-        <span className="invitation-leaf right">🌿</span>
-      </div>
-
       <motion.div
         className="parents-info"
         initial={{ opacity: 0, y: 20 }}
@@ -27,14 +18,19 @@ const InvitationHeaderSection = ({ invitationImage }) => {
         transition={{ duration: 1.3, delay: 0, ease: "easeOut" }}
       >
         <div className="parents-column">
-          <h4>Nhà trai</h4>
-          <p>Ông Trương Bá Long</p>
-          <p>Bà Phạm Hoàng Thuỷ</p>
+          <h4>NHÀ GÁI</h4>
+          <p>Ông. Đặng Thái Công</p>
+          <p>Bà. Hoàng Mai Hương</p>
+          <p>TP. Nha Trang</p>
         </div>
+
+        <div className="parents-divider"></div>
+
         <div className="parents-column">
-          <h4>Nhà gái</h4>
-          <p>Ông Nguyễn Tiến Khương</p>
-          <p>Bà Nguyễn Thị Hậu</p>
+          <h4>NHÀ TRAI</h4>
+          <p>Ông. Phan Đình Long</p>
+          <p>Bà. Nguyễn Thị Mai</p>
+          <p>TP. Đà Nẵng</p>
         </div>
       </motion.div>
 
@@ -45,14 +41,8 @@ const InvitationHeaderSection = ({ invitationImage }) => {
         viewport={{ once: true }}
         transition={{ duration: 1.3, delay: 0, ease: "easeOut" }}
       >
-        Trân Trọng Kính Mời
+        Thân mời đến dự lễ thành hôn của chúng tôi!
       </motion.p>
-
-      <img
-        src={invitationImage}
-        alt="Invitation Photo"
-        className="invitation-photo"
-      />
     </motion.div>
   );
 };

@@ -5,6 +5,7 @@ import "./App.css";
 import {
   HeroSection,
   SecondSection,
+  LogoCountdownSection,
   InvitationHeaderSection,
   LoveStorySection,
   OurStorySection,
@@ -19,6 +20,9 @@ import {
 } from "./components/sections";
 
 // Import images
+// Logo
+import mainLogo from "./assets/webassests/mainlogo.png";
+
 // Vertical images
 import heroImage from "./assets/webassests/vertical/HUG09300.jpg";
 import invitationImage from "./assets/webassests/vertical/HUG09122.jpg";
@@ -66,35 +70,23 @@ function App() {
               {/* SECTION 1: Hero Section */}
               <HeroSection heroImage={heroImage} />
 
+              {/* SECTION 2: Logo Countdown Section */}
+              <LogoCountdownSection
+                logoImage={mainLogo}
+                verticalImage={portraitLeft}
+                horizontalImage={secondImage}
+              />
+
               {/* SECTION 3: Invitation Header */}
               <InvitationHeaderSection invitationImage={invitationImage} />
 
-              {/* SECTION 4: Love Story Section */}
-              <LoveStorySection
-                storyImageTall={storyImageTall}
-                storyImageWide={storyImageWide}
-              />
-
-              {/* SECTION 12: Gallery Section */}
-              <GallerySection
-                galleryLeft={galleryLeft}
-                galleryRight={galleryRight}
-                galleryLarge={galleryLarge}
-              />
-
               {/* SECTION 10: Invitation Details */}
               <InvitationDetailsSection />
-              {/* SECTION 9: Calendar & Date Section */}
-              <CalendarSection />
 
               {/* SECTION 11: Map Section */}
               <MapSection />
-
-              {/* SECTION 13: Final Photo & Thank You */}
-              <FinalSection
-                finalCover={finalCover}
-                finalPortrait={finalPortrait}
-              />
+              {/* SECTION 9: Calendar & Date Section */}
+              <CalendarSection />
             </div>
           </main>
         </div>
