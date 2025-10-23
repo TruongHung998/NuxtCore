@@ -17,6 +17,7 @@ import {
   MapSection,
   GallerySection,
   FinalSection,
+  TimelineSection,
 } from "./components/sections";
 
 // Import images
@@ -82,11 +83,10 @@ function App() {
 
               {/* SECTION 10: Invitation Details */}
               <InvitationDetailsSection />
-
-              {/* SECTION 11: Map Section */}
+              {/* SECTION 12: Map Section */}
               <MapSection />
-              {/* SECTION 9: Calendar & Date Section */}
-              <CalendarSection />
+              {/* SECTION 11: Timeline Section */}
+              <TimelineSection />
             </div>
           </main>
         </div>

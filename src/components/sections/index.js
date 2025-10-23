@@ -12,3 +12,4 @@ export { default as InvitationDetailsSection } from "./InvitationDetailsSection"
 export { default as MapSection } from "./MapSection";
 export { default as GallerySection } from "./GallerySection";
 export { default as FinalSection } from "./FinalSection";
+export { default as TimelineSection } from "./TimelineSection";

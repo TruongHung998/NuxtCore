@@ -46,6 +46,7 @@
 /* Map Section */
 .map-section {
   padding: var(--spacing-lg) var(--spacing-sm);
+  background-color: #fafafa;
 }
 
 .map-title {

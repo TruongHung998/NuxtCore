@@ -10,6 +10,7 @@
 .invitation-header-section {
   padding: var(--spacing-lg) var(--spacing-sm);
   text-align: center;
+  background-color: #fafafa;
 }
 
 .invitation-two-columns {
@@ -78,7 +79,6 @@
   font-weight: bold;
   font-family: var(--font-secondary);
   color: var(--primary-red);
-  margin: var(--spacing-lg) 0;
   letter-spacing: 2px;
   text-align: center;
 }

@@ -1,0 +1,154 @@
+/* Timeline Section Styles */
+.timeline-section {
+  width: 100%;
+  padding: 80px 20px;
+  background-color: #fafafa;
+  position: relative;
+}
+
+.timeline-container {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  padding: 40px 0;
+}
+
+/* Vertical line */
+.timeline-line {
+  position: absolute;
+  left: 40px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    var(--primary-green) 10%,
+    var(--primary-green) 90%,
+    transparent 100%
+  );
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 60px;
+  padding-left: 80px;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Timeline dots */
+.timeline-dot {
+  position: absolute;
+  left: 30px;
+  top: 8px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--primary-green);
+  border: 3px solid #fafafa;
+  box-shadow: 0 0 0 2px var(--primary-green);
+  z-index: 2;
+}
+
+.timeline-content {
+  background-color: var(--white);
+  padding: 30px 35px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-base);
+}
+
+.timeline-content:hover {
+  transform: translateX(5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.timeline-year {
+  font-size: var(--fs-xl);
+  font-weight: 600;
+  color: var(--primary-green);
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-family: var(--font-primary);
+}
+
+.timeline-description {
+  font-size: var(--fs-base);
+  line-height: 1.8;
+  color: var(--dark-gray);
+  margin: 0;
+  text-align: justify;
+  font-family: var(--font-primary);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .timeline-section {
+    padding: 60px 15px;
+  }
+
+  .timeline-line {
+    left: 20px;
+  }
+
+  .timeline-item {
+    padding-left: 50px;
+  }
+
+  .timeline-dot {
+    left: 10px;
+    width: 18px;
+    height: 18px;
+  }
+
+  .timeline-content {
+    padding: 20px 25px;
+  }
+
+  .timeline-year {
+    font-size: 18px;
+  }
+
+  .timeline-description {
+    font-size: var(--fs-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .timeline-section {
+    padding: 40px 10px;
+  }
+
+  .timeline-line {
+    left: 15px;
+  }
+
+  .timeline-item {
+    padding-left: 40px;
+    margin-bottom: 40px;
+  }
+
+  .timeline-dot {
+    left: 6px;
+    width: 16px;
+    height: 16px;
+  }
+
+  .timeline-content {
+    padding: 18px 20px;
+  }
+
+  .timeline-year {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+
+  .timeline-description {
+    font-size: var(--fs-sm);
+    line-height: 1.7;
+  }
+}
