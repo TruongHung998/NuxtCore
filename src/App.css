@@ -16,9 +16,8 @@
 @import "./styles/sections/hero.css";
 @import "./styles/sections/invitation.css";
 @import "./styles/sections/logo-countdown.css";
-@import "./styles/sections/story.css";
 @import "./styles/sections/details.css";
-@import "./styles/sections/gallery.css";
+@import "./styles/sections/timeline.css";
 @import "./styles/sections/misc.css";
 
 /* Import Animations */

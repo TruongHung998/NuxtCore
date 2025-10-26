@@ -7,19 +7,10 @@ import IntroAnimation from "./components/IntroAnimation";
 // Import sections
 import {
   HeroSection,
-  SecondSection,
   LogoCountdownSection,
   InvitationHeaderSection,
-  LoveStorySection,
-  OurStorySection,
-  LargePhotoSection,
-  LoveFreedomSection,
-  PortraitSection,
-  CalendarSection,
   InvitationDetailsSection,
   MapSection,
-  GallerySection,
-  FinalSection,
   TimelineSection,
 } from "./components/sections";
 
@@ -28,21 +19,12 @@ import {
 import mainLogo from "./assets/webassests/mainlogo.png";
 
 // Vertical images
-import heroImage from "./assets/webassests/vertical/HUG09300.jpg";
+import heroImage from "./assets/webassests/vertical/HUG00324.jpg";
 import invitationImage from "./assets/webassests/vertical/HUG09122.jpg";
 import portraitLeft from "./assets/webassests/vertical/HUG09133.jpg";
-import portraitRight from "./assets/webassests/vertical/HUG09183.jpg";
 
 // Horizontal images
 import secondImage from "./assets/webassests/horizontal/HUG00052.jpg";
-import storyImageTall from "./assets/webassests/vertical/HUG09271.jpg";
-import storyImageWide from "./assets/webassests/horizontal/HUG09695.jpg";
-import dearestPhoto from "./assets/webassests/vertical/HUG09300.jpg";
-import galleryLeft from "./assets/webassests/vertical/HUG09350.jpg";
-import galleryRight from "./assets/webassests/vertical/HUG09482.jpg";
-import galleryLarge from "./assets/webassests/horizontal/HUG09986.jpg";
-import finalCover from "./assets/webassests/vertical/HUG09738.jpg";
-import finalPortrait from "./assets/webassests/vertical/HUG09943.jpg";
 
 function App() {
   const [showIntro, setShowIntro] = useState(true);

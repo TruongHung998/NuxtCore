@@ -1,15 +1,6 @@
 export { default as HeroSection } from "./HeroSection";
-export { default as SecondSection } from "./SecondSection";
 export { default as LogoCountdownSection } from "./LogoCountdownSection";
 export { default as InvitationHeaderSection } from "./InvitationHeaderSection";
-export { default as LoveStorySection } from "./LoveStorySection";
-export { default as OurStorySection } from "./OurStorySection";
-export { default as LargePhotoSection } from "./LargePhotoSection";
-export { default as LoveFreedomSection } from "./LoveFreedomSection";
-export { default as PortraitSection } from "./PortraitSection";
-export { default as CalendarSection } from "./CalendarSection";
 export { default as InvitationDetailsSection } from "./InvitationDetailsSection";
 export { default as MapSection } from "./MapSection";
-export { default as GallerySection } from "./GallerySection";
-export { default as FinalSection } from "./FinalSection";
 export { default as TimelineSection } from "./TimelineSection";

@@ -10,6 +10,9 @@ const HeroSection = ({ heroImage }) => {
       transition={{ duration: 1.3, ease: "easeOut" }}
     >
       <img src={heroImage} alt="Wedding Cover" className="cover-image" />
+
+      {/* Dark overlay for better text visibility */}
+      <div className="hero-overlay"></div>
       {/* Couple Names - position: top: 665px */}
       <motion.div
         className="couple-names"
