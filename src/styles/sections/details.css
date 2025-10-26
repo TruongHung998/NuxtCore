@@ -300,100 +300,13 @@
   padding: 0 var(--spacing-sm);
 }
 
-/* Desktop Adjustments */
+/* Desktop Adjustments - Removed to keep mobile layout on all devices */
+/* Uncomment below if you want different desktop styles in the future */
+/*
 @media (min-width: 501px) {
   .calendar-section,
   .invitation-details-section {
     padding: var(--spacing-xxl) var(--spacing-lg);
   }
-
-  .calendar-title {
-    font-size: var(--fs-4xl);
-  }
-
-  .calendar-widget {
-    max-width: 420px;
-    padding: 25px;
-  }
-
-  .calendar-header {
-    font-size: var(--fs-2xl);
-  }
-
-  .calendar-weekday {
-    font-size: var(--fs-sm);
-    padding: var(--spacing-xs) 0;
-  }
-
-  .calendar-day {
-    font-size: var(--fs-md);
-    min-height: 40px;
-  }
-
-  .calendar-day.highlighted {
-    font-size: var(--fs-lg);
-  }
-
-  .calendar-note {
-    font-size: var(--fs-base);
-  }
-
-  .invitation-details-title,
-  .invited-title {
-    font-size: var(--fs-5xl);
-  }
-
-  .invitation-time,
-  .time-slot {
-    font-size: var(--fs-7xl);
-  }
-
-  .invitation-day,
-  .invite-subtitle,
-  .invite-time {
-    font-size: var(--fs-xl);
-  }
-
-  .time-date-display {
-    flex-direction: row;
-    gap: var(--spacing-lg);
-  }
-
-  .date-number {
-    font-size: 52px !important;
-  }
-
-  .time-year {
-    font-size: var(--fs-7xl);
-  }
-
-  .location-title {
-    font-size: var(--fs-2xl);
-  }
-
-  .location-name {
-    font-size: var(--fs-3xl);
-  }
-
-  .location-address {
-    font-size: var(--fs-lg);
-  }
-
-  .divider-line {
-    width: 80px;
-    height: 3px;
-  }
-
-  .invite-blessing {
-    font-size: var(--fs-xl);
-  }
-
-  .direction-button {
-    padding: 14px 28px;
-    font-size: var(--fs-lg);
-  }
-
-  .location-info p {
-    font-size: var(--fs-lg);
-  }
 }
+*/

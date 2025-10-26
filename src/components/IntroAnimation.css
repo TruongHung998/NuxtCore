@@ -1,0 +1,131 @@
+/* Intro Animation Component */
+.intro-animation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #94a094 0%, #a8b4a8 50%, #94a094 100%);
+  z-index: 9999;
+  overflow: hidden;
+}
+
+/* Container chính */
+.intro-content {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Vòng tròn chính */
+.intro-circle {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 8px 16px rgba(148, 160, 148, 0.2));
+}
+
+.texture-pattern {
+  width: 100%;
+  height: 100%;
+}
+
+/* Container cho các lá cây */
+.intro-leaves {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+/* Mỗi lá cây */
+.leaf {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: center;
+  animation: leaf-float 3s ease-in-out infinite;
+}
+
+.leaf svg {
+  display: block;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+/* Animation lắc nhẹ cho lá */
+@keyframes leaf-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-3px) rotate(2deg);
+  }
+  75% {
+    transform: translateY(3px) rotate(-2deg);
+  }
+}
+
+/* Logo chính giữa */
+.intro-logo {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.intro-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .intro-content {
+    width: 200px;
+    height: 200px;
+  }
+
+  .intro-circle {
+    width: 160px;
+    height: 160px;
+  }
+
+  .intro-logo {
+    width: 100px;
+    height: 100px;
+  }
+
+  .leaf {
+    transform: scale(0.8);
+  }
+}
+
+/* Animation cho organic texture */
+@keyframes texture-pulse {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.intro-circle circle:last-child {
+  animation: texture-pulse 2s ease-in-out infinite;
+}

@@ -60,8 +60,8 @@ button:active {
   transform: scale(0.95);
 }
 
-/* Loading */
-.loading {
+/* Loading - Deprecated: Replaced by IntroAnimation component */
+/* .loading {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -76,7 +76,7 @@ button:active {
   border-top: 3px solid var(--primary-green);
   border-radius: var(--radius-full);
   animation: rotate 1s linear infinite;
-}
+} */
 
 /* Custom Scrollbar */
 .desktop-content::-webkit-scrollbar {

@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 
+// Import components
+import IntroAnimation from "./components/IntroAnimation";
+
 // Import sections
 import {
   HeroSection,
@@ -42,23 +45,14 @@ import finalCover from "./assets/webassests/vertical/HUG09738.jpg";
 import finalPortrait from "./assets/webassests/vertical/HUG09943.jpg";
 
 function App() {
-  const [loading, setLoading] = useState(true);
+  const [showIntro, setShowIntro] = useState(true);
 
-  useEffect(() => {
-    // Simulate loading
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 1500);
+  const handleIntroComplete = () => {
+    setShowIntro(false);
+  };
 
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (loading) {
-    return (
-      <div className="loading">
-        <div className="loading-spinner"></div>
-      </div>
-    );
+  if (showIntro) {
+    return <IntroAnimation onComplete={handleIntroComplete} />;
   }
 
   return (

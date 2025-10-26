@@ -1,6 +1,17 @@
 import { motion } from "framer-motion";
 
 const InvitationDetailsSection = () => {
+  // Hàm mở Google Maps
+  const handleDirectionClick = () => {
+    const address =
+      "Nhà Hàng Hải Sản Đảo Hải Long, 179a Nguyễn Hữu Thọ, Nhà Bè, TP. HCM";
+    const encodedAddress = encodeURIComponent(address);
+    const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
+
+    // Mở Google Maps trong tab mới
+    window.open(googleMapsUrl, "_blank");
+  };
+
   return (
     <motion.div
       className="invitation-details-section"
@@ -63,9 +74,7 @@ const InvitationDetailsSection = () => {
       >
         <p className="location-title">Địa điểm:</p>
         <h3 className="location-name">Nhà Hàng Hải Sản Đảo Hải Long</h3>
-        <p className="location-address">
-          179a Nguyễn Hữu Thọ, Nhà Bè, TP. HCM
-        </p>
+        <p className="location-address">179a Nguyễn Hữu Thọ, Nhà Bè, TP. HCM</p>
       </motion.div>
 
       <motion.div
@@ -74,6 +83,8 @@ const InvitationDetailsSection = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 1.3, delay: 1.2, ease: "easeOut" }}
+        onClick={handleDirectionClick}
+        style={{ cursor: "pointer" }}
       >
         <span className="map-icon">📍</span>
         <span className="direction-text">CHỈ ĐƯỜNG</span>
