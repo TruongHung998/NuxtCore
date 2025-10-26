@@ -18,19 +18,19 @@ const InvitationHeaderSection = ({ invitationImage }) => {
         transition={{ duration: 1.3, delay: 0, ease: "easeOut" }}
       >
         <div className="parents-column">
-          <h4>NHÀ GÁI</h4>
-          <p>Ông. Đặng Thái Công</p>
-          <p>Bà. Hoàng Mai Hương</p>
-          <p>TP. Nha Trang</p>
+          <h4>NHÀ TRAI</h4>
+          <p>Ông. Trương Bá Long</p>
+          <p>Bà. Phạm Hoàng Thuỷ</p>
+          <p>Quy Nhơn</p>
         </div>
 
         <div className="parents-divider"></div>
 
         <div className="parents-column">
-          <h4>NHÀ TRAI</h4>
-          <p>Ông. Phan Đình Long</p>
-          <p>Bà. Nguyễn Thị Mai</p>
-          <p>TP. Đà Nẵng</p>
+          <h4>NHÀ GÁI</h4>
+          <p>Ông. Nguyễn Tiến Khương</p>
+          <p>Bà. Nguyễn Thị Hậu</p>
+          <p>TP. HCM</p>
         </div>
       </motion.div>
 

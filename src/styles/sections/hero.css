@@ -21,7 +21,7 @@
   top: 15px;
   left: 5%;
   width: 90%;
-  color: var(--white);
+  color: #f9f7f2;
   font-size: var(--fs-sm);
   font-weight: 500;
   font-family: var(--font-primary);
@@ -35,7 +35,7 @@
   top: 110px;
   left: 5%;
   width: 90%;
-  color: var(--white);
+  color: #f9f7f2;
   font-size: var(--fs-lg);
   font-weight: bold;
   font-family: var(--font-secondary);
@@ -49,7 +49,7 @@
   top: 220px;
   left: 5%;
   width: 50%;
-  color: var(--white);
+  color: #f9f7f2;
   font-size: var(--fs-3xl);
   font-weight: normal;
   font-family: var(--font-secondary);
@@ -60,34 +60,50 @@
 
 .couple-names {
   position: absolute;
-  top: 400px;
+  top: 310px;
   left: 5%;
   width: 90%;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: var(--spacing-sm);
+  gap: 0px;
   padding: 0 5%;
   z-index: 1;
 }
 
 .groom-name,
 .bride-name {
-  color: var(--white);
-  font-size: var(--fs-4xl);
-  font-weight: normal;
-  font-family: var(--font-cursive);
+  color: #f9f7f2;
+  font-size: 56px;
+  font-weight: 400;
+  font-family: var(--font-cursive), sans-serif;
   text-align: center;
-  text-shadow: var(--shadow-text);
-  flex: 1;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6), 0 4px 16px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(249, 247, 242, 0.3);
+  letter-spacing: 2px;
+  flex: none;
+  width: 100%;
 }
 
 .couple-divider {
-  color: var(--white);
-  font-size: var(--fs-5xl);
-  font-weight: 300;
-  text-shadow: var(--shadow-text);
+  color: #f9f7f2;
+  font-size: 48px;
+  font-weight: 400;
+  font-family: var(--font-cursive), sans-serif;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6), 0 4px 16px rgba(0, 0, 0, 0.4);
+  margin: 5px 0;
+}
+
+.DearScript {
+  color: #f9f7f2;
+  font-size: 42px;
+  font-weight: 400;
+  font-family: "DearScript", cursive;
+  text-align: center;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6), 0 4px 16px rgba(0, 0, 0, 0.4);
+  margin: 10px 0;
+  line-height: 1;
 }
 
 .couple-labels {
@@ -95,7 +111,7 @@
   top: 470px;
   left: 0;
   width: 100%;
-  display: flex;
+  display: none;
   justify-content: space-around;
   padding: 0 5%;
   z-index: 1;
@@ -104,23 +120,28 @@
 .groom-label,
 .bride-label {
   position: relative;
-  color: var(--white);
+  color: #f9f7f2;
   font-size: var(--fs-xl);
-  font-weight: bold;
+  font-weight: 800;
   font-family: var(--font-cursive);
   text-align: center;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7), 0 4px 12px rgba(0, 0, 0, 0.5);
+  letter-spacing: 3px;
 }
 
 .wedding-date {
   position: absolute;
-  top: 550px;
+  top: 580px;
   left: 5%;
   width: 90%;
-  color: var(--white);
-  font-size: var(--fs-2xl);
-  font-weight: 500;
-  font-family: var(--font-secondary);
+  color: #f9f7f2;
+  font-size: 25px;
+  font-weight: 600;
+  font-family: var(--font-cursive), sans-serif;
   text-align: center;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6), 0 4px 12px rgba(0, 0, 0, 0.4),
+    0 0 15px rgba(249, 247, 242, 0.2);
+  letter-spacing: 4px;
   z-index: 1;
 }
 
@@ -146,14 +167,22 @@
   }
 
   .couple-names {
-    top: 420px;
-    gap: var(--spacing-md);
+    top: 310px;
+    gap: 15px;
     padding: 0 var(--spacing-md);
   }
 
   .groom-name,
   .bride-name {
-    font-size: var(--fs-6xl);
+    font-size: 72px;
+  }
+
+  .couple-divider {
+    font-size: 56px;
+  }
+
+  .DearScript {
+    font-size: 42px;
   }
 
   .couple-labels {
@@ -167,7 +196,7 @@
   }
 
   .wedding-date {
-    top: 560px;
-    font-size: var(--fs-3xl);
+    top: 620px;
+    font-size: 40px;
   }
 }

@@ -42,8 +42,8 @@ const InvitationDetailsSection = () => {
         viewport={{ once: true }}
         transition={{ duration: 1.3, delay: 0.6, ease: "easeOut" }}
       >
-        <p className="time-slot">17:30 - CHỦ NHẬT</p>
-        <p className="date-number">21.09.2025</p>
+        <p className="time-slot">11:00 - THỨ BẢY</p>
+        <p className="date-number">29.11.2025</p>
       </motion.div>
 
       <motion.div
@@ -62,9 +62,9 @@ const InvitationDetailsSection = () => {
         transition={{ duration: 1.3, delay: 1, ease: "easeOut" }}
       >
         <p className="location-title">Địa điểm:</p>
-        <h3 className="location-name">MAPLE HOTEL & APARTMENT</h3>
+        <h3 className="location-name">Nhà Hàng Hải Sản Đảo Hải Long</h3>
         <p className="location-address">
-          16 Tôn Dần, Lộc Thọ, Nha Trang, Khánh Hòa
+          179a Nguyễn Hữu Thọ, Nhà Bè, TP. HCM
         </p>
       </motion.div>
 

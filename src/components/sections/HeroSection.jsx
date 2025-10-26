@@ -18,6 +18,7 @@ const HeroSection = ({ heroImage }) => {
         transition={{ duration: 1.3, delay: 0, ease: "easeOut" }}
       >
         <span className="groom-name">Viet Hung</span>
+        <span className="DearScript">&</span>
         <span className="bride-name">Lan Huyen</span>
       </motion.div>
 
