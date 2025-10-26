@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import "../../styles/sections/timeline.css";
 
 const TimelineSection = () => {
@@ -41,24 +42,99 @@ const TimelineSection = () => {
     },
   ];
 
+  // Variants cho container animation
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2, // Delay giữa mỗi child
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  // Variants cho mỗi timeline item
+  const itemVariants = {
+    hidden: {
+      opacity: 0,
+      x: -50,
+      y: 20,
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
-    <section className="timeline-section">
-      <div className="timeline-container">
-        <div className="timeline-line"></div>
+    <motion.section
+      className="timeline-section"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+    >
+      <motion.div
+        className="timeline-container"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.1 }}
+      >
+        <motion.div
+          className="timeline-line"
+          initial={{ scaleY: 0 }}
+          whileInView={{ scaleY: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.5, ease: "easeInOut" }}
+          style={{ transformOrigin: "top" }}
+        ></motion.div>
 
         {timelineData.map((item, index) => (
-          <div key={index} className="timeline-item">
-            <div className="timeline-dot"></div>
-            <div className="timeline-content">
+          <motion.div
+            key={index}
+            className="timeline-item"
+            variants={itemVariants}
+            custom={index}
+          >
+            <motion.div
+              className="timeline-dot"
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.4,
+                delay: index * 0.2,
+                type: "spring",
+                stiffness: 200,
+              }}
+            ></motion.div>
+            <motion.div
+              className="timeline-content"
+              initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.6,
+                delay: index * 0.15,
+                ease: "easeOut",
+              }}
+            >
               <h3 className="timeline-year">
                 {item.year} - {item.title}
               </h3>
               <p className="timeline-description">{item.description}</p>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         ))}
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 };
 
