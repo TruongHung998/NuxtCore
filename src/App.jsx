@@ -21,7 +21,7 @@ import mainLogo from "./assets/webassests/mainlogo.png";
 // Vertical images
 import heroImage from "./assets/webassests/vertical/HUG00324.jpg";
 import invitationImage from "./assets/webassests/vertical/HUG09122.jpg";
-import portraitLeft from "./assets/webassests/vertical/HUG09133.jpg";
+import portraitLeft from "./assets/webassests/mainvertical.jpg";
 
 // Horizontal images
 import secondImage from "./assets/webassests/horizontal/HUG00052.jpg";

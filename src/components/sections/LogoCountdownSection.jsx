@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import PropTypes from "prop-types";
+import left1 from "../../assets/webassests/left1.jpg";
+import right1 from "../../assets/webassests/right1.jpg";
 
 const LogoCountdownSection = ({
   logoImage,
@@ -108,20 +110,32 @@ const LogoCountdownSection = ({
           />
         </motion.div>
 
-        {/* Horizontal Image */}
-        <motion.div
-          className="horizontal-image-wrapper"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, delay: 1.1 }}
-        >
-          <img
-            src={horizontalImage}
-            alt="Wedding Photo"
-            className="horizontal-image"
-          />
-        </motion.div>
+        {/* Left Right Images Section */}
+        <div className="left-right-images-section">
+          <motion.div
+            className="left-image-wrapper"
+            initial={{ opacity: 0, x: -100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
+          >
+            <img src={left1} alt="Wedding Photo Left" className="side-image" />
+          </motion.div>
+
+          <motion.div
+            className="right-image-wrapper"
+            initial={{ opacity: 0, x: 100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
+          >
+            <img
+              src={right1}
+              alt="Wedding Photo Right"
+              className="side-image"
+            />
+          </motion.div>
+        </div>
       </div>
     </motion.div>
   );
