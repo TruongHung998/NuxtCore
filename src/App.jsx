@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./App.css";
 
 // Import components
@@ -7,9 +7,9 @@ import IntroAnimation from "./components/IntroAnimation";
 // Import sections
 import {
   HeroSection,
-  LogoCountdownSection,
-  InvitationHeaderSection,
   InvitationDetailsSection,
+  InvitationHeaderSection,
+  LogoCountdownSection,
   MapSection,
   TimelineSection,
 } from "./components/sections";
@@ -19,12 +19,11 @@ import {
 import mainLogo from "./assets/webassests/mainlogo.png";
 
 // Vertical images
+import portraitLeft from "./assets/webassests/mainvertical.jpg";
 import heroImage from "./assets/webassests/vertical/HUG00324.jpg";
 import invitationImage from "./assets/webassests/vertical/HUG09122.jpg";
-import portraitLeft from "./assets/webassests/mainvertical.jpg";
 
 // Horizontal images
-import secondImage from "./assets/webassests/horizontal/HUG00052.jpg";
 
 function App() {
   const [showIntro, setShowIntro] = useState(true);
@@ -51,7 +50,6 @@ function App() {
               <LogoCountdownSection
                 logoImage={mainLogo}
                 verticalImage={portraitLeft}
-                horizontalImage={secondImage}
               />
 
               {/* SECTION 3: Invitation Header */}
