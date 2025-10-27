@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import "./IntroAnimation.css";
-import mainLogo from "../assets/webassests/mainlogo.png";
+import mainLogo from "../assets/webassests/mainlogo.webp";
 
 const IntroAnimation = ({ onComplete }) => {
   const containerRef = useRef(null);

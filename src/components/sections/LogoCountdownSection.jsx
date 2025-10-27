@@ -1,13 +1,10 @@
 import { motion } from "framer-motion";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
-import left1 from "../../assets/webassests/left1.jpg";
-import right1 from "../../assets/webassests/right1.jpg";
+import left1 from "../../assets/webassests/left1.webp";
+import right1 from "../../assets/webassests/right1.webp";
 
-const LogoCountdownSection = ({
-  logoImage,
-  verticalImage
-}) => {
+const LogoCountdownSection = ({ logoImage, verticalImage }) => {
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,

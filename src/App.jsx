@@ -14,14 +14,14 @@ import {
   TimelineSection,
 } from "./components/sections";
 
-// Import images
+// Import images (WebP format for better performance)
 // Logo
-import mainLogo from "./assets/webassests/mainlogo.png";
+import mainLogo from "./assets/webassests/mainlogo.webp";
 
 // Vertical images
-import portraitLeft from "./assets/webassests/mainvertical.jpg";
-import heroImage from "./assets/webassests/vertical/HUG00324.jpg";
-import invitationImage from "./assets/webassests/vertical/HUG09122.jpg";
+import portraitLeft from "./assets/webassests/mainvertical.webp";
+import heroImage from "./assets/webassests/vertical/HUG00324.webp";
+import invitationImage from "./assets/webassests/vertical/HUG09122.webp";
 
 // Horizontal images
 
