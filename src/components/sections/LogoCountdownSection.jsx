@@ -59,7 +59,11 @@ const LogoCountdownSection = ({ logoImage, verticalImage }) => {
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.3 }}
         >
-          <img src={logoImage} alt="Wedding Logo" className="main-logo" />
+          <img
+            src="https://res.cloudinary.com/dkuvbw91g/image/upload/v1761664328/mainlogo_nhligo.webp"
+            alt="Wedding Logo"
+            className="main-logo"
+          />
         </motion.div>
 
         {/* Text */}
@@ -100,7 +104,7 @@ const LogoCountdownSection = ({ logoImage, verticalImage }) => {
           transition={{ duration: 1, delay: 0.9 }}
         >
           <img
-            src={verticalImage}
+            src="https://res.cloudinary.com/dkuvbw91g/image/upload/v1761664330/mainvertical_mwjx13.webp"
             alt="Wedding Photo"
             className="vertical-image"
           />
@@ -115,7 +119,11 @@ const LogoCountdownSection = ({ logoImage, verticalImage }) => {
             viewport={{ once: true }}
             transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
           >
-            <img src={left1} alt="Wedding Photo Left" className="side-image" />
+            <img
+              src="https://res.cloudinary.com/dkuvbw91g/image/upload/v1761664330/left1_znh2t6.webp"
+              alt="Wedding Photo Left"
+              className="side-image"
+            />
           </motion.div>
 
           <motion.div
@@ -126,7 +134,7 @@ const LogoCountdownSection = ({ logoImage, verticalImage }) => {
             transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
           >
             <img
-              src={right1}
+              src="https://res.cloudinary.com/dkuvbw91g/image/upload/v1761664330/right1_zd8wew.webp"
               alt="Wedding Photo Right"
               className="side-image"
             />

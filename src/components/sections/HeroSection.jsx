@@ -86,7 +86,11 @@ const HeroSection = ({ heroImage }) => {
       animate={{ opacity: 1 }}
       transition={{ duration: 1.3, ease: "easeOut" }}
     >
-      <img src={heroImage} alt="Wedding Cover" className="cover-image" />
+      <img
+        src="https://res.cloudinary.com/dkuvbw91g/image/upload/v1761616754/HUG00324_iosqhn.webp"
+        alt="Wedding Cover"
+        className="cover-image"
+      />
 
       {/* Dark overlay for better text visibility */}
       <div className="hero-overlay"></div>
