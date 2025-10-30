@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 
 // Import components
@@ -25,15 +25,52 @@ import invitationImage from "./assets/webassests/vertical/HUG09122.webp";
 
 // Horizontal images
 
+function preloadImage(src) {
+  return new Promise((resolve) => {
+    const img = new window.Image();
+    img.onload = resolve;
+    img.onerror = resolve;
+    img.src = src;
+  });
+}
+
 function App() {
   const [showIntro, setShowIntro] = useState(true);
+  const [isContentReady, setIsContentReady] = useState(false);
+
+  // Preload images và có thể preload dữ liệu khác ở đây
+  useEffect(() => {
+    if (showIntro) {
+      (async () => {
+        // Preload tất cả ảnh lớn và asset dùng ở các section chính
+        await Promise.all([
+          preloadImage(mainLogo),
+          preloadImage(portraitLeft),
+          preloadImage(heroImage),
+          preloadImage(invitationImage),
+          // add các ảnh khác nếu muốn
+        ]);
+        setIsContentReady(true);
+      })();
+    }
+  }, [showIntro]);
 
   const handleIntroComplete = () => {
     setShowIntro(false);
   };
 
   if (showIntro) {
+    // Giai đoạn này: IntroAnimation đang chạy, nhưng useEffect phía trên sẽ preload các asset và các section sớm
     return <IntroAnimation onComplete={handleIntroComplete} />;
+  }
+
+  if (!isContentReady) {
+    // Hiện loading nhỏ nếu content chưa preload xong (hiếm gặp)
+    return (
+      <div style={{ textAlign: "center", marginTop: 48 }}>
+        Đang tải nội dung...
+      </div>
+    );
   }
 
   return (
