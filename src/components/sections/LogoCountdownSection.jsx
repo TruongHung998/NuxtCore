@@ -1,10 +1,9 @@
 import { motion } from "framer-motion";
-import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import left1 from "../../assets/webassests/left1.webp";
 import right1 from "../../assets/webassests/right1.webp";
 
-const LogoCountdownSection = ({ logoImage, verticalImage }) => {
+const LogoCountdownSection = () => {
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -86,13 +85,53 @@ const LogoCountdownSection = ({ logoImage, verticalImage }) => {
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.7 }}
         >
-          <span className="timer-number">{formatNumber(timeLeft.days)}</span>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <span className="timer-number">{formatNumber(timeLeft.days)}</span>
+            <span className="timer-label">Days</span>
+          </div>
           <span className="timer-separator">:</span>
-          <span className="timer-number">{formatNumber(timeLeft.hours)}</span>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <span className="timer-number">{formatNumber(timeLeft.hours)}</span>
+            <span className="timer-label">Hours</span>
+          </div>
           <span className="timer-separator">:</span>
-          <span className="timer-number">{formatNumber(timeLeft.minutes)}</span>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <span className="timer-number">
+              {formatNumber(timeLeft.minutes)}
+            </span>
+            <span className="timer-label">Minutes</span>
+          </div>
           <span className="timer-separator">:</span>
-          <span className="timer-number">{formatNumber(timeLeft.seconds)}</span>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <span className="timer-number">
+              {formatNumber(timeLeft.seconds)}
+            </span>
+            <span className="timer-label">Seconds</span>
+          </div>
         </motion.div>
 
         {/* Vertical Image */}
@@ -112,6 +151,7 @@ const LogoCountdownSection = ({ logoImage, verticalImage }) => {
 
         {/* Left Right Images Section */}
         <div className="left-right-images-section">
+          {/* Section 1: Groom photo left - info right */}
           <motion.div
             className="left-image-wrapper"
             initial={{ opacity: 0, x: -100 }}
@@ -119,13 +159,57 @@ const LogoCountdownSection = ({ logoImage, verticalImage }) => {
             viewport={{ once: true }}
             transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
           >
-            <img
-              src="https://scontent.fsgn5-9.fna.fbcdn.net/v/t39.30808-6/560620136_4304791536332788_2007586981646828501_n.webp?stp=dst-jpg_tt6&_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_ohc=YMQZsH8pd00Q7kNvwHqUDMw&_nc_oc=AdlVLbPvSz1aPYxCLA8hFhnWVvvnsEf-VNEAQOy-6zuHk_EC3jRfA4O0mezv_44ecpQ&_nc_zt=23&_nc_ht=scontent.fsgn5-9.fna&_nc_gid=yKo33W1TCLSWISFSCrJaMw&oh=00_AffIaEOTG_DzS4GnEt3vl1q-Z1w93dbUNscFGckVe8XlFA&oe=6909482F"
-              alt="Wedding Photo Left"
-              className="side-image"
-            />
+            <img src={left1} alt="Groom Viet Hung" className="side-image" />
           </motion.div>
+          <motion.div
+            className="right-info-wrapper"
+            initial={{ opacity: 0, x: 100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
+            style={{
+              flex: 1,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              paddingLeft: "2vw",
+            }}
+          >
+            <div className="wedding-info groom-info">
+              <span className="label">Groom</span>
+              <span className="name">Viet Hung</span>
+              <span className="date">23.10.1998</span>
+            </div>
+          </motion.div>
+        </div>
 
+        <div
+          className="left-right-images-section"
+          style={{ marginTop: "2.5rem" }}
+        >
+          {/* Section 2: Bride info left, photo right */}
+          <motion.div
+            className="left-info-wrapper"
+            initial={{ opacity: 0, x: -100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
+            style={{
+              flex: 1,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              paddingRight: "2vw",
+            }}
+          >
+            <div className="wedding-info bride-info">
+              <span className="label">Bride</span>
+              <span className="name">Lan Huyen</span>
+              <span className="date">11.01.1998</span>
+            </div>
+          </motion.div>
           <motion.div
             className="right-image-wrapper"
             initial={{ opacity: 0, x: 100 }}
@@ -133,22 +217,12 @@ const LogoCountdownSection = ({ logoImage, verticalImage }) => {
             viewport={{ once: true }}
             transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
           >
-            <img
-              src="https://scontent.fsgn5-5.fna.fbcdn.net/v/t39.30808-6/571329745_4304791516332790_3426270614803703292_n.webp?stp=dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_ohc=DteIRgnpyk8Q7kNvwH8xpGE&_nc_oc=AdlkGkGFgeSk0lcm5hMVZ3T6frkW0Nay3ejn5rCYxqwPATfX5tbgfslO7JP4bYgiTmg&_nc_zt=23&_nc_ht=scontent.fsgn5-5.fna&_nc_gid=vXSF7Hrm8xYJeG5EUoDPRg&oh=00_AffjSYx893zN48sKgruHKlgMnPmMNUntqtPmvCBo49RPJw&oe=69093C3E"
-              alt="Wedding Photo Right"
-              className="side-image"
-            />
+            <img src={right1} alt="Bride Lan Huyen" className="side-image" />
           </motion.div>
         </div>
       </div>
     </motion.div>
   );
-};
-
-LogoCountdownSection.propTypes = {
-  logoImage: PropTypes.string.isRequired,
-  verticalImage: PropTypes.string.isRequired,
-  horizontalImage: PropTypes.string.isRequired,
 };
 
 export default LogoCountdownSection;

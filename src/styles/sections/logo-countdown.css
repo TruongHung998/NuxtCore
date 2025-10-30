@@ -76,7 +76,18 @@
 }
 
 .timer-label {
-  display: none;
+  display: block;
+  margin-top: 3px;
+  font-size: 0.86rem;
+  color: #94a094;
+  font-family: var(--font-secondary, "Montserrat", Arial, sans-serif);
+  font-weight: 400;
+  opacity: 0.82;
+  letter-spacing: 1.2px;
+  text-align: center;
+  font-style: italic;
+  text-transform: capitalize;
+  line-height: 1.1;
 }
 
 /* Images - Shared Styles */
@@ -130,6 +141,57 @@
 .right-image-wrapper {
   flex: 1;
   max-width: 48%;
+}
+
+.wedding-info.groom-info,
+.wedding-info.bride-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.2em;
+}
+
+.wedding-info.bride-info {
+  align-items: center;
+  text-align: center;
+}
+
+.wedding-info .label {
+  font-family: "DearScript", cursive;
+  font-size: 2rem;
+  color: var(--gray);
+  opacity: 0.85;
+  margin-bottom: 2px;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.wedding-info .name {
+  font-family: "DearScript", cursive;
+  font-size: 2.5rem;
+  color: #94a094;
+  font-weight: 400;
+  letter-spacing: 2px;
+  margin: 4px 0 4px 0;
+}
+
+.wedding-info .date {
+  font-family: "DearScript", cursive;
+  font-size: 1.5rem;
+  color: var(--gray);
+  opacity: 0.75;
+}
+
+.countdown-date {
+  margin-top: -12px;
+  font-family: "DearScript", cursive;
+  font-size: 1.28rem;
+  color: #94a094;
+  font-style: italic;
+  text-align: center;
+  opacity: 0.85;
+  letter-spacing: 1.5px;
 }
 
 /* Responsive Design */
