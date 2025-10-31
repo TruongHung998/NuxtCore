@@ -4,3 +4,4 @@ export { default as InvitationHeaderSection } from "./InvitationHeaderSection";
 export { default as InvitationDetailsSection } from "./InvitationDetailsSection";
 export { default as MapSection } from "./MapSection";
 export { default as TimelineSection } from "./TimelineSection";
+export { default as ImageShowcaseSection } from "./ImageShowcaseSection";

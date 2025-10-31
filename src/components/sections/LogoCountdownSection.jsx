@@ -1,7 +1,5 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import left1 from "../../assets/webassests/left1.webp";
-import right1 from "../../assets/webassests/right1.webp";
 
 const LogoCountdownSection = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -159,7 +157,7 @@ const LogoCountdownSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
           >
-            <img src={left1} alt="Groom Viet Hung" className="side-image" />
+            <img src={"https://scontent.fsgn5-9.fna.fbcdn.net/v/t39.30808-6/560620136_4304791536332788_2007586981646828501_n.webp?stp=dst-jpg_tt6&_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_ohc=YMQZsH8pd00Q7kNvwHqUDMw&_nc_oc=AdlVLbPvSz1aPYxCLA8hFhnWVvvnsEf-VNEAQOy-6zuHk_EC3jRfA4O0mezv_44ecpQ&_nc_zt=23&_nc_ht=scontent.fsgn5-9.fna&_nc_gid=X8OtoJmFIlsL7hQP-qw_aw&oh=00_Afd-0biuIsYcHHarP3jBFLP9J5vGrUGGIKD_ATR0QrhzqA&oe=690A99AF"} alt="Groom Viet Hung" className="side-image" />
           </motion.div>
           <motion.div
             className="right-info-wrapper"
@@ -217,7 +215,7 @@ const LogoCountdownSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
           >
-            <img src={right1} alt="Bride Lan Huyen" className="side-image" />
+            <img src={"https://scontent.fsgn5-5.fna.fbcdn.net/v/t39.30808-6/571329745_4304791516332790_3426270614803703292_n.webp?stp=dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_ohc=Ccb1NKYUh5AQ7kNvwH9Dwc-&_nc_oc=Adkp10_83_XAHHoxZ1tMO1rRzueAwvFcNQbbN7XXsKQp5EOfybG0Z2iKDEU1b42ULTU&_nc_zt=23&_nc_ht=scontent.fsgn5-5.fna&_nc_gid=Wql0gmZ9oK6VRNivEjCatA&oh=00_AffXaBzMsxDIeQwe0oH5eXg19YLdekYH8crRc62ZOyE11g&oe=690A8DBE"} alt="Bride Lan Huyen" className="side-image" />
           </motion.div>
         </div>
       </div>

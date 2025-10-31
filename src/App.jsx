@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 
 // Import components
@@ -10,29 +10,17 @@ import {
   InvitationDetailsSection,
   InvitationHeaderSection,
   LogoCountdownSection,
+  ImageShowcaseSection,
   MapSection,
   TimelineSection,
 } from "./components/sections";
 
 // Import images (WebP format for better performance)
 // Logo
-import mainLogo from "./assets/webassests/mainlogo.webp";
 
 // Vertical images
-import portraitLeft from "./assets/webassests/mainvertical.webp";
-import heroImage from "./assets/webassests/vertical/HUG00324.webp";
-import invitationImage from "./assets/webassests/vertical/HUG09122.webp";
 
 // Horizontal images
-
-function preloadImage(src) {
-  return new Promise((resolve) => {
-    const img = new window.Image();
-    img.onload = resolve;
-    img.onerror = resolve;
-    img.src = src;
-  });
-}
 
 function App() {
   const [showIntro, setShowIntro] = useState(true);
@@ -43,13 +31,6 @@ function App() {
     if (showIntro) {
       (async () => {
         // Preload tất cả ảnh lớn và asset dùng ở các section chính
-        await Promise.all([
-          preloadImage(mainLogo),
-          preloadImage(portraitLeft),
-          preloadImage(heroImage),
-          preloadImage(invitationImage),
-          // add các ảnh khác nếu muốn
-        ]);
         setIsContentReady(true);
       })();
     }
@@ -81,16 +62,13 @@ function App() {
           <main className="wedding-content">
             <div className="page-container">
               {/* SECTION 1: Hero Section */}
-              <HeroSection heroImage={heroImage} />
+              <HeroSection />
 
               {/* SECTION 2: Logo Countdown Section */}
-              <LogoCountdownSection
-                logoImage={mainLogo}
-                verticalImage={portraitLeft}
-              />
+              <LogoCountdownSection />
 
               {/* SECTION 3: Invitation Header */}
-              <InvitationHeaderSection invitationImage={invitationImage} />
+              <InvitationHeaderSection />
 
               {/* SECTION 10: Invitation Details */}
               <InvitationDetailsSection />
@@ -98,6 +76,9 @@ function App() {
               <MapSection />
               {/* SECTION 11: Timeline Section */}
               <TimelineSection />
+
+              {/* SECTION 12: 4-Image Showcase Section */}
+              <ImageShowcaseSection />
             </div>
           </main>
         </div>
