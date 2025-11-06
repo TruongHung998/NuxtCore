@@ -89,7 +89,7 @@ const HeroSection = () => {
       transition={{ duration: 1.3, ease: "easeOut" }}
     >
       <img
-        src="https://scontent.fsgn5-9.fna.fbcdn.net/v/t39.30808-6/571236975_4304791249666150_3122169430706030822_n.webp?stp=dst-jpg_tt6&_nc_cat=105&ccb=1-7&_nc_sid=127cfc&_nc_ohc=84Wztj13uAcQ7kNvwE16b51&_nc_oc=AdnCekECFzbLNgOqhMDojZ6VIUWsBrPkNlHvrG6PqhvZpvkDde7haSV90nczWSM5y04&_nc_zt=23&_nc_ht=scontent.fsgn5-9.fna&_nc_gid=dh3Rt8aFm8aOdW2EYdkQcw&oh=00_AffKrtzdIq2fNe5pfjmayVRHOiYD4fBj5nb-J7k_RpGIuw&oe=690938BA"
+        src="https://res.cloudinary.com/dkuvbw91g/image/upload/v1762391590/571236975_4304791249666150_3122169430706030822_n_ajy0d3.jpg"
         alt="Wedding Cover"
         className="cover-image"
       />
