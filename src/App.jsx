@@ -24,15 +24,35 @@ import {
 
 function App() {
   const [showIntro, setShowIntro] = useState(true);
-  const [isContentReady, setIsContentReady] = useState(false);
 
-  // Preload images và có thể preload dữ liệu khác ở đây
   useEffect(() => {
-    if (showIntro) {
-      (async () => {
-        // Preload tất cả ảnh lớn và asset dùng ở các section chính
-        setIsContentReady(true);
-      })();
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    );
+
+    if (prefersReducedMotion.matches) {
+      setShowIntro(false);
+      return;
+    }
+
+    const hasSeenIntro = window.sessionStorage.getItem("introSeen") === "true";
+
+    if (hasSeenIntro) {
+      setShowIntro(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    if (!showIntro) {
+      window.sessionStorage.setItem("introSeen", "true");
     }
   }, [showIntro]);
 
@@ -40,22 +60,9 @@ function App() {
     setShowIntro(false);
   };
 
-  if (showIntro) {
-    // Giai đoạn này: IntroAnimation đang chạy, nhưng useEffect phía trên sẽ preload các asset và các section sớm
-    return <IntroAnimation onComplete={handleIntroComplete} />;
-  }
-
-  if (!isContentReady) {
-    // Hiện loading nhỏ nếu content chưa preload xong (hiếm gặp)
-    return (
-      <div style={{ textAlign: "center", marginTop: 48 }}>
-        Đang tải nội dung...
-      </div>
-    );
-  }
-
   return (
     <div className="app-container">
+      {showIntro && <IntroAnimation onComplete={handleIntroComplete} />}
       <div className="desktop-view">
         <div className="desktop-content">
           {/* Main Content - Absolute Positioned Layout matching HTML exactly */}

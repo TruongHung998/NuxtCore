@@ -1,6 +1,9 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 
+const HERO_IMAGE_TRANSFORMED = (width) =>
+  `https://res.cloudinary.com/dkuvbw91g/image/upload/f_auto,q_auto,w_${width}/v1762391590/571236975_4304791249666150_3122169430706030822_n_ajy0d3.jpg`;
+
 const HeroSection = () => {
   const groomNameRef = useRef(null);
   const ampersandRef = useRef(null);
@@ -89,9 +92,18 @@ const HeroSection = () => {
       transition={{ duration: 1.3, ease: "easeOut" }}
     >
       <img
-        src="https://res.cloudinary.com/dkuvbw91g/image/upload/v1762391590/571236975_4304791249666150_3122169430706030822_n_ajy0d3.jpg"
+        src={HERO_IMAGE_TRANSFORMED(1600)}
+        srcSet={`${HERO_IMAGE_TRANSFORMED(800)} 800w, ${HERO_IMAGE_TRANSFORMED(
+          1200
+        )} 1200w, ${HERO_IMAGE_TRANSFORMED(1600)} 1600w`}
+        sizes="(max-width: 768px) 100vw, (max-width: 1280px) 80vw, 960px"
         alt="Wedding Cover"
         className="cover-image"
+        loading="eager"
+        decoding="async"
+        fetchpriority="high"
+        width="960"
+        height="1440"
       />
 
       {/* Dark overlay for better text visibility */}
